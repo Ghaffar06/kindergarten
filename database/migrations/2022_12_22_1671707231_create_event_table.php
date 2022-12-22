@@ -11,11 +11,11 @@ class CreateEventTable extends Migration
         Schema::create('event', function (Blueprint $table) {
 
             $table->id();
-            $table->string('title',45);
-		$table->string('text',200);
-		$table->datetime('announcement_date');
-		$table->datetime('event_date');
-		$table->integer('level',);
+            $table->string('title', 45);
+            $table->string('text', 200);
+            $table->datetime('announcement_date');
+            $table->datetime('event_date');
+            $table->integer('level',);
 
         });
     }

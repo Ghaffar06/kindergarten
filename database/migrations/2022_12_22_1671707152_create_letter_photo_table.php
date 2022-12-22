@@ -11,8 +11,8 @@ class CreateLetterPhotoTable extends Migration
         Schema::create('letter_photo', function (Blueprint $table) {
 
             $table->id();
-            $table->string('url',200);
-		$table->string('letter',1);
+            $table->string('url', 200);
+            $table->string('letter', 1);
 
         });
     }

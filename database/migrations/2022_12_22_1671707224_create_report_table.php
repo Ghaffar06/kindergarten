@@ -11,10 +11,10 @@ class CreateReportTable extends Migration
         Schema::create('report', function (Blueprint $table) {
 
             $table->id();
-            $table->string('title',45);
-		$table->string('message',250);
-		$table->datetime('date_repo');
-		$table->string('handled',1);
+            $table->string('title', 45);
+            $table->string('message', 250);
+            $table->datetime('date_repo');
+            $table->string('handled', 1);
 
         });
     }

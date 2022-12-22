@@ -11,7 +11,7 @@ class CreateWordPhotoTable extends Migration
         Schema::create('word_photo', function (Blueprint $table) {
 
             $table->id();
-            $table->string('url',200);
+            $table->string('url', 200);
 
         });
     }

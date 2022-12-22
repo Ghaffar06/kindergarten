@@ -12,8 +12,8 @@ class CreateWordTable extends Migration
 
             $table->id();
 
-		$table->string('text',45);
-		$table->integer('score',);
+            $table->string('text', 45);
+            $table->integer('score',);
 
         });
     }

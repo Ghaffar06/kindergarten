@@ -12,7 +12,7 @@ class CreateEventSubscriptionTable extends Migration
 
             $table->id();
 
-		$table->datetime('date_sub');
+            $table->datetime('date_sub');
 
         });
     }

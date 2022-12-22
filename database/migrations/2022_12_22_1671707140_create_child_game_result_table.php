@@ -10,9 +10,9 @@ class CreateChildGameResultTable extends Migration
     {
         Schema::create('child_game_result', function (Blueprint $table) {
 
-        $table->id();
-		$table->integer('best_score',);
-		$table->datetime('date_best');
+            $table->id();
+            $table->integer('best_score',);
+            $table->datetime('date_best');
 
         });
     }

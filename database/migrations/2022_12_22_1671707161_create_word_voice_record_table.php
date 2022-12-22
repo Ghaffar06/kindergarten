@@ -11,7 +11,7 @@ class CreateWordVoiceRecordTable extends Migration
         Schema::create('word_voice_record', function (Blueprint $table) {
 
             $table->id();
-            $table->string('url',200);
+            $table->string('url', 200);
 
         });
     }

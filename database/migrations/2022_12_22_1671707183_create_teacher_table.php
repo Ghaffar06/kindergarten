@@ -12,7 +12,7 @@ class CreateTeacherTable extends Migration
 
             $table->integer('user_id');
 
-		$table->string('admin_confirmed',1);
+            $table->string('admin_confirmed', 1);
 
         });
     }

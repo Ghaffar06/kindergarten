@@ -11,8 +11,8 @@ class CreateArticleOptionTable extends Migration
         Schema::create('article_option', function (Blueprint $table) {
 
             $table->id();
-            $table->string('option',200);
-		$table->tinyInteger('answer',);
+            $table->string('option', 200);
+            $table->tinyInteger('answer',);
 
         });
     }
