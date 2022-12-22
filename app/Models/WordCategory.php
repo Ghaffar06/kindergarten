@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class WordCategory extends Model
 {
     use HasFactory;
+
     protected $table = 'word_category';
     protected $fillable = [
+        'word_id',
+        'category_id',
     ];
+
 }

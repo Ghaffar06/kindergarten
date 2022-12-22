@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory;
+
     protected $table = 'report';
     protected $fillable = [
         'title',
         'message',
         'date_repo',
         'handled',
+        'user_id',
     ];
 
     protected $casts = [

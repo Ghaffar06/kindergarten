@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ChildArticle extends Model
 {
     use HasFactory;
+
     protected $table = 'child_article';
     protected $fillable = [
-        'max_score'
+        'max_score',
+        'article_id',
+        'user_id',
     ];
+
+
 }

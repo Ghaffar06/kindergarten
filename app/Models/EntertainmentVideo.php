@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class EntertainmentVideo extends Model
 {
     use HasFactory;
+
     protected $table = 'entertainment_video';
     protected $fillable = [
         'url',
         'cost',
+        'user_id',
     ];
 }

@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class WordPhoto extends Model
 {
     use HasFactory;
+
     protected $table = 'word_photo';
     protected $fillable = [
         'url',
+        'word_id',
     ];
 }
