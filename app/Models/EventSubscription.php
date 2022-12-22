@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class EventSubscription extends Model
 {
     use HasFactory;
+    protected $table = 'event_subscription';
+    protected $fillable = [
+        'date_sub',
+    ];
 }
