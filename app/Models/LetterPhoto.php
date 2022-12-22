@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class LetterPhoto extends Model
 {
     use HasFactory;
+
+    protected $table = 'letter_photo';
+    protected $fillable = [
+        'url',
+        'letter',
+        'is_small',
+    ];
 }

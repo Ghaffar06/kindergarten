@@ -34,6 +34,11 @@ class Child extends Model
         return $this->hasMany(EventSubscription::class);
     }
 
+    public function childGameResults(): HasMany
+    {
+        return $this->hasMany(ChildGameResult::class);
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
