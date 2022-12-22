@@ -12,6 +12,8 @@ class CreateWordPhotoTable extends Migration
 
             $table->id();
             $table->string('url', 200);
+            $table->integer('word_id');
+
 
         });
     }

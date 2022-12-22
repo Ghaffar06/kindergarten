@@ -13,6 +13,9 @@ class CreateChildGameResultTable extends Migration
             $table->id();
             $table->integer('best_score',);
             $table->datetime('date_best');
+            $table->integer('user_id');
+            $table->integer('letters_game_id');
+
 
         });
     }

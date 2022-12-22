@@ -15,6 +15,8 @@ class CreateLettersGameTable extends Migration
             $table->string('letter', 1);
             $table->integer('correct',);
             $table->integer('wrong',);
+            $table->integer('user_id');
+
 
 
         });
