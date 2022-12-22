@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Child extends Model
@@ -15,6 +16,7 @@ class Child extends Model
         'score',
         'birthdate',
         'level',
+        'user_id',
     ];
 
     public function childWords(): HasMany
@@ -30,6 +32,11 @@ class Child extends Model
     public function eventSubscriptions(): HasMany
     {
         return $this->hasMany(EventSubscription::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
 

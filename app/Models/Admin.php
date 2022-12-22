@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Admin extends Model
@@ -12,10 +13,17 @@ class Admin extends Model
 
     protected $table = 'admin';
     protected $fillable = [
+        'user_id',
     ];
 
     public function events(): HasMany
     {
         return $this->hasMany(Event::class);
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

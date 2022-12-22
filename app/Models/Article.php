@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Article extends Model
@@ -14,7 +15,7 @@ class Article extends Model
     protected $fillable = [
         'title',
         'text',
-        'teacher_id',
+        'user_id',
     ];
 
     public function childArticles(): HasMany
@@ -25,6 +26,11 @@ class Article extends Model
     public function articleQuestions(): HasMany
     {
         return $this->hasMany(ArticleQuestion::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
 }
