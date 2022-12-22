@@ -11,6 +11,9 @@ class CreateWordCategoryTable extends Migration
         Schema::create('word_category', function (Blueprint $table) {
 
             $table->id();
+            $table->integer('category_id');
+            $table->integer('word_id');
+
 
 
         });

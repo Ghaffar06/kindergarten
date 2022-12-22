@@ -13,6 +13,8 @@ class CreateArticleTable extends Migration
             $table->id();
             $table->string('title', 45);
             $table->string('text', 1000);
+            $table->integer('user_id');
+
 
         });
     }

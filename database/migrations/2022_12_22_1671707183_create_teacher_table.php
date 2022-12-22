@@ -10,7 +10,7 @@ class CreateTeacherTable extends Migration
     {
         Schema::create('teacher', function (Blueprint $table) {
 
-            $table->integer('user_id');
+            $table->integer('user_id')->unique();
 
             $table->string('admin_confirmed', 1);
 

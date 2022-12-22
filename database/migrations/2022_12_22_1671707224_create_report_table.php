@@ -15,6 +15,7 @@ class CreateReportTable extends Migration
             $table->string('message', 250);
             $table->datetime('date_repo');
             $table->string('handled', 1);
+            $table->integer('user_id'); 
 
         });
     }

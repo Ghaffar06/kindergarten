@@ -11,6 +11,9 @@ class CreateGameLevelPhotoTable extends Migration
         Schema::create('game_level_photo', function (Blueprint $table) {
 
             $table->id();
+            $table->integer('letter_photo_id');
+            $table->integer('letter_game_id');
+
 
         });
     }
