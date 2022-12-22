@@ -14,12 +14,12 @@ class ChildArticle extends Model
     protected $fillable = [
         'max_score',
         'article_id',
-        'user_id',
+        'child_id',
     ];
 
-    public function user(): BelongsTo
+    public function child(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Child::class);
     }
 
     public function article(): BelongsTo

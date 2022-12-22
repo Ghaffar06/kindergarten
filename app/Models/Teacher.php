@@ -13,6 +13,7 @@ class Teacher extends Model
 
     protected $table = 'teacher';
     protected $fillable = [
+        'id',
         'admin_confirmed',
         'user_id',
     ];

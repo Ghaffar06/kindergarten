@@ -13,6 +13,7 @@ class Admin extends Model
 
     protected $table = 'admin';
     protected $fillable = [
+        'id',
         'user_id',
     ];
 

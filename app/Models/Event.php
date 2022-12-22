@@ -18,7 +18,7 @@ class Event extends Model
         'announcement_date',
         'event_date',
         'level',
-        'user_id',
+        'admin_id',
     ];
 
     protected $casts = [
@@ -31,9 +31,9 @@ class Event extends Model
         return $this->hasMany(EventSubscription::class);
     }
 
-    public function user(): BelongsTo
+    public function admin(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Admin::class);
     }
 
 

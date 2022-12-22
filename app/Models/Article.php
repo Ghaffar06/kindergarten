@@ -15,7 +15,7 @@ class Article extends Model
     protected $fillable = [
         'title',
         'text',
-        'user_id',
+        'teacher_id',
     ];
 
     public function childArticles(): HasMany
@@ -28,9 +28,9 @@ class Article extends Model
         return $this->hasMany(ArticleQuestion::class);
     }
 
-    public function user(): BelongsTo
+    public function teacher(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Teacher::class);
     }
 
 }

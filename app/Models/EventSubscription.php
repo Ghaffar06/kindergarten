@@ -14,12 +14,12 @@ class EventSubscription extends Model
     protected $fillable = [
         'date_sub',
         'event_id',
-        'user_id',
+        'child_id',
     ];
 
-    public function user(): BelongsTo
+    public function child(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Child::class);
     }
 
     public function event(): BelongsTo

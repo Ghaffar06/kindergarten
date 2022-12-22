@@ -14,12 +14,12 @@ class ChildGameResult extends Model
     protected $fillable = [
         'passed',
         'letter',
-        'user_id',
+        'child_id',
     ];
 
-    public function user(): BelongsTo
+    public function child(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Child::class);
     }
 
 }

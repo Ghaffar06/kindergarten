@@ -13,6 +13,7 @@ class Child extends Model
 
     protected $table = 'child';
     protected $fillable = [
+        'id',
         'score',
         'birthdate',
         'level',

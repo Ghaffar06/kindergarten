@@ -14,12 +14,12 @@ class EntertainmentVideo extends Model
     protected $fillable = [
         'url',
         'cost',
-        'user_id',
+        'teacher_id',
     ];
 
-    public function user(): BelongsTo
+    public function teacher(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Teacher::class);
     }
 
 }
