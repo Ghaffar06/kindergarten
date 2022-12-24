@@ -111,14 +111,14 @@
                     </div> -->
                 </div>
                 <!-- Mobile Menu -->
-                <div class="mobile-menu d-block d-lg-none">
+                <!-- <div class="mobile-menu d-block d-lg-none">
                     <div class="logo">
                         <a href="index.html"><img src="{{asset('images/logo/junior.png')}}" alt="logo"></a>
                     </div>
                     <a class="minicart-trigger" href="#">
                         <i class="fa fa-shopping-basket"></i>
                     </a>
-                </div>
+                </div> -->
                 <!-- Mobile Menu -->
             </div>
         </div>
