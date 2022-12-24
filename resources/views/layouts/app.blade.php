@@ -70,7 +70,7 @@
                 <div class="row d-none d-lg-flex">
                     <div class="col-sm-4 col-md-6 col-lg-2 order-1 order-lg-1">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="{{route("index")}}">
                                 <img src="{{asset('images/logo/junior.png')}}" alt="logo images">
                             </a>
                         </div>
@@ -79,7 +79,7 @@
                         <div class="mainmenu__wrap">
                             <nav class="mainmenu__nav">
                                 <ul class="mainmenu">
-                                    <li class="drop"><a href="index.html">Home</a></li>
+                                    <li class="drop"><a href="{{route("index")}}">Home</a></li>
                                     <li class="drop"><a href="class-grid.html">Class</a></li>
                                     <li class="drop"><a href="event-grid.html">Teachers</a></li>
                                     <li class="drop"><a href="#">Pages</a>
@@ -410,6 +410,23 @@
     </div> -->
     <!-- //Cartbox -->
 
+    <script>
+        let roll = 'student';
+        function changeSelected(input){
+            if (input === 1) {
+                roll = 'student';
+                document.getElementById('image_s').classList.add('border');
+                document.getElementById('image_t').classList.remove('border');
+                document.getElementById('b_date').hidden = false;
+            } else {
+                roll = 'teacher';
+                document.getElementById('b_date').hidden = true;
+                document.getElementById('image_t').classList.add('border');
+                document.getElementById('image_s').classList.remove('border');
+            }
+            document.getElementById('roll').value = roll;
+        }
+    </script>
     <!-- Register Form -->
     <div class="accountbox-wrapper">
         <div class="accountbox">
@@ -418,39 +435,81 @@
                 <div class="accountbox__login">
                     <form action="#">
                         <div class="single-input">
-                            <input type="text" placeholder="User name">
+                            <label>
+                                <input type="text" name="name" placeholder="User name">
+                            </label>
                         </div>
                         <div class="single-input">
-                            <input type="email" placeholder="E-mail">
+                            <label>
+                                <input type="email" name="email" placeholder="E-mail">
+                            </label>
+                        </div>
+{{--                        <div class="single-input">--}}
+{{--                            <input type="text" placeholder="Phone">--}}
+{{--                        </div>--}}
+                        <div class="single-input">
+                            <label>
+                                <input type="password" name="password" placeholder="Password">
+                            </label>
                         </div>
                         <div class="single-input">
-                            <input type="text" placeholder="Phone">
+                            <label>
+                                <input type="password" name="confirm_password" placeholder="Confirm password">
+                            </label>
                         </div>
-                        <div class="single-input">
-                            <input type="password" placeholder="Password">
+                        <div class="row single-input justify-content-center">
+                            <div>
+                                <div>
+                                    <img id="image_s" class="rounded border border-warning"
+                                         style="border-width:5px !important;"
+                                         onclick="changeSelected(1)" src="{{asset('images/cart/1.jpg')}}"
+                                         width="100" height="75" alt="">
+                                </div>
+                            </div>
+                            <div class="w--10">
+                                <input type="hidden" name="roll" value="student" id="roll">
+                            </div>
+                            <div>
+                                <div>
+                                    <img id="image_t" class="rounded border-warning"
+                                         style="border-width:5px !important;"
+                                         onclick="changeSelected(2)" src="{{asset('images/cart/1.jpg')}}"
+                                         width="100" height="75" alt="">
+                                </div>
+                            </div>
                         </div>
-                        <div class="single-input">
-                            <input type="password" placeholder="Confirm password">
+                        <div id="b_date" class="mb-3 single-input">
+                            <label for="birthdate" class="col-md-4 col-form-label text-md-end">{{ __('Birthdate') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="birthdate" type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate" autofocus>
+
+                                @error('birthdate')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="single-input text-center">
                             <button type="submit" class="sign__btn">Sign Up Now</button>
                         </div>
-                        <div class="accountbox-login__others text-center">
-                            <h6>or register with</h6>
-                            <ul class="dacre__social__link d-flex justify-content-center">
-                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span
-                                            class="ti-facebook"></span></a></li>
-                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span
-                                            class="ti-twitter"></span></a></li>
-                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>
-                                </li>
-                            </ul>
-                        </div>
+
+{{--                        <div class="accountbox-login__others text-center">--}}
+{{--                            <h6>or register with</h6>--}}
+{{--                            <ul class="dacre__social__link d-flex justify-content-center">--}}
+{{--                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
+{{--                                            class="ti-facebook"></span></a></li>--}}
+{{--                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
+{{--                                            class="ti-twitter"></span></a></li>--}}
+{{--                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                     </form>
                 </div>
                 <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
             </div>
-            <h3>Have an account ? Login Fast</h3>
         </div>
     </div><!-- //Register Form -->
 
@@ -470,21 +529,20 @@
                         <div class="single-input text-center">
                             <button type="submit" class="sign__btn">SUBMIT</button>
                         </div>
-                        <div class="accountbox-login__others text-center">
-                            <ul class="dacre__social__link d-flex justify-content-center">
-                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span
-                                            class="ti-facebook"></span></a></li>
-                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span
-                                            class="ti-twitter"></span></a></li>
-                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>
-                                </li>
-                            </ul>
-                        </div>
+{{--                        <div class="accountbox-login__others text-center">--}}
+{{--                            <ul class="dacre__social__link d-flex justify-content-center">--}}
+{{--                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
+{{--                                            class="ti-facebook"></span></a></li>--}}
+{{--                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
+{{--                                            class="ti-twitter"></span></a></li>--}}
+{{--                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                     </form>
                 </div>
                 <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
             </div>
-            <h3>Have an account ? Login Fast</h3>
         </div>
     </div><!-- //Login Form -->
 

@@ -20,16 +20,16 @@ Route::get('/', function () {
 
 Route::get('/mullham/category', function () {
     return view('word_category');
-});
+})->name('word_category');
 
 Route::get('/mullham/words', function () {
     return view('words');
-});
+})->name('words');
 
 
 Route::get('/mullham', function () {
     return view('index');
-});
+})->name('index');
 
 Auth::routes();
 
