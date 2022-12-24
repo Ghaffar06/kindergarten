@@ -70,7 +70,7 @@
                 <div class="row d-none d-lg-flex">
                     <div class="col-sm-4 col-md-6 col-lg-2 order-1 order-lg-1">
                         <div class="logo">
-                            <a href="{{route("index")}}">
+                            <a href="{{route("index") }}">
                                 <img src="{{asset('images/logo/junior.png')}}" alt="logo images">
                             </a>
                         </div>
@@ -202,7 +202,7 @@
                                     <div class="single__ftr__post d-flex">
                                         <div class="ftr__post__thumb">
                                             <a href="blog-details.html">
-                                                <img src="{{asset('images/blog/post-img/4.')}}" alt="post images">
+                                                <img src="{{asset('images/blog/post-img/4.jpg')}}" alt="post images">
                                             </a>
                                         </div>
                                         <div class="ftr__post__details">
@@ -274,12 +274,6 @@
                     </div>
                     <!-- End Single Widget -->
                 </div>
-            </div>
-            <div class="ft__bottom__images--1 wow flipInX" data-wow-delay="0.6s">
-                <img src="{{asset('images/banner/mid-img/ft.png')}}" alt="footer images">
-            </div>
-            <div class="ft__bottom__images--2 wow fadeInRight" data-wow-delay="0.6s">
-                <img src="{{asset('images/banner/mid-img/ft-2.png')}}" alt="footer images">
             </div>
         </div>
         <!-- .Start Footer Contact Area -->
@@ -460,7 +454,7 @@
                         <div class="row single-input justify-content-center">
                             <div>
                                 <div>
-                                    <img id="image_s" class="rounded border border-warning"
+                                    <img id="image_s" class="rounded border border-warning "
                                          style="border-width:5px !important;"
                                          onclick="changeSelected(1)" src="{{asset('images/cart/1.jpg')}}"
                                          width="100" height="75" alt="">
