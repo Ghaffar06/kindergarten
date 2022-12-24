@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\HasDelete;
 use App\Http\Controllers\Traits\HasList;
 use App\Http\Controllers\Traits\SaveFile;
 use App\Models\Category;
+use App\Models\WordCategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -17,7 +18,22 @@ class CategoryController extends Controller
     use SaveFile;
 
     private $model = Category::class;
-    private $mainColumn = 'title' ;
+    private $mainColumn = 'title';
+
+    public static function addWord($word, $title)
+    {
+        $category = Category::where('title', $title)->first();
+        if (!$category)
+            return false;
+        $wordCategory = new WordCategory([
+            'word_id' => $word->id,
+            'category_id' => $category->id,
+        ]);
+        $wordCategory->save();
+        $word->wordCategories()->save($wordCategory);
+        $category->wordCategories()->save($wordCategory);
+        return true;
+    }
 
     public function index(Request $request)
     {
@@ -32,7 +48,7 @@ class CategoryController extends Controller
             'title' => 'required',
         ]);
         $category = new Category(request()->all());
-        $category->url = $this->saveFile($request->image, 'images/data/category' , $category->title);
+        $category->url = $this->saveFile($request->image, 'images/data/category', $category->title);
         $category->save();
         return back()->with('success', 'category added successfully');
     }

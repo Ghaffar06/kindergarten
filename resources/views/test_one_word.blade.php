@@ -85,6 +85,29 @@
             {{$word->wordPhotos[0]}}
             <br>
 
+{{--            photo of word:--}}
+{{--            <br>--}}
+{{--            @foreach($word->wordPhotos as $photo)--}}
+{{--                {{$photo}}--}}
+{{--                <br>--}}
+{{--            @endforeach--}}
+{{--            <br>--}}
+
+{{--            voice of word:--}}
+{{--            <br>--}}
+{{--            @foreach($word->wordVoiceRecords as $voice)--}}
+{{--                {{$voice}}--}}
+{{--                <br>--}}
+{{--            @endforeach--}}
+{{--            <br>--}}
+
+{{--            category of word:--}}
+{{--            <br>--}}
+{{--            @foreach($word->wordCategories as $wordCategory)--}}
+{{--                {{$wordCategory->category}}--}}
+{{--                <br>--}}
+{{--            @endforeach--}}
+
         </div>
     @endforeach
 </div>
