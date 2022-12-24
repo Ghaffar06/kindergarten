@@ -13,6 +13,7 @@ class Category extends Model
     protected $table = 'category';
     protected $fillable = [
         'title',
+        'description',
     ];
 
     public function wordCategories(): HasMany
