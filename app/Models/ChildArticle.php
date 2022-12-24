@@ -11,7 +11,6 @@ class ChildArticle extends Model
     use HasFactory;
 
     protected $table = 'child_article';
-    public $timestamps = false;
     protected $fillable = [
         'max_score',
         'article_id',
