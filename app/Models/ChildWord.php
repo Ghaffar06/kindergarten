@@ -11,6 +11,7 @@ class ChildWord extends Model
     use HasFactory;
 
     protected $table = 'child_word';
+    public $timestamps = false;
     protected $fillable = [
         'word_id',
         'child_id',

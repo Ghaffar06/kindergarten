@@ -11,6 +11,7 @@ class EntertainmentVideo extends Model
     use HasFactory;
 
     protected $table = 'entertainment_video';
+    public $timestamps = false;
     protected $fillable = [
         'url',
         'cost',

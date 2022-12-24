@@ -12,6 +12,7 @@ class Article extends Model
     use HasFactory;
 
     protected $table = 'article';
+    public $timestamps = false;
     protected $fillable = [
         'title',
         'text',

@@ -10,6 +10,7 @@ class LetterPhoto extends Model
     use HasFactory;
 
     protected $table = 'letter_photo';
+    public $timestamps = false;
     protected $fillable = [
         'url',
         'letter',

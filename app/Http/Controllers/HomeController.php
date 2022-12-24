@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use http\Env\Request;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -26,8 +28,4 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function test(): Renderable
-    {
-        return view('test');
-    }
 }

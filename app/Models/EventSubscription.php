@@ -11,6 +11,7 @@ class EventSubscription extends Model
     use HasFactory;
 
     protected $table = 'event_subscription';
+    public $timestamps = false;
     protected $fillable = [
         'date_sub',
         'event_id',

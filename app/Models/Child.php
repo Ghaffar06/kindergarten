@@ -12,6 +12,7 @@ class Child extends Model
     use HasFactory;
 
     protected $table = 'child';
+    public $timestamps = false;
     protected $fillable = [
         'id',
         'score',
