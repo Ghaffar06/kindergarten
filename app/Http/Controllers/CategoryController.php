@@ -11,7 +11,7 @@ class CategoryController extends Controller
     {
         return view('test', ['categories' => Category::all()]);
     }
-    public function add(Request $request){
+    public function create(Request $request){
         $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'description'=>'required',

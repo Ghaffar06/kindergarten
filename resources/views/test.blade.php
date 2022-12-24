@@ -30,7 +30,13 @@
         @error('description')
         <br>
         <span class="invalid-feedback" role="alert">
-{{--            <strong>{{ $message }}</strong>--}}
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+        @error('title')
+        <br>
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
         </span>
         @enderror
 
@@ -103,7 +109,10 @@
             return $.get(route, {
                 query: query
             }, function (data) {
-                return process(data);
+                var res = [];
+                for(d of data)
+                    res.push(d.title)
+                return process(res);
             });
         }
     });

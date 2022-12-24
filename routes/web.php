@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,17 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/category',
-    [App\Http\Controllers\CategoryController::class, 'index']
-)->name('category');
-
-Route::post('/category/add',
-    [App\Http\Controllers\CategoryController::class, 'add']
-)->name('category.add');
-
-Route::get('/category/delete/{id}',
-    [App\Http\Controllers\CategoryController::class, 'delete']
-)->name('category.delete');
+Route::controller(CategoryController::class)->group(function (){
+    $prefix = '/category';
+    Route::get($prefix, 'index')->name('category.index');
+    Route::post($prefix , 'create')->name('category.add');
+    Route::get($prefix.'/del/{id}' , 'delete')->name('category.delete');
+});
 
 Route::get('/', function () {
     return view('welcome');
