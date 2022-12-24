@@ -26,10 +26,6 @@ Route::get('/category/delete/{id}',
     [App\Http\Controllers\CategoryController::class, 'delete']
 )->name('category.delete');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/mullham/category', function () {
     return view('word_category');
 })->name('word_category');
