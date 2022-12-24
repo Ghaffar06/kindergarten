@@ -15,12 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(CategoryController::class)->group(function (){
-    $prefix = '/category';
-    Route::get($prefix, 'index')->name('category.index');
-    Route::post($prefix , 'create')->name('category.add');
-    Route::get($prefix.'/del/{id}' , 'delete')->name('category.delete');
-});
+Route::controller(CategoryController::class)
+    ->group(function () {
+        categoryRoutes();
+    });
 
 Route::get('/mullham/category', function () {
     return view('word_category');
@@ -42,4 +40,20 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/autocomplete-search', [\App\Http\Controllers\TypeaheadController::class, 'autocompleteSearch']);
+
+function categoryRoutes()
+{
+    $prefix = '/category';
+
+    Route::get($prefix, 'index')
+        ->name('category.index');
+
+    Route::post($prefix, 'create')
+        ->name('category.add');
+
+    Route::get($prefix . '/del/{id}', 'delete')
+        ->name('category.delete');
+
+    Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
+        ->name('category.autocomplete-search');
+}

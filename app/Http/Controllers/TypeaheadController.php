@@ -18,8 +18,8 @@ class TypeaheadController extends Controller
     public function autocompleteSearch(Request $request)
     {
         /// 'query' is what the search field contains now , NAME IT CORRECTLY!
-          $query = $request->get('query');
-          $filterResult = Category::where('title', 'LIKE', '%'. $query. '%')->get('title');
-          return response()->json($filterResult);
+        $query = $request->get('query');
+        $filterResult = Category::where('title', 'LIKE', '%'. $query. '%')->get('title');
+        return response()->json($filterResult);
     }
 }
