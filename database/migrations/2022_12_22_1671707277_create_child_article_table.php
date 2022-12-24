@@ -12,6 +12,9 @@ class CreateChildArticleTable extends Migration
 
             $table->id();
             $table->integer('max_score',);
+            $table->integer('user_id');
+            $table->integer('article_id');
+
 
         });
     }

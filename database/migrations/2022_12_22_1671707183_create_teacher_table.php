@@ -9,8 +9,9 @@ class CreateTeacherTable extends Migration
     public function up()
     {
         Schema::create('teacher', function (Blueprint $table) {
+            $table->id();
 
-            $table->integer('user_id');
+            $table->integer('user_id')->unique();
 
             $table->string('admin_confirmed', 1);
 

@@ -10,7 +10,8 @@ class CreateAdminTable extends Migration
     {
         Schema::create('admin', function (Blueprint $table) {
 
-            $table->integer('user_id');
+            $table->id();
+            $table->integer('user_id')->unique();
 
 
         });
