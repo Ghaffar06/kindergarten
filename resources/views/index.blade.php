@@ -11,7 +11,8 @@
     <link rel="apple-touch-icon" href="{{asset('images/icon.png')}}">
     <!-- Google font (font-family: 'Lobster', Open+Sans;) -->
     <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,400i,700,700i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans" rel="stylesheet">
 
     <!-- Stylesheets -->
@@ -27,7 +28,8 @@
 </head>
 <body>
 <!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
@@ -92,7 +94,7 @@
                                             <li><a href="checkout.html">checkout page</a></li>
                                         </ul>
                                     </li>
-                                    <li class="drop"><a href="shop-grid.html">Shop</a> </li>
+                                    <li class="drop"><a href="shop-grid.html">Shop</a></li>
                                     <li class="drop"><a href="blog-grid.html">Blog</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
@@ -181,7 +183,8 @@
                 <div class="col-lg-12">
                     <div class="section__title text-center">
                         <h2 class="title__line">Welcome To Junior Home</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunte magna aliquaet, consectetempora incidunt</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunte
+                            magna aliquaet, consectetempora incidunt</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +192,10 @@
                 <div class="col-md-12 col-lg-6 col-sm-12">
                     <div class="welcome__juniro__inner">
                         <h3>Welcome to <span class="theme-color">O</span><span>u</span>r School</h3>
-                        <p class="wow flipInX">Lorem ipsum dolor sit amet, consectetur adipisic ming elit, sed do ei Excepteur sint occaecat cupida proident, sunt in culpa qui dese runt mol anim id est lai aborum. Sed ut perspiciatis unde omnis iste natus error svolupt accu doloremque laudantium, totam rem.</p>
+                        <p class="wow flipInX">Lorem ipsum dolor sit amet, consectetur adipisic ming elit, sed do ei
+                            Excepteur sint occaecat cupida proident, sunt in culpa qui dese runt mol anim id est lai
+                            aborum. Sed ut perspiciatis unde omnis iste natus error svolupt accu doloremque laudantium,
+                            totam rem.</p>
                         <div class="wel__btn">
                             <a class="dcare__btn" href="about-us.html">Read More</a>
                         </div>
@@ -198,7 +204,8 @@
                 <div class="col-md-12 col-lg-6 col-sm-12 md-mt-40 sm-mt-40">
                     <div class="jnr__Welcome__thumb wow fadeInRight">
                         <img src="{{asset('/images/wel-come/1.png')}}" alt="images">
-                        <a class="play__btn" href="https://www.youtube.com/watch?v=MCJEkZtqlBk"><i class="fa fa-play"></i></a>
+                        <a class="play__btn" href="https://www.youtube.com/watch?v=MCJEkZtqlBk"><i
+                                class="fa fa-play"></i></a>
                     </div>
                 </div>
             </div>
@@ -250,7 +257,8 @@
                         </div>
                         <div class="service__details">
                             <h6><a href="service.html">Text Class</a></h6>
-                            <p>Learning wide english texts with some challengeing questions to test your aknowlegment</p>
+                            <p>Learning wide english texts with some challengeing questions to test your
+                                aknowlegment</p>
                             <div class="service__btn">
                                 <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
                             </div>
@@ -284,7 +292,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-md-12">
-                    <div class="jnr__call__action__wrap d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between align-items-center">
+                    <div
+                        class="jnr__call__action__wrap d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between align-items-center">
                         <div class="callto__action__inner">
                             <h2 class="wow flipInX" data-wow-delay="0.95s">How To Enroll Your Child In A class ?</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
@@ -850,15 +859,20 @@
                                 </a>
                             </div>
                             <div class="ftr__details">
-                                <p>Lorem ipsum dolor sit cnr adipisicing elit, sed do eiusmod teagna aliqua. Lorem ipsudolor sit cnr adi.</p>
+                                <p>Lorem ipsum dolor sit cnr adipisicing elit, sed do eiusmod teagna aliqua. Lorem
+                                    ipsudolor sit cnr adi.</p>
                             </div>
                             <div class="ftr__address__inner">
                                 <div class="footer__social__icon">
                                     <ul class="dacre__social__link--2 d-flex justify-content-start">
-                                        <li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="vimeo"><a href="https://vimeo.com/"><i class="fa fa-vimeo"></i></a></li>
-                                        <li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p"></i></a></li>
+                                        <li class="facebook"><a href="https://www.facebook.com/"><i
+                                                    class="fa fa-facebook"></i></a></li>
+                                        <li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        <li class="vimeo"><a href="https://vimeo.com/"><i class="fa fa-vimeo"></i></a>
+                                        </li>
+                                        <li class="pinterest"><a href="https://www.pinterest.com/"><i
+                                                    class="fa fa-pinterest-p"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="ft__btm__title">
@@ -882,7 +896,8 @@
                                             </a>
                                         </div>
                                         <div class="ftr__post__details">
-                                            <h6><a href="blog-details.html">Sports Day is near! so lets get ready soon</a></h6>
+                                            <h6><a href="blog-details.html">Sports Day is near! so lets get ready
+                                                    soon</a></h6>
                                             <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
                                         </div>
                                     </div>
@@ -950,7 +965,8 @@
                                             <i class="fa fa-twitter"></i>
                                         </div>
                                         <div class="dcare__twit__details">
-                                            <p>Lorem ipsum dolor sit  consect ietur adipisicing sed  eiipsa<a href="#"># twitter .com?web/lnk/statement</a></p>
+                                            <p>Lorem ipsum dolor sit consect ietur adipisicing sed eiipsa<a href="#">#
+                                                    twitter .com?web/lnk/statement</a></p>
                                             <span><i class="fa fa-clock-o"></i>30th Dec, 2017</span>
                                             <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
                                         </div>
@@ -962,7 +978,8 @@
                                             <i class="fa fa-twitter"></i>
                                         </div>
                                         <div class="dcare__twit__details">
-                                            <p>Lorem ipsum dolor sit  consect ietur adipisicing sed  eiipsa<a href="#"># twitter .com?web/lnk/statement</a></p>
+                                            <p>Lorem ipsum dolor sit consect ietur adipisicing sed eiipsa<a href="#">#
+                                                    twitter .com?web/lnk/statement</a></p>
                                             <span><i class="fa fa-clock-o"></i>30th Dec, 2017</span>
                                             <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
                                         </div>
@@ -1026,7 +1043,9 @@
                 <div class="row align-items-center copyright__wrapper justify-content-center">
                     <div class="col-lg-12 col-sm-12 col-md-12">
                         <div class="coppy__right__inner text-center">
-                            <p>Copyright <i class="fa fa-copyright"></i> 2018 <a href="https://freethemescloud.com/" target="_blank" >Free Themes Cloud.</a> All rights reserved. </p>
+                            <p>Copyright <i class="fa fa-copyright"></i> 2018 <a href="https://freethemescloud.com/"
+                                                                                 target="_blank">Free Themes Cloud.</a>
+                                All rights reserved. </p>
                         </div>
                     </div>
                 </div>
@@ -1116,7 +1135,7 @@
                 <div class="accountbox__login">
                     <form action="#">
                         <div class="single-input">
-                            <input  type="text" placeholder="User name">
+                            <input type="text" placeholder="User name">
                         </div>
                         <div class="single-input">
                             <input type="email" placeholder="E-mail">
@@ -1136,9 +1155,12 @@
                         <div class="accountbox-login__others text-center">
                             <h6>or register with</h6>
                             <ul class="dacre__social__link d-flex justify-content-center">
-                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span class="ti-facebook"></span></a></li>
-                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span class="ti-twitter"></span></a></li>
-                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a></li>
+                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span
+                                            class="ti-facebook"></span></a></li>
+                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span
+                                            class="ti-twitter"></span></a></li>
+                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>
+                                </li>
                             </ul>
                         </div>
                     </form>
@@ -1167,9 +1189,12 @@
                         </div>
                         <div class="accountbox-login__others text-center">
                             <ul class="dacre__social__link d-flex justify-content-center">
-                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span class="ti-facebook"></span></a></li>
-                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span class="ti-twitter"></span></a></li>
-                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a></li>
+                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span
+                                            class="ti-facebook"></span></a></li>
+                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span
+                                            class="ti-twitter"></span></a></li>
+                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>
+                                </li>
                             </ul>
                         </div>
                     </form>

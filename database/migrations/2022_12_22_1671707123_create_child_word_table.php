@@ -10,10 +10,9 @@ class CreateChildWordTable extends Migration
     {
         Schema::create('child_word', function (Blueprint $table) {
 
-            $table->id(); 
+            $table->id();
             $table->integer('user_id');
             $table->integer('word_id');
-
 
 
         });

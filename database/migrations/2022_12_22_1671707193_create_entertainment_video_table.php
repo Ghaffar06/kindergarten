@@ -17,7 +17,6 @@ class CreateEntertainmentVideoTable extends Migration
             $table->integer('user_id');
 
 
-
         });
     }
 

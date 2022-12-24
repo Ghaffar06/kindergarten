@@ -15,7 +15,6 @@ class CreateWordCategoryTable extends Migration
             $table->integer('word_id');
 
 
-
         });
     }
 

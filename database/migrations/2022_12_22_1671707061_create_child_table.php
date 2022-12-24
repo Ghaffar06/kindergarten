@@ -13,7 +13,7 @@ class CreateChildTable extends Migration
             $table->integer('user_id')->unique();
             $table->integer('score',);
             $table->datetime('birthdate');
-            $table->integer('level' ); 
+            $table->integer('level');
 
         });
     }
