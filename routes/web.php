@@ -32,6 +32,10 @@ Route::get('/mullham/single_word', function () {
     return view('single_word');
 })->name('single_word');
 
+Route::get('/mullham/text', function () {
+    return view('text');
+})->name('text');
+
 Route::get('/mullham', function () {
     return view('index');
 })->name('index');

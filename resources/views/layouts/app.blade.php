@@ -202,7 +202,7 @@
                                     <div class="single__ftr__post d-flex">
                                         <div class="ftr__post__thumb">
                                             <a href="blog-details.html">
-                                                <img src="{{asset('images/blog/post-img/4.')}}" alt="post images">
+                                                <img src="{{asset('images/blog/post-img/4.jpg')}}" alt="post images">
                                             </a>
                                         </div>
                                         <div class="ftr__post__details">
@@ -274,12 +274,6 @@
                     </div>
                     <!-- End Single Widget -->
                 </div>
-            </div>
-            <div class="ft__bottom__images--1 wow flipInX" data-wow-delay="0.6s">
-                <img src="{{asset('images/banner/mid-img/ft.png')}}" alt="footer images">
-            </div>
-            <div class="ft__bottom__images--2 wow fadeInRight" data-wow-delay="0.6s">
-                <img src="{{asset('images/banner/mid-img/ft-2.png')}}" alt="footer images">
             </div>
         </div>
         <!-- .Start Footer Contact Area -->
