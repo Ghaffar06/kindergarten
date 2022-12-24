@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Traits\HasAutocompleteSearch;
+use App\Http\Controllers\Traits\HasDelete;
+use App\Http\Controllers\Traits\HasList;
+use App\Http\Controllers\Traits\SaveFile;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    use HasDelete;
+    use HasAutocompleteSearch;
+    use HasList;
+    use SaveFile;
+
+    private $model = Category::class;
+    private $mainColumn = 'title' ;
+
     public function index(Request $request)
     {
-        $categories = [];
-        if ($title = $request->get('search')) {
-            $categories = Category::where('title', 'LIKE', '%' . $title . '%')
-                ->get();
-        } else {
-            $categories = Category::all();
-        }
-        return view('test', ['categories' => $categories]);
+        return view('test', ['categories' => $this->getAll($request)]);
     }
 
     public function create(Request $request)
@@ -27,24 +32,9 @@ class CategoryController extends Controller
             'title' => 'required',
         ]);
         $category = new Category(request()->all());
-        $category->url = $category->title . time() . '.' . $request->image->extension();
-        $request->image->move(public_path('images/data/category'), $category->url);
-        $category->url = 'images/data/category/' . $category->url;
+        $category->url = $this->saveFile($request->image, 'images/data/category' , $category->title);
         $category->save();
         return back()->with('success', 'category added successfully');
     }
 
-    public function delete($id)
-    {
-        if (Category::where('id', '=', $id)->delete())
-            return back()->with('success', 'deleted successfully');
-        return back()->with('error', 'failed!');
-    }
-
-    public function autocompleteSearch(Request $request)
-    {
-        $query = $request->get('query');
-        $filterResult = Category::where('title', 'LIKE', '%' . $query . '%')->get('title');
-        return response()->json($filterResult);
-    }
 }

@@ -88,7 +88,7 @@
 <br>
 
 <div>
-    search by title or description of a category:
+    search by title of a category:
     <div class="container mt-5">
         <div classs="form-group">
             <input type="text" id="search" name="search" placeholder="Search" class="form-control"/>

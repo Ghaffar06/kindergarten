@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\WordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::controller(CategoryController::class)
     ->group(function () {
         categoryRoutes();
+    });
+
+Route::controller(WordController::class)
+    ->group(function () {
+        wordRoutes();
     });
 
 Route::get('/mullham/category', function () {
@@ -54,3 +60,22 @@ function categoryRoutes()
     Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
         ->name('category.autocomplete-search');
 }
+
+
+function wordRoutes()
+{
+    $prefix = '/word';
+
+    Route::get($prefix, 'index')
+        ->name('word.index');
+
+    Route::post($prefix, 'create')
+        ->name('word.add');
+
+    Route::get($prefix . '/del/{id}', 'delete')
+        ->name('word.delete');
+
+    Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
+        ->name('word.autocomplete-search');
+}
+
