@@ -34,6 +34,13 @@ Route::get('/mullham/words', function () {
     return view('words');
 })->name('words');
 
+Route::get('/mullham/single_word', function () {
+    return view('single_word');
+})->name('single_word');
+
+Route::get('/mullham/text', function () {
+    return view('text');
+})->name('text');
 
 Route::get('/mullham', function () {
     return view('index');
@@ -42,6 +49,9 @@ Route::get('/mullham', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('word_category');
+})->name('index');
 
 
 function categoryRoutes()
