@@ -35,23 +35,20 @@
                         <div class="newsletter__form">
                             <div class="input__box">
                                 <div id="mc_embed_signup">
-                                    <form
-                                        action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef"
-                                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                                        class="validate" target="_blank" novalidate>
-                                        <div id="mc_embed_signup_scroll" class="htc__news__inner">
+                                    <form action="" method="get">
+                                        <div class="htc__news__inner">
                                             <div class="news__input">
-                                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"
+                                                <input type="text" value="" name="category" class="email form-control" id="cate_search"
                                                        placeholder="Enter Category Name" required>
                                             </div>
                                             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input
-                                                    type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"
-                                                    tabindex="-1" value=""></div>
-                                            <div class="clearfix subscribe__btn"><input type="submit" value="Search"
-                                                                                        name="subscribe"
-                                                                                        id="mc-embedded-subscribe"
-                                                                                        class="bst__btn btn--white__color">
+                                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                                <input type="text" name="noname" tabindex="-1" value="">
+                                            </div>
+                                            <div class="clearfix subscribe__btn">
+                                                <div onclick="search()" class="dcare__btn">
+                                                    Search
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -68,24 +65,26 @@
     <section class="dcare__blog__area section-padding--lg bg--white">
         <div class="container">
             <div class="row blog-page">
+
+            @foreach($categories as $category)
+        
                 <!-- Start Single Blog -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="blog__2">
                         <div class="blog__thumb">
                             <a href="blog-details.html">
-                                <img src="{{asset('images/category/home.png')}}" height="304" width="370"
+                                <img src="{{asset($category->url)}}" height="304" width="370"
                                      alt="blog images">
                             </a>
                         </div>
                         <div class="blog__inner">
                             <div class="blog__hover__inner">
-                                <h2><a href="blog-details.html">House Words</a></h2>
+                                <h2><a href="blog-details.html">{{$category->title}}</a></h2>
                                 <div class="bl__meta">
-                                    <p>Children Blog : Post By Ariana / 10th November, 2017</p>
+                                    <p>{{$category->created_at}}</p>
                                 </div>
                                 <div class="bl__details">
-                                    <p>Lorem ipsum dolor sit amet, consect adsicinge elit, sed do eiusmod tempor
-                                        incidi.</p>
+                                    <p>{{$category->description}}</p>
                                 </div>
                                 <div class="blog__btn">
                                     <a class="bl__btn" href="blog-details.html">Start Learning</a>
@@ -96,92 +95,8 @@
                     </div>
                 </div>
                 <!-- End Single Blog -->
-                <!-- Start Single Blog -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog__2">
-                        <div class="blog__thumb">
-                            <a href="blog-details.html">
-                                <img src="{{asset('images/category/family.png')}}" height="304" width="370"
-                                     alt="blog images">
-                            </a>
-                        </div>
-                        <div class="blog__inner">
-                            <div class="blog__hover__inner">
-                                <h2><a href="blog-details.html">Family Words</a></h2>
-                                <div class="bl__meta">
-                                    <p>Children Blog : Post By Ariana / 10th November, 2017</p>
-                                </div>
-                                <div class="bl__details">
-                                    <p>Lorem ipsum dolor sit amet, consect adsicinge elit, sed do eiusmod tempor
-                                        incidi.</p>
-                                </div>
-                                <div class="blog__btn">
-                                    <a class="bl__btn" href="blog-details.html">Read More</a>
-                                    <a class="bl__share__btn" href="#"><i class="fa fa-share-alt"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Blog -->
-                <!-- Start Single Blog -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog__2">
-                        <div class="blog__thumb">
-                            <a href="blog-details.html">
-                                <img src="{{asset('images/category/january.png')}}" height="304" width="370"
-                                     alt="blog images">
-                            </a>
-                        </div>
-                        <div class="blog__inner">
-                            <div class="blog__hover__inner">
-                                <h2><a href="blog-details.html">Date Words</a></h2>
-                                <div class="bl__meta">
-                                    <p>Children Blog : Post By Ariana / 10th November, 2017</p>
-                                </div>
-                                <div class="bl__details">
-                                    <p>Lorem ipsum dolor sit amet, consect adsicinge elit, sed do eiusmod tempor
-                                        incidi.</p>
-                                </div>
-                                <div class="blog__btn">
-                                    <a class="bl__btn" href="blog-details.html">Read More</a>
-                                    <a class="bl__share__btn" href="#"><i class="fa fa-share-alt"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Blog -->
-                @for($index = 0 ; $index < 10 ; $index++)
-                <!-- Start Single Blog -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog__2">
-                        <div class="blog__thumb">
-                            <a href="blog-details.html">
-                                <img src="{{asset('images/category/number.png')}}" height="304" width="370"
-                                     alt="blog images">
-                            </a>
-                        </div>
-                        <div class="blog__inner">
-                            <div class="blog__hover__inner">
-                                <h2><a href="blog-details.html">Numbers Words</a></h2>
-                                <div class="bl__meta">
-                                    <p>Children Blog : Post By Ariana / 10th November, 2017</p>
-                                </div>
-                                <div class="bl__details">
-                                    <p>Lorem ipsum dolor sit amet, consect adsicinge elit, sed do eiusmod tempor
-                                        incidi.</p>
-                                </div>
-                                <div class="blog__btn">
-                                    <a class="bl__btn" href="blog-details.html">Read More</a>
-                                    <a class="bl__share__btn" href="#"><i class="fa fa-share-alt"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Blog -->
-                @endfor
+                
+            @endforeach
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -203,6 +118,32 @@
     </section>
     <!-- End Blog Area -->
 
+
+    <script>
+        function search() {
+            let title = document.getElementById('cate_search').value;
+            window.location.replace("{{route('category.index')}}" + "?search=" + title);
+        }
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
+    </script>
+    <script type="text/javascript">
+        let route = "{{ route('category.autocomplete-search') }}";
+        $('#cate_search').typeahead({
+            source: function (query, process) {
+                return $.get(route, {
+                    query: query
+                }, function (data) {
+                    var res = [];
+                    for (d of data)
+                        res.push(d.title)
+                    return process(res);
+                });
+            }
+        });
+    </script>
 @endsection
 
 
