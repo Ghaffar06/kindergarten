@@ -28,6 +28,9 @@ Route::get('/mullham/words', function () {
     return view('words');
 })->name('words');
 
+Route::get('/mullham/single_word', function () {
+    return view('single_word');
+})->name('single_word');
 
 Route::get('/mullham', function () {
     return view('index');
