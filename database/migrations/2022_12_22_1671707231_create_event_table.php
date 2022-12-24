@@ -17,6 +17,8 @@ class CreateEventTable extends Migration
             $table->datetime('event_date');
             $table->integer('level');
             $table->integer('user_id');
+            $table->timestamps();
+
 
 
         });

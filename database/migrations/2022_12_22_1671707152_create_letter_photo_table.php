@@ -14,6 +14,8 @@ class CreateLetterPhotoTable extends Migration
             $table->string('url', 200);
             $table->string('letter', 1);
             $table->integer('is_small');
+            $table->timestamps();
+
 
         });
     }

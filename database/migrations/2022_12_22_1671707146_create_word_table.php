@@ -14,6 +14,8 @@ class CreateWordTable extends Migration
 
             $table->string('text', 45);
             $table->integer('score',);
+            $table->timestamps();
+
 
         });
     }

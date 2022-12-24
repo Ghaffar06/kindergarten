@@ -12,6 +12,8 @@ class CreateAdminTable extends Migration
 
             $table->id();
             $table->integer('user_id')->unique();
+            $table->timestamps();
+
 
 
         });

@@ -15,6 +15,8 @@ class CreateEntertainmentVideoTable extends Migration
             $table->string('url', 200);
             $table->integer('cost',);
             $table->integer('user_id');
+            $table->timestamps();
+
 
 
         });

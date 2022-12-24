@@ -15,6 +15,8 @@ class CreateEventSubscriptionTable extends Migration
             $table->datetime('date_sub');
             $table->integer('user_id');
             $table->integer('event_id');
+            $table->timestamps();
+
 
 
         });
