@@ -16,7 +16,7 @@ class CategoryController extends Controller
         } else {
             $categories = Category::all();
         }
-        return view('test', ['categories' => $categories]);
+        return view('word_category', ['categories' => $categories]);
     }
 
     public function create(Request $request)

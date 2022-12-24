@@ -36,6 +36,9 @@ Route::get('/mullham', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('word_category');
+})->name('index');
 
 
 function categoryRoutes()

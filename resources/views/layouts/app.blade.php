@@ -70,7 +70,7 @@
                 <div class="row d-none d-lg-flex">
                     <div class="col-sm-4 col-md-6 col-lg-2 order-1 order-lg-1">
                         <div class="logo">
-                            <a href="{{route("index")}}">
+                            <a href="{{route("index") }}">
                                 <img src="{{asset('images/logo/junior.png')}}" alt="logo images">
                             </a>
                         </div>

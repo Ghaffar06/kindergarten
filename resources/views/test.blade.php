@@ -120,7 +120,7 @@
         let title = document.getElementById('search').value;
         window.location.replace("{{route('category.index')}}" + "?search=" + title);
     }
-</script>
+</script> 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
