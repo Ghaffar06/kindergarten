@@ -11,6 +11,7 @@ class ArticleQuestion extends Model
     use HasFactory;
 
     protected $table = 'article_option';
+    public $timestamps = false;
     protected $fillable = [
         'option',
         'answer',

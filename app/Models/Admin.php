@@ -12,6 +12,7 @@ class Admin extends Model
     use HasFactory;
 
     protected $table = 'admin';
+    public $timestamps = false;
     protected $fillable = [
         'id',
         'user_id',

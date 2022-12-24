@@ -11,6 +11,7 @@ class WordPhoto extends Model
     use HasFactory;
 
     protected $table = 'word_photo';
+    public $timestamps = false;
     protected $fillable = [
         'url',
         'word_id',

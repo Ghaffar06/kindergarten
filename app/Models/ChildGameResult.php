@@ -11,6 +11,7 @@ class ChildGameResult extends Model
     use HasFactory;
 
     protected $table = 'child_game_result';
+    public $timestamps = false;
     protected $fillable = [
         'passed',
         'letter',
