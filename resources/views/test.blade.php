@@ -1,40 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>test!</div>
-    {{$temp}}
+@extends('layouts.app2')
 
-    @if($msg = Session::get('success'))
-        <script>
-            alert("{{$msg}}");
-        </script>
-    @endif
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
 
-    <form action="{{route('category.add')}}" method="post">
-        @csrf
-        <label for="title">title of category: </label>
-        <input type="text" name="title">
-        <br>
-        <button type="submit">submit</button>
-    </form>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
 
-    <label> id of category to delete: </label>
-    <input type="text" id="id1">
-    <button onclick="deleteCategory()">delete!</button>
-    <script>
-        function deleteCategory() {
-            let del = "{{route('category.delete' , ['id'=>':id'])}}";
-            let id = document.getElementById('id1').value;
-            del = del.replace(':id',id);
-            window.location.replace(del);
-        }
-
-    </script>
-</body>
-</html>
+                        {{ __('You are logged in!') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
