@@ -25,10 +25,10 @@ class WordController extends Controller
 
     public function index(Request $request)
     {
-        $words = $this->getAll($request);
+        $all = $this->getAll($request , 'words' , 2);
         $child_id = -1;
         if ($child_id != -1) {
-            foreach ($words as $word) {
+            foreach ($all['words'] as $word) {
                 $word->learned = count(
                         ChildWord::where('word_id', $word->id)
                             ->where('user_id', $child_id)
@@ -36,7 +36,7 @@ class WordController extends Controller
                     ) > 0;
             }
         }
-        return view('test_word', ['words' => $words]);
+        return view('test_word', $all);
     }
 
     public function create(Request $request)
