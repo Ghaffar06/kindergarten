@@ -15,7 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/mullham/category', function () {
     return view('word_category');
+});
+
+Route::get('/mullham/words', function () {
+    return view('words');
+});
+
+
+Route::get('/mullham', function () {
+    return view('index');
 });
 
 Auth::routes();
