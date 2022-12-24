@@ -20,10 +20,6 @@ Route::controller(CategoryController::class)
         categoryRoutes();
     });
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/mullham/category', function () {
     return view('word_category');
 })->name('word_category');
