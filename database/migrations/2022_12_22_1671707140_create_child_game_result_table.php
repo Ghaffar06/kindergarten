@@ -14,6 +14,8 @@ class CreateChildGameResultTable extends Migration
             $table->integer('passed',);
             $table->integer('user_id');
             $table->string('letter', 1);
+            $table->timestamps();
+
 
 
         });

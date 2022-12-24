@@ -14,6 +14,8 @@ class CreateArticleOptionTable extends Migration
             $table->string('option', 200);
             $table->tinyInteger('answer',);
             $table->integer('article_id');
+            $table->timestamps();
+
 
 
         });

@@ -16,6 +16,8 @@ class CreateReportTable extends Migration
             $table->datetime('date_repo');
             $table->string('handled', 1);
             $table->integer('user_id');
+            $table->timestamps();
+
 
         });
     }

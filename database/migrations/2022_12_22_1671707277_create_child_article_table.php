@@ -14,6 +14,8 @@ class CreateChildArticleTable extends Migration
             $table->integer('max_score',);
             $table->integer('user_id');
             $table->integer('article_id');
+            $table->timestamps();
+
 
 
         });

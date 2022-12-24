@@ -14,6 +14,8 @@ class CreateChildTable extends Migration
             $table->integer('score',);
             $table->datetime('birthdate');
             $table->integer('level');
+            $table->timestamps();
+
 
         });
     }

@@ -13,6 +13,8 @@ class CreateWordCategoryTable extends Migration
             $table->id();
             $table->integer('category_id');
             $table->integer('word_id');
+            $table->timestamps();
+
 
 
         });

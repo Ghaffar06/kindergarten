@@ -13,6 +13,8 @@ class CreateChildWordTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('word_id');
+            $table->timestamps();
+
 
 
         });
