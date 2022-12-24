@@ -11,7 +11,6 @@ class WordVoiceRecord extends Model
     use HasFactory;
 
     protected $table = 'word_voice_record';
-    public $timestamps = false;
     protected $fillable = [
         'url',
         'word_id',

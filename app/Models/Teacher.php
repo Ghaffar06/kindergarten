@@ -12,7 +12,6 @@ class Teacher extends Model
     use HasFactory;
 
     protected $table = 'teacher';
-    public $timestamps = false;
     protected $fillable = [
         'id',
         'admin_confirmed',
