@@ -11,7 +11,6 @@ class Word extends Model
     use HasFactory;
 
     protected $table = 'word';
-    public $timestamps = false;
     protected $fillable = [
         'text',
         'score',

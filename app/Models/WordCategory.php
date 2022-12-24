@@ -11,7 +11,6 @@ class WordCategory extends Model
     use HasFactory;
 
     protected $table = 'word_category';
-    public $timestamps = false;
     protected $fillable = [
         'word_id',
         'category_id',
