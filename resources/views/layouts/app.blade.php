@@ -460,7 +460,7 @@
                         <div class="row single-input justify-content-center">
                             <div>
                                 <div>
-                                    <img id="image_s" class="rounded border border-warning"
+                                    <img id="image_s" class="rounded border border-warning "
                                          style="border-width:5px !important;"
                                          onclick="changeSelected(1)" src="{{asset('images/cart/1.jpg')}}"
                                          width="100" height="75" alt="">
