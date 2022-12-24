@@ -17,7 +17,6 @@ class CreateArticleOptionTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

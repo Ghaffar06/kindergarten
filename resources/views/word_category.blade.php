@@ -38,7 +38,8 @@
                                     <form action="" method="get">
                                         <div class="htc__news__inner">
                                             <div class="news__input">
-                                                <input type="text" value="" name="category" class="email form-control" id="cate_search"
+                                                <input type="text" value="" name="category" class="email form-control"
+                                                       id="cate_search"
                                                        placeholder="Enter Category Name" required>
                                             </div>
                                             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
@@ -66,37 +67,37 @@
         <div class="container">
             <div class="row blog-page">
 
-            @foreach($categories as $category)
-        
-                <!-- Start Single Blog -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog__2">
-                        <div class="blog__thumb">
-                            <a href="blog-details.html">
-                                <img src="{{asset($category->url)}}" height="304" width="370"
-                                     alt="blog images">
-                            </a>
-                        </div>
-                        <div class="blog__inner">
-                            <div class="blog__hover__inner">
-                                <h2><a href="blog-details.html">{{$category->title}}</a></h2>
-                                <div class="bl__meta">
-                                    <p>{{$category->created_at}}</p>
-                                </div>
-                                <div class="bl__details">
-                                    <p>{{$category->description}}</p>
-                                </div>
-                                <div class="blog__btn">
-                                    <a class="bl__btn" href="blog-details.html">Start Learning</a>
-                                    <a class="bl__share__btn" href="#"><i class="fa fa-share-alt"></i></a>
+                @foreach($categories as $category)
+
+                    <!-- Start Single Blog -->
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="blog__2">
+                            <div class="blog__thumb">
+                                <a href="blog-details.html">
+                                    <img src="{{asset($category->url)}}" height="304" width="370"
+                                         alt="blog images">
+                                </a>
+                            </div>
+                            <div class="blog__inner">
+                                <div class="blog__hover__inner">
+                                    <h2><a href="blog-details.html">{{$category->title}}</a></h2>
+                                    <div class="bl__meta">
+                                        <p>{{$category->created_at}}</p>
+                                    </div>
+                                    <div class="bl__details">
+                                        <p>{{$category->description}}</p>
+                                    </div>
+                                    <div class="blog__btn">
+                                        <a class="bl__btn" href="blog-details.html">Start Learning</a>
+                                        <a class="bl__share__btn" href="#"><i class="fa fa-share-alt"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- End Single Blog -->
-                
-            @endforeach
+                    <!-- End Single Blog -->
+
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-lg-12">

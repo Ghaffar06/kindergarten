@@ -126,7 +126,7 @@
     </header>
     <!-- //Header -->
     <main>
-    @yield('content')
+        @yield('content')
     </main>
     <!-- Start Footer Area -->
     <footer id="footer" class="footer-area footer--1">
@@ -406,7 +406,8 @@
 
     <script>
         let roll = 'student';
-        function changeSelected(input){
+
+        function changeSelected(input) {
             if (input === 1) {
                 roll = 'student';
                 document.getElementById('image_s').classList.add('border');
@@ -438,9 +439,9 @@
                                 <input type="email" name="email" placeholder="E-mail">
                             </label>
                         </div>
-{{--                        <div class="single-input">--}}
-{{--                            <input type="text" placeholder="Phone">--}}
-{{--                        </div>--}}
+                        {{--                        <div class="single-input">--}}
+                        {{--                            <input type="text" placeholder="Phone">--}}
+                        {{--                        </div>--}}
                         <div class="single-input">
                             <label>
                                 <input type="password" name="password" placeholder="Password">
@@ -473,10 +474,13 @@
                             </div>
                         </div>
                         <div id="b_date" class="mb-3 single-input">
-                            <label for="birthdate" class="col-md-4 col-form-label text-md-end">{{ __('Birthdate') }}</label>
+                            <label for="birthdate"
+                                   class="col-md-4 col-form-label text-md-end">{{ __('Birthdate') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthdate" type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate" autofocus>
+                                <input id="birthdate" type="date"
+                                       class="form-control @error('birthdate') is-invalid @enderror" name="birthdate"
+                                       value="{{ old('birthdate') }}" required autocomplete="birthdate" autofocus>
 
                                 @error('birthdate')
                                 <span class="invalid-feedback" role="alert">
@@ -489,17 +493,17 @@
                             <button type="submit" class="sign__btn">Sign Up Now</button>
                         </div>
 
-{{--                        <div class="accountbox-login__others text-center">--}}
-{{--                            <h6>or register with</h6>--}}
-{{--                            <ul class="dacre__social__link d-flex justify-content-center">--}}
-{{--                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
-{{--                                            class="ti-facebook"></span></a></li>--}}
-{{--                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
-{{--                                            class="ti-twitter"></span></a></li>--}}
-{{--                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="accountbox-login__others text-center">--}}
+                        {{--                            <h6>or register with</h6>--}}
+                        {{--                            <ul class="dacre__social__link d-flex justify-content-center">--}}
+                        {{--                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
+                        {{--                                            class="ti-facebook"></span></a></li>--}}
+                        {{--                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
+                        {{--                                            class="ti-twitter"></span></a></li>--}}
+                        {{--                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
+                        {{--                                </li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
                     </form>
                 </div>
                 <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
@@ -523,16 +527,16 @@
                         <div class="single-input text-center">
                             <button type="submit" class="sign__btn">SUBMIT</button>
                         </div>
-{{--                        <div class="accountbox-login__others text-center">--}}
-{{--                            <ul class="dacre__social__link d-flex justify-content-center">--}}
-{{--                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
-{{--                                            class="ti-facebook"></span></a></li>--}}
-{{--                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
-{{--                                            class="ti-twitter"></span></a></li>--}}
-{{--                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="accountbox-login__others text-center">--}}
+                        {{--                            <ul class="dacre__social__link d-flex justify-content-center">--}}
+                        {{--                                <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
+                        {{--                                            class="ti-facebook"></span></a></li>--}}
+                        {{--                                <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
+                        {{--                                            class="ti-twitter"></span></a></li>--}}
+                        {{--                                <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
+                        {{--                                </li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
                     </form>
                 </div>
                 <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>

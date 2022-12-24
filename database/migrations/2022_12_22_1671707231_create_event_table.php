@@ -20,7 +20,6 @@ class CreateEventTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

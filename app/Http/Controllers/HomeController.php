@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use http\Env\Request;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller

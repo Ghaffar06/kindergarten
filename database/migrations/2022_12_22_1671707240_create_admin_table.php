@@ -15,7 +15,6 @@ class CreateAdminTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

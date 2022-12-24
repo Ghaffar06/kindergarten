@@ -16,7 +16,6 @@ class CreateWordPhotoTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

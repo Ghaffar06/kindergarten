@@ -17,7 +17,6 @@ class CreateChildArticleTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

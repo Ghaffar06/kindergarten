@@ -18,7 +18,6 @@ class CreateEntertainmentVideoTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

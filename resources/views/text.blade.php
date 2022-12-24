@@ -12,7 +12,8 @@
                             <h2 class="bradcaump-title">Text</h2>
                             <nav class="bradcaump-inner">
                                 <a class="breadcrumb-item" href="index.html">All TEXT </a>
-                                <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}" alt="separator images"></span>
+                                <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
+                                                                 alt="separator images"></span>
                                 <span class="breadcrumb-item active">Text</span>
                             </nav>
                         </div>
@@ -33,13 +34,27 @@
                                 <h1>The Text Title</h1>
                                 <br><br>
                                 <div class="h2">
-                                    Text tText textText textext Text teText textText textxtTexText textText textt texText teText textText textxText texttTexText textText textt textText textTText textext textt Text text
-                                    Text tText textText textext Text teText textText textxtTexText textText textt texText teText textText textxText texttTexText textText textt textText textTText textext textt Text text
-                                    Text tText textText textext Text teText textText textxtTexText textText textt texText teText textText textxText texttTexText textText textt textText textTText textext textt Text text
-                                    Text tText textText textext Text teText textText textxtTexText textText textt texText teText textText textxText texttTexText textText textt textText textTText textext textt Text text
-                                    Text tText textText textext Text teText textText textxtTexText textText textt texText teText textText textxText texttTexText textText textt textText textTText textext textt Text text
-                                    Text tText textText textext Text teText textText textxtTexText textText textt texText teText textText textxText texttTexText textText textt textText textTText textext textt Text text
-                                    Text tText textText textext Text teText textText textxtTexText textText textt texText teText textText textxText texttTexText textText textt textText textTText textext textt Text text
+                                    Text tText textText textext Text teText textText textxtTexText textText textt
+                                    texText teText textText textxText texttTexText textText textt textText textTText
+                                    textext textt Text text
+                                    Text tText textText textext Text teText textText textxtTexText textText textt
+                                    texText teText textText textxText texttTexText textText textt textText textTText
+                                    textext textt Text text
+                                    Text tText textText textext Text teText textText textxtTexText textText textt
+                                    texText teText textText textxText texttTexText textText textt textText textTText
+                                    textext textt Text text
+                                    Text tText textText textext Text teText textText textxtTexText textText textt
+                                    texText teText textText textxText texttTexText textText textt textText textTText
+                                    textext textt Text text
+                                    Text tText textText textext Text teText textText textxtTexText textText textt
+                                    texText teText textText textxText texttTexText textText textt textText textTText
+                                    textext textt Text text
+                                    Text tText textText textext Text teText textText textxtTexText textText textt
+                                    texText teText textText textxText texttTexText textText textt textText textTText
+                                    textext textt Text text
+                                    Text tText textText textext Text teText textText textxtTexText textText textt
+                                    texText teText textText textxText texttTexText textText textt textText textTText
+                                    textext textt Text text
                                 </div>
                                 <br>
                             </div>

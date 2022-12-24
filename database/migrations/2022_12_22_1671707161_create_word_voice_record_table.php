@@ -16,7 +16,6 @@ class CreateWordVoiceRecordTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

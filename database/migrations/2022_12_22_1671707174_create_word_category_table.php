@@ -16,7 +16,6 @@ class CreateWordCategoryTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

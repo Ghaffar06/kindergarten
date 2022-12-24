@@ -16,7 +16,6 @@ class CreateChildWordTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

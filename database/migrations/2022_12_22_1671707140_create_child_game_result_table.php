@@ -17,7 +17,6 @@ class CreateChildGameResultTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

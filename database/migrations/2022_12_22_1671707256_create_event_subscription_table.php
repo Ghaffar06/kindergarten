@@ -18,7 +18,6 @@ class CreateEventSubscriptionTable extends Migration
             $table->timestamps();
 
 
-
         });
     }
 

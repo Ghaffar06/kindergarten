@@ -15,8 +15,8 @@ class AddPhotoAndDescriptionToCategoryTable extends Migration
     {
         Schema::table('category', function (Blueprint $table) {
             //
-            $table->string('url', 200) ;
-            $table->string('description') ;
+            $table->string('url', 200);
+            $table->string('description');
         });
     }
 
