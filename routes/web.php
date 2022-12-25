@@ -26,9 +26,7 @@ Route::controller(WordController::class)
         wordRoutes();
     });
 
-Route::get('/mullham/category', function () {
-    return view('word_category');
-})->name('word_category');
+Route::get('/mullham/category',[CategoryController::class,'index'])->name('word_category');
 
 Route::get('/mullham/words', function () {
     return view('words');

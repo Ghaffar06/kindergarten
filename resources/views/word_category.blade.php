@@ -29,6 +29,16 @@
     <section class="bcare__subscribe bg-image--7 subscrive--1">
         <div class="container">
             <div class="row">
+                <div class="position-absolute" style="left: 1100px; top: 25px">
+                    <li>
+                        <a class="cate-trigger" href="#">
+                            <div class="dcare__btn align-items-center d-flex">
+                                <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
+                                Add New Category
+                            </div>
+                        </a>
+                    </li>
+                </div>
                 <div class="col-lg-12 col-sm-12 col-lg-12">
                     <div class="subscribe__inner">
                         <h2>Search for a specifice Category</h2>
@@ -48,6 +58,7 @@
                                             </div>
                                             <div class="clearfix subscribe__btn">
                                                 <div onclick="search()" class="dcare__btn">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
                                                     Search
                                                 </div>
                                             </div>
@@ -119,6 +130,50 @@
     </section>
     <!-- End Blog Area -->
 
+    <div class="login-wrapper" id="cate-wrapper">
+        <div class="accountbox">
+            <div class="accountbox__inner">
+                <h4>Add New Category</h4>
+                <div class="accountbox__login">
+                    <form action="#">
+                        <div class="single-input">
+                            <input type="text" placeholder="category name">
+                        </div>
+                        <div class="single-input">
+                            <input type="text" placeholder="description">
+                        </div>
+                        <div class="single-input">
+                            <input class="dcare__btn" type="file" placeholder="photo" id="file_input"
+                                   onchange="updateImg('photo_container', 'file_input')">
+                            <div class="dcare__btn" onclick="deleteImg('photo_container');
+                                    document.getElementById('file_input').value = null">
+                                clear image
+                            </div>
+                        </div>
+
+                        <div id="photo_container">
+                            <img src = "{{asset('images/default.jpg')}}" width="200px" height="200px">
+                        </div>
+                        <div class="single-input text-center">
+                            <button type="submit" class="sign__btn">SUBMIT</button>
+                        </div>
+                        {{--                                                <div class="accountbox-login__others text-center">--}}
+                        {{--                                                    <ul class="dacre__social__link d-flex justify-content-center">--}}
+                        {{--                                                        <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
+                        {{--                                                                    class="ti-facebook"></span></a></li>--}}
+                        {{--                                                        <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
+                        {{--                                                                    class="ti-twitter"></span></a></li>--}}
+                        {{--                                                        <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
+                        {{--                                                        </li>--}}
+                        {{--                                                    </ul>--}}
+                        {{--                                                </div>--}}
+                    </form>
+                </div>
+                <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
+            </div>
+        </div>
+    </div><!-- //Login Form -->
+
 
     <script>
         function search() {
@@ -145,6 +200,7 @@
             }
         });
     </script>
+
 @endsection
 
 

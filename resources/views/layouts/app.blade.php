@@ -25,6 +25,8 @@
 
     <!-- Modernizer js -->
     <script src="{{asset('js/vendor/modernizr-3.5.0.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -55,7 +57,7 @@
                     <div class="col-md-5 col-lg-6 col-sm-12">
                         <div class="jun__header__top__right">
                             <ul class="accounting d-flex justify-content-lg-end justify-content-md-end justify-content-start align-items-center">
-                                <li><a class="login-trigger" href="#">Login</a></li>
+                                <li><a class="login-trigger" href="#">login</a></li>
                                 <li><a class="accountbox-trigger" href="#">Register</a></li>
                             </ul>
                         </div>
@@ -125,6 +127,16 @@
         <!-- End Mainmenu Area -->
     </header>
     <!-- //Header -->
+    <script>
+        function deleteImg(PhotoContainerId) {
+            $("#" + PhotoContainerId + " img").attr('src', {{asset('images/default.jpg')}});
+        }
+
+        function updateImg(photoContainerId, fileInputId) {
+            let files = document.querySelector("#" + fileInputId).files;
+            $("#" + photoContainerId + " img").attr('src', URL.createObjectURL(files[0]));
+        }
+    </script>
     <main>
         @yield('content')
     </main>
@@ -423,7 +435,7 @@
         }
     </script>
     <!-- Register Form -->
-    <div class="accountbox-wrapper">
+    <div class="accountbox-wrapper" id="accountbox-wrapper">
         <div class="accountbox">
             <div class="accountbox__inner">
                 <h4>continue to register</h4>
@@ -512,7 +524,7 @@
     </div><!-- //Register Form -->
 
     <!-- Login Form -->
-    <div class="login-wrapper">
+    <div id="login-wrapper" class="login-wrapper">
         <div class="accountbox">
             <div class="accountbox__inner">
                 <h4>Login to Continue</h4>
@@ -544,7 +556,10 @@
         </div>
     </div><!-- //Login Form -->
 
+
+
 </div><!-- //Main wrapper -->
+
 
 <!-- JS Files -->
 <script src="{{asset('js/vendor/jquery-3.2.1.min.js')}}"></script>
