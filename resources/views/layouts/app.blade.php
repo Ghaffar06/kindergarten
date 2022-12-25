@@ -413,10 +413,8 @@
                     role = 'student';
                     document.getElementById('image_s').classList.add('border');
                     document.getElementById('image_t').classList.remove('border');
-                    document.getElementById('b_date').hidden = false;
                 } else if (input === 2)  {
                     role = 'teacher';
-                    document.getElementById('b_date').hidden = true;
                     document.getElementById('image_t').classList.add('border');
                     document.getElementById('image_s').classList.remove('border');
                 }
@@ -517,7 +515,7 @@
                                 <button type="submit" class="sign__btn">{{ __('Sign Up Now')}}</button>
                             </div>
                         </form>
-                        
+
                     </div>
                     <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
                 </div>
