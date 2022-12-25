@@ -59,7 +59,7 @@
                             <div class="jun__header__top__right">
                                 <ul class="accounting d-flex justify-content-lg-end justify-content-md-end justify-content-start align-items-center">
                                     @guest
-                                    <li><a class="login-trigger" href="#">login</a></li>
+                                    <li><a class="login-trigger" href="">login</a></li>
                                     <li><a class="accountbox-trigger" href="{{route("register form")}}">Register</a></li>
                                     @else
                                     <li><a href="#">{{Auth::user()->name}}</a></li>
@@ -291,7 +291,7 @@
                 </div>
             </div>
 
-            
+
             <!-- .Start Footer Contact Area -->
             <div class="footer__contact__area bg__cat--2">
                 <div class="container">
@@ -471,7 +471,8 @@
                 <div class="accountbox__inner">
                     <h4>Login to Continue</h4>
                     <div class="accountbox__login">
-                        <form action="#">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
                             <div class="single-input">
                                 <input type="email" placeholder="E-mail">
                             </div>
