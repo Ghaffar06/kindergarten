@@ -40,6 +40,11 @@ Route::get('/mullham/words', function () {
     return view('words');
 })->name('words');
 
+
+Route::get('/mullham/add_word', function (\Illuminate\Http\Request $request) {
+    return view('add_new_word',['categories' => \App\Models\Category::all()]);
+})->name('add_new_word');
+
 Route::get('/mullham/single_word', function () {
     return view('single_word');
 })->name('single_word');

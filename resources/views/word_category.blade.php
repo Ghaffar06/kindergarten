@@ -156,7 +156,7 @@
                             <input class="" type="file" accept="image/png, image/jpeg" placeholder="photo"
                                    id="file_input">
                         </div>
-                        <div class="single-input text-center">
+                        <div class="single-input text-center">`
                             <button type="submit" class="sign__btn">SUBMIT</button>
                         </div>
                         {{--                                                <div class="accountbox-login__others text-center">--}}

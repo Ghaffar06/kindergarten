@@ -102,10 +102,10 @@
                             <img src="{{asset('images/shape/sm-icon/1.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="service.html">Alphabet Class</a></h6>
+                            <h6><a href="">Alphabet Class</a></h6>
                             <p>Learning the Alphabet with some amazing photo and audio</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -118,10 +118,10 @@
                             <img src="{{asset('images/shape/sm-icon/2.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="service.html">Word Class</a></h6>
+                            <h6><a href="{{route('word_category')}}">Word Class</a></h6>
                             <p>Learning more and more english words with the ability to chose certain word-group</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="{{route('word_category')}}">Discover Categories</a>
                             </div>
                         </div>
                     </div>
@@ -134,11 +134,11 @@
                             <img src="{{asset('images/shape/sm-icon/3.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="service.html">Text Class</a></h6>
+                            <h6><a href="">Text Class</a></h6>
                             <p>Learning wide english texts with some challengeing questions to test your
                                 aknowlegment</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Start Reading</a>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                             <h6><a href="service.html">Game Time</a></h6>
                             <p>learn while playing some amazing mini-games related to education</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Start Playing</a>
                             </div>
                         </div>
                     </div>
