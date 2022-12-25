@@ -36,7 +36,7 @@ class ArticleController extends Controller
         foreach ($all['articles'] as $article) {
             if ($child_id != -1) {
                 $score = ChildArticle::where('article_id', '=', $article->id)
-                    ->where('user_id', '=', $child_id)
+                    ->where('child_id', '=', $child_id)
                     ->first('max_score');
                 if ($score != null)
                     $article->score = $score->score;
@@ -70,11 +70,11 @@ class ArticleController extends Controller
         $score *= 100 / count($article->articleQuestions);
 
         $childArticle = ChildArticle::where('article_id' , '=',$id)
-            ->where('user_id' , '=' , $child_id)
+            ->where('child_id' , '=' , $child_id)
             ->first();
         if ($childArticle == null)
             $childArticle = new ChildArticle([
-                'user_id' => $child_id,
+                'child_id' => $child_id,
                 'article_id' => $id,
                 'max_score' => 0,
             ]);
