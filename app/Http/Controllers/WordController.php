@@ -6,8 +6,10 @@ use App\Http\Controllers\Traits\HasAutocompleteSearch;
 use App\Http\Controllers\Traits\HasDelete;
 use App\Http\Controllers\Traits\HasList;
 use App\Http\Controllers\Traits\SaveFile;
+use App\Models\Category;
 use App\Models\ChildWord;
 use App\Models\Word;
+use App\Models\WordCategory;
 use App\Models\WordPhoto;
 use App\Models\WordVoiceRecord;
 use Illuminate\Http\Request;
@@ -23,10 +25,10 @@ class WordController extends Controller
     private $model = Word::class;
     private $mainColumn = 'text';
 
-    public function index(Request $request)
+    public function index($category, Request $request)
     {
-        $all = $this->getAll($request, 'words', 2);
-        $child_id = -1;
+        $all = $this->getAll($request, 'words', 10 , $this->getQueryWords($category) );
+        $child_id = 1;
         if ($child_id != -1) {
             foreach ($all['words'] as $word) {
                 $word->learned = count(
@@ -36,7 +38,7 @@ class WordController extends Controller
                     ) > 0;
             }
         }
-        return view('test_word', $all);
+        return view('test_word', array_merge($all, ['category'=>$category]));
     }
 
     public function create(Request $request)
@@ -84,44 +86,60 @@ class WordController extends Controller
         return $word;
     }
 
-    public function getLearningWord($index)
+    public function getLearningWord($category, $id, Request $request)
     {
         $child_id = 1;
-
-        $total = Word::whereNotIn(
-            'id',
-            ChildWord::select('word_id')
-                ->where('user_id', '=', $child_id)
-                ->get()->toArray()
-        )->count();
-
-        $word = Word::whereNotIn(
-            'id',
-            ChildWord::select('word_id')
-                ->where('user_id', '=', $child_id)
-                ->get()->toArray()
-        )->offset($index - 1)->first();
+        $direction = $request->get('query') !== null ? $request->get('query') : 0;
+        $query = $this->getNotLearned($this->getQueryWords($category), $direction != 0) ;
+        $word = $query->orderBy('id', $direction < 0 ? 'desc' : 'asc')
+            ->where('id', $direction == 1 ? '>' :( $direction == -1 ? '<' : '='), $id)
+            ->first();
 
 
         return view('test_one_word', [
             'word' => $word,
-            'index' => $index,
-            'total' => $total,
-            'link_name'=>'word.learn',
+            'nextable' => $this->checkWord(
+                $this->getNotLearned($this->getQueryWords($category), $child_id ),
+                $word->id,
+                1),
+            'previousable' => $this->checkWord(
+                $this->getNotLearned($this->getQueryWords($category) , $child_id),
+                $word->id,
+                -1),
+            'category' => $category,
         ]);
     }
-    public function getReviewWord($index)
+
+    private function getQueryWords($category) {
+
+        $category_id = Category::where('title', '=', $category)->first('id')['id'];
+        return Word::whereIn('id',
+            WordCategory::select('word_id')
+                ->where('category_id', '=', $category_id)
+                ->get()
+                ->toArray()
+        );
+    }
+
+    private function getNotLearned($query, $child_id , $flag = true) {
+        if (! $flag)
+            return $query;
+        return $query->whereNotIn(
+            'id',
+            ChildWord::select('word_id')
+                ->where('user_id', '=', $child_id)
+                ->get()
+                ->toArray()
+        );
+    }
+
+    private function checkWord($query, $id, $direction)
     {
-        $total = Word::all()->count();
-
-        $word = Word::offset($index - 1)->first();
-
-        return view('test_one_word', [
-            'word' => $word,
-            'index' => $index,
-            'total' => $total,
-            'link_name'=>'word.review',
-        ]);
+        return count(
+            $query->orderBy('id', $direction < 0 ? 'desc' : 'asc')
+                ->where('id', $direction == 1 ? '>' : ($direction == -1 ? '<' : '='), $id)
+                ->get()
+        ) > 0 ;
     }
 
 

@@ -83,22 +83,19 @@ function categoryRoutes()
 
 function wordRoutes()
 {
-    $prefix = '/word';
+    Route::post('word-create', 'create')
+        ->name('word.add');
+
+    Route::get('word-delete/{id}', 'delete')
+        ->name('word.delete');
+
+    $prefix = '/category/{category}';
 
     Route::get($prefix, 'index')
         ->name('word.index');
 
-    Route::post($prefix, 'create')
-        ->name('word.add');
-
-    Route::get($prefix . '/del/{id}', 'delete')
-        ->name('word.delete');
-
-    Route::get($prefix.'-learn/{index}','getLearningWord')
+    Route::get($prefix.'/{id}','getLearningWord')
         ->name('word.learn');
-
-    Route::get($prefix.'-review/{index}','getReviewWord')
-        ->name('word.review');
 
     Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
         ->name('word.autocomplete-search');

@@ -19,7 +19,6 @@
 <br>
 <div>
     all::::
-{{--    {{ $words->links()->next }}--}}
 </div>
 <br>
 
@@ -40,12 +39,12 @@
     @error('title')
     <br>
     <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
+{{--            <strong>{{ $message }}</strong>--}}
         </span>
     @enderror
 
 
-    <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">
+{{--    <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">--}}
         @csrf
         <label for="text">text: </label>
         <input type="text" name="text">
@@ -88,6 +87,9 @@
             <br>
             {{$word->wordPhotos[0]}}
             <br>
+            <br>
+            <br>
+
 
         </div>
     @endforeach
@@ -114,11 +116,13 @@
 </div>
 <br>
 <div>
-    id of word to display:
+    id of word to display (reviewing):
     <input type="text" id='id11'>
     <button onclick="openWord()">open</button>
     <a hidden="true" href="" id="href-words" target="_blank"></a>
     <br>
+    <br>
+
 </div>
 <br>
 
@@ -145,15 +149,18 @@
 
     function openWord() {
         let id = document.getElementById('id11').value;
-        let url = "{{route('category.delete' , ['id'=>':id'])}}";
+        let url = "{{route('word.learn' , ['category'=>':category' , 'id'=>':id'])}}";
         url = url.replace(':id', id);
+        url = url.replace(':category', "{{$category}}");
         document.getElementById('href-words').setAttribute('href', url);
         document.getElementById('href-words').click();
     }
 
     function search() {
         let text = document.getElementById('search').value;
-        window.location.replace("{{route('word.index')}}" + "?search=" + text);
+        let url = "{{route('word.index' , ['category'=>':category'])}}";
+        url = url.replace(':category', "{{$category}}");
+        window.location.replace(url + "?search=" + text);
     }
 </script>
 
@@ -163,7 +170,9 @@
 <script type="text/javascript">
     $('#search').typeahead({
         source: function (query, process) {
-            return $.get("{{ route('word.autocomplete-search') }}", {
+            url = url.replace(':category', "{{$category}}");
+            url = url.replace(':category', "312");
+            return $.get(url, {
                 query: query
             }, function (data) {
                 var res = [];

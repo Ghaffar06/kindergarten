@@ -44,12 +44,21 @@
 </div>
 <p3>operations:</p3>
 <br>
+<br>
+next??
+@if($nextable)
+    TRUE!!!
+@endif
+
+<br>
+<br>
+previous??
+@if($previousable)
+    TRUE!!
+@endif
+
+<br>
 <div>
-    <br>
-    current index: {{$index}}
-    <br>
-    <br>
-    number of total words: {{$total}}
     <br>
     <br>
     <button onclick="getPrev()">get previous word</button>
@@ -60,14 +69,20 @@
 
 <script>
     function getNext() {
-        let url = "{{route($link_name , ['index' => ':index'])}}";
-        url = url.replace(':index', "{{$index + 1}}");
-        window.location.replace(url);
+        let id = "{{$word->id}}";
+        let url = "{{route('word.learn' , ['category'=>':category' , 'id'=>':id'])}}?query=1" ;
+        url = url.replace(':id', id);
+        url = url.replace(':category', "{{$category}}");
+        if ("{{$nextable}}")
+            window.location.replace(url);
     }
     function getPrev() {
-        let url = "{{route($link_name  , ['index' => ':index'])}}";
-        url = url.replace(':index', "{{$index - 1}}");
-        window.location.replace(url);
+        let id = "{{$word->id}}";
+        let url = "{{route('word.learn' , ['category'=>':category' , 'id'=>':id'])}}?query=-1" ;
+        url = url.replace(':id', id);
+        url = url.replace(':category', "{{$category}}");
+        if ("{{$previousable}}")
+            window.location.replace(url);
     }
 </script>
 
