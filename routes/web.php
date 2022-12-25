@@ -124,7 +124,7 @@ function reportRoutes()
 
     Route::get($prefix . '/handle/{id}', 'handleReport')
         ->name('report.handle');
-    
+
     Route::get($prefix . '/view/{id}', 'viewReport')
         ->name('report.view');
 
@@ -138,6 +138,12 @@ function articleRoutes()
 
     Route::get($prefix, 'index')
         ->name('article.index');
+
+    Route::get($prefix . '/{id}', 'getArticle')
+        ->name('article.single_article');
+
+    Route::post($prefix . '/{id}', 'validateArticle')
+        ->name('article.single_article_validate');
 
     Route::post($prefix, 'create')
         ->name('article.add');

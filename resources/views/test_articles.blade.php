@@ -19,45 +19,51 @@
 <br>
 
 <div>
-{{--    <p3>add new article:</p3>--}}
+    <p3>add new article:</p3>
+    <form action="{{route('article.add')}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <label for="title">title: </label>
+        <input type="text" name="title">
+        <br>
+        <label for="text">text: </label>
+        <input type="text" name="text">
+        <br>
 
-{{--        <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">--}}
-{{--    @csrf--}}
-{{--    <label for="text">text: </label>--}}
-{{--    <input type="text" name="text">--}}
-{{--    <br>--}}
-{{--    <label for="score">score: </label>--}}
-{{--    <input type="text" name="score">--}}
-{{--    <br>--}}
-{{--    <label for="category1">category1: </label>--}}
-{{--    <input type="text" name="category1" class="search-category">--}}
-{{--    <br>--}}
-{{--    <label for="category2">category2: </label>--}}
-{{--    <input type="text" name="category2" class="search-category">--}}
-{{--    <br>--}}
-{{--    <label for="image1">image1: </label>--}}
-{{--    <input type="file" name="image1">--}}
-{{--    <br>--}}
-{{--    <label for="image2">image2: </label>--}}
-{{--    <input type="file" name="image2">--}}
-{{--    <br>--}}
-{{--    <label for="voice1">voice1: </label>--}}
-{{--    <input type="file" name="voice1">--}}
-{{--    <br>--}}
-{{--    <label for="voice2">voice2: </label>--}}
-{{--    <input type="file" name="voice2">--}}
-{{--    <br>--}}
+        <label for="question1">question1: </label>
+        <input type="text" name="question1">
+        <input type="checkbox" name="answer1">
+        <br>
+        <label for="question2">question2: </label>
+        <input type="text" name="question2">
+        <input type="checkbox" name="answer2">
+        <br>
+        <label for="question3">question3: </label>
+        <input type="text" name="question3">
+        <input type="checkbox" name="answer3">
+        <br>
+        <label for="question4">question4: </label>
+        <input type="text" name="question4">
+        <input type="checkbox" name="answer4">
+        <br>
 
-{{--    <button type="submit">Submit</button>--}}
-{{--    <br>--}}
-{{--    </form>--}}
+        <button type="submit">Submit</button>
+        <br>
+    </form>
 </div>
 <br>
 <div>
     <p3>all articles:</p3>
     @foreach($articles as $article)
         <div>
-            {{$article}}
+            Title:: {{$article->title}}
+            <br>
+            Short Text:: {{$article->short}}
+            <br>
+            ID:: {{$article->id}}
+            <br>
+            Writer_ID:: {{$article->user_id}}
+            <br>
+            Max Score (if child):: {{$article->score}}
             <br><br>
         </div>
     @endforeach
@@ -116,12 +122,11 @@
     }
 
     function openArticle() {
-        {{--let id = document.getElementById('id11').value;--}}
-        {{--let url = "{{route('word.learn' , ['category'=>':category' , 'id'=>':id'])}}";--}}
-        {{--url = url.replace(':id', id);--}}
-        {{--url = url.replace(':category', "{{$category}}");--}}
-        {{--document.getElementById('href-words').setAttribute('href', url);--}}
-        {{--document.getElementById('href-words').click();--}}
+        let id = document.getElementById('id11').value;
+        let url = "{{route('article.single_article' , ['id'=>':id'])}}";
+        url = url.replace(':id', id);
+        document.getElementById('href-words').setAttribute('href', url);
+        document.getElementById('href-words').click();
     }
 
     function search() {
@@ -148,7 +153,6 @@
             });
         }
     });
-
 
 
 </script>
