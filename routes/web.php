@@ -108,7 +108,7 @@ function reportRoutes()
     $prefix = '/report';
 
     Route::get($prefix, 'index')
-        ->name('report.index');
+        ->name('report');
 
     Route::post($prefix, 'create')
         ->name('report.add');
