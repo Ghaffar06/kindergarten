@@ -50,15 +50,19 @@ Route::get('/mullham/text', function () {
     return view('text');
 })->name('text');
 
-Route::get('/mullham', function () {
+Route::get('/home', function () {
     return view('index');
-})->name('index');
+})->name('home');
+
+Route::get('/register-form', function () {
+    return view('auth.register');
+})->name('register form');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
-    return view('word_category');
+    return view('index');
 })->name('index');
 
 
