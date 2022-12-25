@@ -36,7 +36,7 @@ class WordController extends Controller
             foreach ($all['words'] as $word) {
                 $word->learned = count(
                         ChildWord::where('word_id', $word->id)
-                            ->where('user_id', $child_id)
+                            ->where('child_id', $child_id)
                             ->get()
                     ) > 0;
             }
@@ -202,7 +202,7 @@ class WordController extends Controller
         return $query->whereNotIn(
             'id',
             ChildWord::select('word_id')
-                ->where('user_id', '=', $child_id)
+                ->where('child_id', '=', $child_id)
                 ->get()
                 ->toArray()
         );
@@ -212,7 +212,7 @@ class WordController extends Controller
         return $query->whereIn(
             'id',
             ChildWord::select('word_id')
-                ->where('user_id', '=', $child_id)
+                ->where('child_id', '=', $child_id)
                 ->get()
                 ->toArray()
         );

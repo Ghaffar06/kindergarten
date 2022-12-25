@@ -61,7 +61,7 @@
             <br>
             ID:: {{$article->id}}
             <br>
-            Writer_ID:: {{$article->user_id}}
+            Writer_ID:: {{$article->teacher_id}}
             <br>
             Max Score (if child):: {{$article->score}}
             <br><br>
