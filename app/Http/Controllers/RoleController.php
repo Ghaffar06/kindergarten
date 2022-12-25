@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Child;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class RoleController extends Controller
             $child->id = $user->id ;
             $child->score = 0 ; 
             $child->level = 0 ;
+            $child->birthdate = Carbon::now();
             $user->child()->save($child); 
         }
         if($user->role == 'teacher')

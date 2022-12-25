@@ -14,14 +14,11 @@ class Report extends Model
     protected $fillable = [
         'title',
         'message',
-        'date_repo',
         'handled',
         'user_id',
     ];
 
-    protected $casts = [
-        'date_repo' => 'datetime',
-    ];
+  
 
     public function user(): BelongsTo
     {

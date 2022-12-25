@@ -58,8 +58,20 @@
                         <div class="col-md-5 col-lg-6 col-sm-12">
                             <div class="jun__header__top__right">
                                 <ul class="accounting d-flex justify-content-lg-end justify-content-md-end justify-content-start align-items-center">
+                                    @guest
                                     <li><a class="login-trigger" href="#">login</a></li>
                                     <li><a class="accountbox-trigger" href="{{route("register form")}}">Register</a></li>
+                                    @else
+                                    <li><a href="#">{{Auth::user()->name}}</a></li>
+                                    <li><a  href="{{ route('logout') }}" onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form></li>
+                                    @endguest
                                 </ul>
                             </div>
                         </div>
@@ -99,7 +111,7 @@
                                         </li>
                                         <li class="drop"><a href="shop-grid.html">Shop</a></li>
                                         <li class="drop"><a href="blog-grid.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="{{route('report')}}">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -413,7 +425,7 @@
                     role = 'student';
                     document.getElementById('image_s').classList.add('border');
                     document.getElementById('image_t').classList.remove('border');
-                } else if (input === 2)  {
+                } else if (input === 2) {
                     role = 'teacher';
                     document.getElementById('image_t').classList.add('border');
                     document.getElementById('image_s').classList.remove('border');
