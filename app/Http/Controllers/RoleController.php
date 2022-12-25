@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Child;
+use App\Models\Admin;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Models\User ;
@@ -24,7 +26,13 @@ class RoleController extends Controller
             $teacher = new Teacher() ;
             $teacher->id = $user->id ;
             $teacher->admin_confirmed = 'N' ;
-            $user->child()->save($child); 
+            $user->child()->save($teacher); 
+        }
+        if($user->role == 'admin')
+        {
+            $admin = new Admin() ;
+            $admin->id = $user->id ;
+            $user->child()->save($admin); 
         }
     }
 }

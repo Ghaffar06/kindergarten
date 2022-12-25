@@ -54,4 +54,8 @@ class CategoryController extends Controller
         return back()->with('success', 'category added successfully');
     }
 
+    private function cascadeDelete($id) {
+
+    }
+
 }

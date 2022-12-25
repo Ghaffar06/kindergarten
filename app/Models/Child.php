@@ -15,7 +15,6 @@ class Child extends Model
     protected $fillable = [
         'id',
         'score',
-        'birthdate',
         'level',
         'user_id',
     ];

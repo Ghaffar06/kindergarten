@@ -111,5 +111,8 @@ function reportRoutes()
 
     Route::get($prefix . '/handle/{id}', 'handleReport')
         ->name('report.handle');
+        Route::get($prefix . '/view/{id}', 'viewReport')
+        ->name('report.view');
+
 
 }

@@ -13,6 +13,9 @@ use App\Models\WordCategory;
 use App\Models\WordPhoto;
 use App\Models\WordVoiceRecord;
 use Illuminate\Http\Request;
+use Nette\Utils\Random;
+use PhpParser\Node\Expr\Cast\Object_;
+use Ramsey\Collection\Collection;
 
 class WordController extends Controller
 {
@@ -33,7 +36,7 @@ class WordController extends Controller
             foreach ($all['words'] as $word) {
                 $word->learned = count(
                         ChildWord::where('word_id', $word->id)
-                            ->where('user_id', $child_id)
+                            ->where('child_id', $child_id)
                             ->get()
                     ) > 0;
             }
@@ -60,10 +63,82 @@ class WordController extends Controller
             'score' => 'required',
             'image1' => 'required',
             'voice1' => 'required',
+            'category1' => 'required',
         ]);
+
         $word = new Word(request()->all());
         $word->save();
+        $this->saveAttachments($request, $word);
+        return back()->with('success', 'word added successfully');
+    }
 
+    public function updateWord(Request $request){
+        $request->validate([
+            'text' => 'required',
+            'score' => 'required',
+            'image1' => 'required',
+            'voice1' => 'required',
+            'category1' => 'required',
+        ]);
+        $word = Word::where('id', '=' , $request->id)->first();
+        $this->cascadeDelete($request->id);
+        $this->saveAttachments($request, $word);
+        return back()->with('success', 'word added successfully');
+    }
+
+    public function generateTest($category) {
+        $child_id = 1 ;
+        $x = 10 ;
+        $wordsF = $this->getNotLearned($this->getQueryWords($category), $child_id)->limit($x)->get();
+        $wordsT = $this->getLearned($this->getQueryWords($category), $child_id)->get();
+
+        $voiceQuestions = [];
+        $photoQuestions = [];
+        foreach ($wordsF as $word) {
+            $keyVoice = rand(0, count($word->wordVoiceRecords)-1);
+            $temp = new Word();
+            $temp ->text = $word->text;
+            $temp ->voice = $word->wordVoiceRecords[$keyVoice]->url;
+            $voiceQuestions[] = $temp;
+
+            $temp = new Word();
+            $temp ->text = $word->text;
+            $photos = [];
+            for ($i = 0 ; $i < 4 ; $i ++) {
+                $photo = new Word() ;
+                $wordRandom = $word;
+                if ($i > 0) {
+                    $wordRandom = null ;
+                    while ($wordRandom== null) {
+                        if (rand(0, 1) == 1 && count($wordsF) != 0)
+                            $wordRandom = $wordsF[rand(0, count($wordsF) - 1)];
+                        else
+                            if ( count($wordsT) != 0)
+                                $wordRandom = $wordsT[rand(0, count($wordsT) - 1)];
+                        if ($wordRandom != null && $wordRandom->text == $word->text)
+                                $wordRandom = null ;
+                    }
+                    $photo->correct = false ;
+                } else
+                    $photo->correct = true ;
+
+                $photo->url = $wordRandom->wordPhotos[rand(0, count($wordRandom->wordPhotos) - 1)]->url;
+                $photos [] = $photo;
+            }
+            shuffle($photos);
+            $temp->photos = $photos;
+            $photoQuestions [] = $temp;
+        }
+
+        shuffle($voiceQuestions);
+        shuffle($photoQuestions);
+        return view('test_word_test' , [
+            'voiceQuestions' => $voiceQuestions,
+            'photoQuestions'=>$photoQuestions,
+        ]);
+    }
+
+    private function saveAttachments(Request $request, $word) {
         $this->saveFilesToWord($request, $word,
             'voice', WordVoiceRecord::class, 'wordVoiceRecords'
         );
@@ -75,9 +150,7 @@ class WordController extends Controller
             $title = $request->{'category' . $i};
             CategoryController::addWord($word, $title);
         }
-
         $word->save();
-        return back()->with('success', 'word added successfully');
     }
 
     private function saveFilesToWord($request, $word, $type, $model, $many)
@@ -129,11 +202,22 @@ class WordController extends Controller
         return $query->whereNotIn(
             'id',
             ChildWord::select('word_id')
-                ->where('user_id', '=', $child_id)
+                ->where('child_id', '=', $child_id)
                 ->get()
                 ->toArray()
         );
     }
+    private function getLearned($query, $child_id)
+    {
+        return $query->whereIn(
+            'id',
+            ChildWord::select('word_id')
+                ->where('child_id', '=', $child_id)
+                ->get()
+                ->toArray()
+        );
+    }
+
 
     private function checkWord($query, $id, $direction)
     {
@@ -143,6 +227,9 @@ class WordController extends Controller
                     ->get()
             ) > 0;
     }
-
-
+    private function cascadeDelete($id) {
+        WordCategory::where('word_id', '=' , $id)->delete();
+        WordVoiceRecord::where('word_id', '=' , $id)->delete() ;
+        WordCategory::where('word_id', '=' , $id)->delete() ;
+    }
 }

@@ -58,8 +58,21 @@
                         <div class="col-md-5 col-lg-6 col-sm-12">
                             <div class="jun__header__top__right">
                                 <ul class="accounting d-flex justify-content-lg-end justify-content-md-end justify-content-start align-items-center">
-                                    <li><a class="login-trigger" href="#">login</a></li>
+                                    @guest
+                                    <li><a class="login-trigger" href="">login</a></li>
                                     <li><a class="accountbox-trigger" href="{{route("register form")}}">Register</a></li>
+                                    @else
+                                    <li><a href="#">{{Auth::user()->name}}</a></li>
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                    @endguest
                                 </ul>
                             </div>
                         </div>
@@ -99,7 +112,7 @@
                                         </li>
                                         <li class="drop"><a href="shop-grid.html">Shop</a></li>
                                         <li class="drop"><a href="blog-grid.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="{{route('report')}}">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -278,6 +291,8 @@
                     </div>
                 </div>
             </div>
+
+
             <!-- .Start Footer Contact Area -->
             <div class="footer__contact__area bg__cat--2">
                 <div class="container">
@@ -317,6 +332,8 @@
                 </div>
             </div>
             <!-- .End Footer Contact Area -->
+
+
             <div class="copyright  bg--theme">
                 <div class="container">
                     <div class="row align-items-center copyright__wrapper justify-content-center">
@@ -330,80 +347,7 @@
                 </div>
             </div>
         </footer>
-        <!-- //Footer Area -->
-        <!-- Cartbox -->
-        <!-- <div class="cartbox-wrap">
-        <div class="cartbox text-right">
-            <button class="cartbox-close"><i class="zmdi zmdi-close"></i></button>
-            <div class="cartbox__inner text-left">
-                <div class="cartbox__items">
-                    Cartbox Single Item
-                    <div class="cartbox__item">
-                        <div class="cartbox__item__thumb">
-                            <a href="product-details.html">
-                                <img src="images/product/sm-pro/1.jpg" alt="small thumbnail">
-                            </a>
-                        </div>
-                        <div class="cartbox__item__content">
-                            <h5><a href="product-details.html" class="product-name">brown jacket</a></h5>
-                            <p>Qty: <span>01</span></p>
-                            <span class="price">$15</span>
-                        </div>
-                        <button class="cartbox__item__remove">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div>
-                    //Cartbox Single Item
-                    Cartbox Single Item
-                    <div class="cartbox__item">
-                        <div class="cartbox__item__thumb">
-                            <a href="product-details.html">
-                                <img src="images/product/sm-pro/2.jpg" alt="small thumbnail">
-                            </a>
-                        </div>
-                        <div class="cartbox__item__content">
-                            <h5><a href="product-details.html" class="product-name">long sleeve t-shirt</a></h5>
-                            <p>Qty: <span>01</span></p>
-                            <span class="price">$25</span>
-                        </div>
-                        <button class="cartbox__item__remove">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div>
-                    //Cartbox Single Item
-                    Cartbox Single Item
-                    <div class="cartbox__item">
-                        <div class="cartbox__item__thumb">
-                            <a href="product-details.html">
-                                <img src="images/product/sm-pro/3.jpg" alt="small thumbnail">
-                            </a>
-                        </div>
-                        <div class="cartbox__item__content">
-                            <h5><a href="product-details.html" class="product-name">black polo shirt</a></h5>
-                            <p>Qty: <span>01</span></p>
-                            <span class="price">$30</span>
-                        </div>
-                        <button class="cartbox__item__remove">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div>
-                    //Cartbox Single Item
-                </div>
-                <div class="cartbox__total">
-                    <ul>
-                        <li><span class="cartbox__total__title">Subtotal</span><span class="price">$70</span></li>
-                        <li class="shipping-charge"><span class="cartbox__total__title">Shipping Charge</span><span class="price">$05</span></li>
-                        <li class="grandtotal">Total<span class="price">$75</span></li>
-                    </ul>
-                </div>
-                <div class="cartbox__buttons">
-                    <a class="dcare__btn" href="cart.html"><span>View cart</span></a>
-                    <a class="dcare__btn" href="checkout.html"><span>Checkout</span></a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-        <!-- //Cartbox -->
+
 
         <script>
             let role = 'student';
@@ -413,7 +357,7 @@
                     role = 'student';
                     document.getElementById('image_s').classList.add('border');
                     document.getElementById('image_t').classList.remove('border');
-                } else if (input === 2)  {
+                } else if (input === 2) {
                     role = 'teacher';
                     document.getElementById('image_t').classList.add('border');
                     document.getElementById('image_s').classList.remove('border');
@@ -528,7 +472,55 @@
                 <div class="accountbox__inner">
                     <h4>Login to Continue</h4>
                     <div class="accountbox__login">
-                        <form action="#">
+
+
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+
+                            <div class="row mb-3">
+                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                                <div class="single-input">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                                <div class="single-input">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="single-input text-center">
+                                <div class="single-input text-center">
+                                    <button type="submit" class="sign__btn">
+                                        {{ __('Login') }}
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+
+<!-- 
+
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
                             <div class="single-input">
                                 <input type="email" placeholder="E-mail">
                             </div>
@@ -539,7 +531,7 @@
                                 <button type="submit" class="sign__btn">SUBMIT</button>
                             </div>
 
-                        </form>
+                        </form> -->
                     </div>
                     <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
                 </div>
