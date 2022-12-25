@@ -28,7 +28,7 @@ class ArticleController extends Controller
         $query = null;
         $onlyMe = $request->get('only_me') !== null && strtolower($request->get('only_me')) === 'true';
         if ($onlyMe && $teacher_id != -1) {
-            $query = Article::where('user_id', '=', $teacher_id);
+            $query = Article::where('teacher_id', '=', $teacher_id);
         }
 
         $all = $this->getAll($request, 'articles', 10, $query);
@@ -105,7 +105,7 @@ class ArticleController extends Controller
         ]);
 
         $article = new Article(request()->all());
-        $article->user_id = $teacher_id;
+        $article->teacher_id = $teacher_id;
         $article->save();
         for ($i = 1; isset($request->{'question' . $i}); $i++) {
             $articleQuestion = new ArticleQuestion([
