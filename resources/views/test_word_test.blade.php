@@ -14,27 +14,25 @@
     <br>
     Voice Questions:::
     <br><br>
-    @foreach($voiceQuestions as $question)
+    @foreach($voiceQuestions as $key=> $question)
         {{$question}}
         <br>
         <br>
-{{--        photo of word:--}}
-{{--        <br>--}}
-{{--        @foreach($word->wordPhotos as $photo)--}}
-{{--            {{$photo}}--}}
-{{--            <br>--}}
-{{--        @endforeach--}}
-{{--        <br>--}}
-{{--        <br>--}}
-{{--    --}}
-{{--        voice of word:--}}
-{{--        <br>--}}
-{{--        @foreach($word->wordVoiceRecords as $voice)--}}
-{{--            {{$voice}}--}}
-{{--            <br>--}}
-{{--        @endforeach--}}
-{{--        <br>--}}
     @endforeach
+    <br>
+    <br>
+    Photo Questions:::
+    <br><br>
+    @foreach($photoQuestions as $key=> $question)
+        choose corresponding photo to [{{$question->text}}]
+        <br>
+        @foreach($question->photos as $photo)
+            correct? {{$photo->correct ? "True" : "False"}} , url: {{$photo->url}}
+            <br>
+        @endforeach
+        <br>
+    @endforeach
+
 </div>
 <p3>operations:</p3>
 <br>

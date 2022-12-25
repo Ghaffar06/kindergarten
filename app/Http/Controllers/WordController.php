@@ -14,6 +14,8 @@ use App\Models\WordPhoto;
 use App\Models\WordVoiceRecord;
 use Illuminate\Http\Request;
 use Nette\Utils\Random;
+use PhpParser\Node\Expr\Cast\Object_;
+use Ramsey\Collection\Collection;
 
 class WordController extends Controller
 {
@@ -87,17 +89,53 @@ class WordController extends Controller
     public function generateTest($category) {
         $child_id = 1 ;
         $x = 10 ;
-        $wordsF = shuffle($this->getNotLearned($this->getQueryWords($category), $child_id)->limit($x)->get()) ;
-        $wordsT = shuffle($this->getLearned($this->getQueryWords($category), $child_id)->get()) ;
+        $wordsF = $this->getNotLearned($this->getQueryWords($category), $child_id)->limit($x)->get();
+        $wordsT = $this->getLearned($this->getQueryWords($category), $child_id)->get();
+
         $voiceQuestions = [];
+        $photoQuestions = [];
         foreach ($wordsF as $word) {
-            $keyVoice = array_rand($word->wordVoiceRecords);
-            $voiceQuestions[] = [
-                'text' =>$word->text,
-                'voice'=>$word->wordVoiceRecords[$keyVoice],
-            ];
+            $keyVoice = rand(0, count($word->wordVoiceRecords)-1);
+            $temp = new Word();
+            $temp ->text = $word->text;
+            $temp ->voice = $word->wordVoiceRecords[$keyVoice]->url;
+            $voiceQuestions[] = $temp;
+
+            $temp = new Word();
+            $temp ->text = $word->text;
+            $photos = [];
+            for ($i = 0 ; $i < 4 ; $i ++) {
+                $photo = new Word() ;
+                $wordRandom = $word;
+                if ($i > 0) {
+                    $wordRandom = null ;
+                    while ($wordRandom== null) {
+                        if (rand(0, 1) == 1 && count($wordsF) != 0)
+                            $wordRandom = $wordsF[rand(0, count($wordsF) - 1)];
+                        else
+                            if ( count($wordsT) != 0)
+                                $wordRandom = $wordsT[rand(0, count($wordsT) - 1)];
+                        if ($wordRandom != null && $wordRandom->text == $word->text)
+                                $wordRandom = null ;
+                    }
+                    $photo->correct = false ;
+                } else
+                    $photo->correct = true ;
+
+                $photo->url = $wordRandom->wordPhotos[rand(0, count($wordRandom->wordPhotos) - 1)]->url;
+                $photos [] = $photo;
+            }
+            shuffle($photos);
+            $temp->photos = $photos;
+            $photoQuestions [] = $temp;
         }
-        return view('test_word_test' , ['voiceQuestions' => $voiceQuestions]);
+
+        shuffle($voiceQuestions);
+        shuffle($photoQuestions);
+        return view('test_word_test' , [
+            'voiceQuestions' => $voiceQuestions,
+            'photoQuestions'=>$photoQuestions,
+        ]);
     }
 
     private function saveAttachments(Request $request, $word) {
