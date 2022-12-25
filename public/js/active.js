@@ -403,10 +403,57 @@
 
 
     /*============= Register Form ==============*/
+    //
+    // function registerForm() {
+    //     var trigger = $('.accountbox-trigger'),
+    //         container = $('.accountbox-wrapper');
+    //     $('<div class="body-overlay"></div>').prependTo(container);
+    //
+    //     trigger.on('click', function (e) {
+    //         e.preventDefault();
+    //         container.addClass('is-visible');
+    //     });
+    //
+    //     $('.body-overlay').on('click', function () {
+    //         container.removeClass('is-visible');
+    //     });
+    //
+    //     $('span.accountbox-close-button').on('click', function () {
+    //         container.removeClass('is-visible');
+    //     });
+    //
+    // }
+    //
+    // registerForm();
+    //
+    //
+    // /*============= Login Form ==============*/
+    //
+    // function logInForm() {
+    //     var trigger = $('.login-trigger'),
+    //         container = $('#login-wrapper');
+    //     $('<div class="body-overlay"></div>').prependTo(container);
+    //
+    //     trigger.on('click', function (e) {
+    //         e.preventDefault();
+    //         container.addClass('is-visible');
+    //     });
+    //
+    //     $('.body-overlay').on('click', function () {
+    //         container.removeClass('is-visible');
+    //     });
+    //
+    //     $('span.accountbox-close-button').on('click', function () {
+    //         container.removeClass('is-visible');
+    //     });
+    //
+    // }
+    //
+    // logInForm();
 
-    function registerForm() {
-        var trigger = $('.accountbox-trigger'),
-            container = $('.accountbox-wrapper');
+    function popupForm(_class, _id) {
+        var trigger = $('.' + _class),
+            container = $('#' + _id);
         $('<div class="body-overlay"></div>').prependTo(container);
 
         trigger.on('click', function (e) {
@@ -421,36 +468,10 @@
         $('span.accountbox-close-button').on('click', function () {
             container.removeClass('is-visible');
         });
-
     }
-
-    registerForm();
-
-
-    /*============= Login Form ==============*/
-
-    function logInForm() {
-        var trigger = $('.login-trigger'),
-            container = $('.login-wrapper');
-        $('<div class="body-overlay"></div>').prependTo(container);
-
-        trigger.on('click', function (e) {
-            e.preventDefault();
-            container.addClass('is-visible');
-        });
-
-        $('.body-overlay').on('click', function () {
-            container.removeClass('is-visible');
-        });
-
-        $('span.accountbox-close-button').on('click', function () {
-            container.removeClass('is-visible');
-        });
-
-    }
-
-    logInForm();
-
+    popupForm('cate-trigger', 'cate-wrapper');
+    popupForm('login-trigger', 'login-wrapper');
+    popupForm('accountbox-trigger', 'accountbox-wrapper');
 
     /*============= Checkout Login/Register Toggle ==============*/
 

@@ -29,6 +29,16 @@
     <section class="bcare__subscribe bg-image--7 subscrive--1">
         <div class="container">
             <div class="row">
+                <div class="position-absolute" style="left: 1100px; top: 25px">
+                    <li>
+                        <a class="cate-trigger" href="#">
+                            <div class="dcare__btn align-items-center d-flex">
+                                <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
+                                Add New Category
+                            </div>
+                        </a>
+                    </li>
+                </div>
                 <div class="col-lg-12 col-sm-12 col-lg-12">
                     <div class="subscribe__inner">
                         <h2>Search for a specifice Category</h2>
@@ -48,6 +58,7 @@
                                             </div>
                                             <div class="clearfix subscribe__btn">
                                                 <div onclick="search()" class="dcare__btn">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
                                                     Search
                                                 </div>
                                             </div>
@@ -62,6 +73,12 @@
         </div>
     </section>
     <!-- End Subscribe Area -->
+    <script>
+        function delete_category(id) {
+            alert(id);
+        }
+    </script>
+
     <!-- Start Blog Area -->
     <section class="dcare__blog__area section-padding--lg bg--white">
         <div class="container">
@@ -89,7 +106,11 @@
                                     </div>
                                     <div class="blog__btn">
                                         <a class="bl__btn" href="blog-details.html">Start Learning</a>
-                                        <a class="bl__share__btn" href="#"><i class="fa fa-share-alt"></i></a>
+                                        <a class="bl__share__btn">
+                                            <span onclick="delete_category('{{$category->id}}')">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -119,6 +140,41 @@
     </section>
     <!-- End Blog Area -->
 
+    <div class="login-wrapper" id="cate-wrapper">
+        <div class="accountbox">
+            <div class="accountbox__inner">
+                <h4>Add New Category</h4>
+                <div class="accountbox__login">
+                    <form action="#">
+                        <div class="single-input">
+                            <input type="text" placeholder="category name">
+                        </div>
+                        <div class="single-input">
+                            <input type="text" placeholder="description">
+                        </div>
+                        <div class="single-input">
+                            <input class="" type="file" accept="image/png, image/jpeg" placeholder="photo" id="file_input">
+                        </div>
+                        <div class="single-input text-center">
+                            <button type="submit" class="sign__btn">SUBMIT</button>
+                        </div>
+                        {{--                                                <div class="accountbox-login__others text-center">--}}
+                        {{--                                                    <ul class="dacre__social__link d-flex justify-content-center">--}}
+                        {{--                                                        <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
+                        {{--                                                                    class="ti-facebook"></span></a></li>--}}
+                        {{--                                                        <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
+                        {{--                                                                    class="ti-twitter"></span></a></li>--}}
+                        {{--                                                        <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
+                        {{--                                                        </li>--}}
+                        {{--                                                    </ul>--}}
+                        {{--                                                </div>--}}
+                    </form>
+                </div>
+                <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
+            </div>
+        </div>
+    </div><!-- //Login Form -->
+
 
     <script>
         function search() {
@@ -145,6 +201,7 @@
             }
         });
     </script>
+
 @endsection
 
 
