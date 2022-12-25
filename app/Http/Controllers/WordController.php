@@ -60,10 +60,30 @@ class WordController extends Controller
             'score' => 'required',
             'image1' => 'required',
             'voice1' => 'required',
+            'category1' => 'required',
         ]);
+
         $word = new Word(request()->all());
         $word->save();
+        $this->saveAttachments($request, $word);
+        return back()->with('success', 'word added successfully');
+    }
 
+    public function updateWord(Request $request){
+        $request->validate([
+            'text' => 'required',
+            'score' => 'required',
+            'image1' => 'required',
+            'voice1' => 'required',
+            'category1' => 'required',
+        ]);
+        $word = Word::where('id', '=' , $request->id)->first();
+        $this->cascadeDelete($request->id);
+        $this->saveAttachments($request, $word);
+        return back()->with('success', 'word added successfully');
+    }
+
+    private function saveAttachments(Request $request, $word) {
         $this->saveFilesToWord($request, $word,
             'voice', WordVoiceRecord::class, 'wordVoiceRecords'
         );
@@ -75,9 +95,7 @@ class WordController extends Controller
             $title = $request->{'category' . $i};
             CategoryController::addWord($word, $title);
         }
-
         $word->save();
-        return back()->with('success', 'word added successfully');
     }
 
     private function saveFilesToWord($request, $word, $type, $model, $many)
@@ -143,6 +161,9 @@ class WordController extends Controller
                     ->get()
             ) > 0;
     }
-
-
+    private function cascadeDelete($id) {
+        WordCategory::where('word_id', '=' , $id)->delete();
+        WordVoiceRecord::where('word_id', '=' , $id)->delete() ;
+        WordCategory::where('word_id', '=' , $id)->delete() ;
+    }
 }
