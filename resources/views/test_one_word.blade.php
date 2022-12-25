@@ -15,186 +15,60 @@
     </style>
 </head>
 <body>
-<p1>Category Section!</p1>
+<p1>Learning Word Section!</p1>
 <br>
-<br>
-
-<div>
-    <p3>add new word:</p3>
-    @error('image')
-    <br>
-    <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-    @error('description')
-    <br>
-    <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-    @error('title')
-    <br>
-    <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-
-
-    <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">
-        @csrf
-        <label for="text">text: </label>
-        <input type="text" name="text">
-        <br>
-        <label for="score">score: </label>
-        <input type="text" name="score">
-        <br>
-        <label for="category1">category1: </label>
-        <input type="text" name="category1" class="search-category">
-        <br>
-        <label for="category2">category2: </label>
-        <input type="text" name="category2" class="search-category">
-        <br>
-        <label for="image1">image1: </label>
-        <input type="file" name="image1">
-        <br>
-        <label for="image2">image2: </label>
-        <input type="file" name="image2">
-        <br>
-        <label for="voice1">voice1: </label>
-        <input type="file" name="voice1">
-        <br>
-        <label for="voice2">voice2: </label>
-        <input type="file" name="voice2">
-        <br>
-
-        <button type="submit">Submit</button>
-        <br>
-    </form>
-</div>
 <br>
 <div>
-    <p3>all words:</p3>
-    @foreach($words as $word)
-        <div>
-            word <br>
-            {{$word}}
-            <br>
-            photo of word:
-            <br>
-            {{$word->wordPhotos[0]}}
-            <br>
+    <br>
 
-            {{--            photo of word:--}}
-            {{--            <br>--}}
-            {{--            @foreach($word->wordPhotos as $photo)--}}
-            {{--                {{$photo}}--}}
-            {{--                <br>--}}
-            {{--            @endforeach--}}
-            {{--            <br>--}}
-
-            {{--            voice of word:--}}
-            {{--            <br>--}}
-            {{--            @foreach($word->wordVoiceRecords as $voice)--}}
-            {{--                {{$voice}}--}}
-            {{--                <br>--}}
-            {{--            @endforeach--}}
-            {{--            <br>--}}
-
-            {{--            category of word:--}}
-            {{--            <br>--}}
-            {{--            @foreach($word->wordCategories as $wordCategory)--}}
-            {{--                {{$wordCategory->category}}--}}
-            {{--                <br>--}}
-            {{--            @endforeach--}}
-
-        </div>
+    {{$word}}
+    <br>
+    <br>
+    photo of word:
+    <br>
+    @foreach($word->wordPhotos as $photo)
+        {{$photo}}
+        <br>
     @endforeach
+    <br>
+    <br>
+
+    voice of word:
+    <br>
+    @foreach($word->wordVoiceRecords as $voice)
+        {{$voice}}
+        <br>
+    @endforeach
+    <br>
+
 </div>
 <p3>operations:</p3>
 <br>
-<br>
 <div>
-    id of word to delete:
-    <input type="text" id='id1'>
-    <button onclick="deleteWord()">delete!</button>
+    <br>
+    current index: {{$index}}
+    <br>
+    <br>
+    number of total words: {{$total}}
+    <br>
+    <br>
+    <button onclick="getPrev()">get previous word</button>
+    <br>
+    <button onclick="getNext()">get next word</button>
     <br>
 </div>
-<br>
-<div>
-    id of word to display:
-    <input type="text" id='id11'>
-    <button onclick="openWord()">open</button>
-    <a hidden="true" href="" id="href-words" target="_blank"></a>
-    <br>
-</div>
-<br>
 
-<div>
-    search by text of a word:
-    <div class="container mt-5">
-        <div classs="form-group">
-            <input type="text" id="search" name="search" placeholder="Search" class="form-control"/>
-        </div>
-        <button onclick="search()">Search!</button>
-    </div>
-
-</div>
-<br>
-
-</body>
 <script>
-    function deleteWord() {
-        let id = document.getElementById('id1').value;
-        let url = "{{route('word.delete' , ['id'=>':id'])}}";
-        url = url.replace(':id', id);
+    function getNext() {
+        let url = "{{route($link_name , ['index' => ':index'])}}";
+        url = url.replace(':index', "{{$index + 1}}");
         window.location.replace(url);
     }
-
-    function openWord() {
-        let id = document.getElementById('id11').value;
-        let url = "{{route('category.delete' , ['id'=>':id'])}}";
-        url = url.replace(':id', id);
-        document.getElementById('href-words').setAttribute('href', url);
-        document.getElementById('href-words').click();
-    }
-
-    function search() {
-        let text = document.getElementById('search').value;
-        window.location.replace("{{route('word.index')}}" + "?search=" + text);
+    function getPrev() {
+        let url = "{{route($link_name  , ['index' => ':index'])}}";
+        url = url.replace(':index', "{{$index - 1}}");
+        window.location.replace(url);
     }
 </script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
-</script>
-<script type="text/javascript">
-    $('#search').typeahead({
-        source: function (query, process) {
-            return $.get("{{ route('word.autocomplete-search') }}", {
-                query: query
-            }, function (data) {
-                var res = [];
-                for (d of data)
-                    res.push(d.title)
-                return process(res);
-            });
-        }
-    });
-
-    $('.search-category').typeahead({
-        source: function (query, process) {
-            return $.get("{{ route('category.autocomplete-search') }}", {
-                query: query
-            }, function (data) {
-                var res = [];
-                for (d of data)
-                    res.push(d.title)
-                return process(res);
-            });
-        }
-    });
-
-
-</script>
 </html>

@@ -37,7 +37,8 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        return view('word_category', ['categories' => $this->getAll($request)]);
+        return view('test', $this->getAll($request, 'categories', 10000));
+//        return view('word_category', ['categories' => $this->getAll($request)]);
     }
 
     public function create(Request $request)
