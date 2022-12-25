@@ -97,6 +97,9 @@ function wordRoutes()
     Route::get($prefix.'-learn/{index}','getLearningWord')
         ->name('word.learn');
 
+    Route::get($prefix.'-review/{index}','getReviewWord')
+        ->name('word.review');
+
     Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
         ->name('word.autocomplete-search');
 }

@@ -103,7 +103,26 @@ class WordController extends Controller
         )->offset($index - 1)->first();
 
 
-        return view('test_one_word', ['word' => $word, 'index' => $index, 'total' => $total]);
+        return view('test_one_word', [
+            'word' => $word,
+            'index' => $index,
+            'total' => $total,
+            'link_name'=>'word.learn',
+        ]);
     }
+    public function getReviewWord($index)
+    {
+        $total = Word::all()->count();
+
+        $word = Word::offset($index - 1)->first();
+
+        return view('test_one_word', [
+            'word' => $word,
+            'index' => $index,
+            'total' => $total,
+            'link_name'=>'word.review',
+        ]);
+    }
+
 
 }

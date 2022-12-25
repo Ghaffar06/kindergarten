@@ -60,12 +60,12 @@
 
 <script>
     function getNext() {
-        let url = "{{route('word.learn' , ['index' => ':index'])}}";
+        let url = "{{route($link_name , ['index' => ':index'])}}";
         url = url.replace(':index', "{{$index + 1}}");
         window.location.replace(url);
     }
     function getPrev() {
-        let url = "{{route('word.learn' , ['index' => ':index'])}}";
+        let url = "{{route($link_name  , ['index' => ':index'])}}";
         url = url.replace(':index', "{{$index - 1}}");
         window.location.replace(url);
     }
