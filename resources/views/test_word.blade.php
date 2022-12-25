@@ -17,6 +17,10 @@
 <body>
 <p1>Category Section!</p1>
 <br>
+<div>
+    all::::
+{{--    {{ $words->links()->next }}--}}
+</div>
 <br>
 
 <div>
@@ -87,6 +91,17 @@
 
         </div>
     @endforeach
+
+    <p2>
+        pagination:
+    </p2>
+    <br>
+    current page: {{$paginate_words_page}}
+    <br>
+    last page: {{$paginate_words_last_page}}
+    <br>
+
+
 </div>
 <p3>operations:</p3>
 <br>
