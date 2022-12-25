@@ -15,7 +15,7 @@ class ReportController extends Controller
             'message' => 'required',
             'title' => 'required',
         ]);
-        $report = new Report(request()->all());
+        $report = new Report($request->all());
         $report->handled = 'N';
         $user = User::findOrFail($request->user()->id);
         $user->reports()->save($report);
@@ -33,5 +33,10 @@ class ReportController extends Controller
     public function index()
     {
         return view('report.index');
+    }
+
+    public function viewReport(Report $report)
+    {
+        return view('report.single_report', ['report' => $report]);
     }
 }
