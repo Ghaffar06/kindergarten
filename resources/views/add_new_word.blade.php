@@ -228,36 +228,11 @@
         </div>
     </div>
 
-    @error('text')
-    <br>
-    <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-    @error('score')
-    <br>
-    <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-    @error('image1')
-    <br>
-    <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-    @error('voice1')
-    <br>
-    <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-    @error('category1')
-    <br>
-    <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
+
+
+
+
+
 
     <!-- End Bradcaump area -->
     <section class="htc__checkout bg--white section-padding--lg">
@@ -281,19 +256,31 @@
                                                 <li hidden class="active" data-form="checkout-login-form">Login</li>
                                             </ul>
 
-                                            <div action="#" class="checkout-login-form">
+                                            <div class="checkout-login-form">
                                                 <div class="row">
                                                     <div class="input-box col-md-6 col-12 mb--20">
                                                         <label for="word_text">
                                                             Word Text:
                                                             <input id="word_text" type="text" maxlength="26" name="text" placeholder="less than 26 character">
                                                         </label>
+                                                        @error('text')
+                                                        <br>
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
                                                     </div>
                                                     <div class="input-box col-md-6 col-12 mb--20">
                                                         <label for="score">
                                                             Score:
                                                             <input id="score" type="number" min="1" max="100" name='score' style="max-width: 125%; width: 125%" placeholder="between 1 and 100">
                                                         </label>
+                                                        @error('score')
+                                                        <br>
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -336,6 +323,12 @@
                                                                      <option value="{{$categories[$index - 1]->id}}">{{$categories[$index - 1]->title}}</option>
                                                                  @endfor
                                                             </select>
+                                                            @error('image1')
+                                                            <br>
+                                                            <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -360,6 +353,12 @@
                                             <div class="col-12" id="all_photo_selector">
                                                 <div class="col-12 d-flex justify-content-between align-items-center"
                                                      style="margin-bottom: 30px">
+                                                    @error('voice1')
+                                                    <br>
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -382,6 +381,12 @@
                                             <div class="col-12" id="all_audio_selector">
                                                 <div class="col-12 d-flex justify-content-between align-items-center"
                                                      style="margin-bottom: 30px">
+                                                    @error('category1')
+                                                    <br>
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
