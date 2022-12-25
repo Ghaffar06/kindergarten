@@ -469,6 +469,7 @@
             container.removeClass('is-visible');
         });
     }
+
     popupForm('cate-trigger', 'cate-wrapper');
     popupForm('login-trigger', 'login-wrapper');
     popupForm('accountbox-trigger', 'accountbox-wrapper');

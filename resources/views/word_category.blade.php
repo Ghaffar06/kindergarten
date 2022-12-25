@@ -153,7 +153,8 @@
                             <input type="text" placeholder="description">
                         </div>
                         <div class="single-input">
-                            <input class="" type="file" accept="image/png, image/jpeg" placeholder="photo" id="file_input">
+                            <input class="" type="file" accept="image/png, image/jpeg" placeholder="photo"
+                                   id="file_input">
                         </div>
                         <div class="single-input text-center">
                             <button type="submit" class="sign__btn">SUBMIT</button>

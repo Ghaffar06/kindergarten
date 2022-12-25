@@ -99,7 +99,6 @@ function wordRoutes()
 }
 
 
-
 function reportRoutes()
 {
     $prefix = '/report';

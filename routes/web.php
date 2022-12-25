@@ -3,7 +3,6 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
-use App\Models\Report;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -94,13 +93,12 @@ function wordRoutes()
     Route::get($prefix, 'index')
         ->name('word.index');
 
-    Route::get($prefix.'/{id}','getLearningWord')
+    Route::get($prefix . '/{id}', 'getLearningWord')
         ->name('word.learn');
 
     Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
         ->name('word.autocomplete-search');
 }
-
 
 
 function reportRoutes()

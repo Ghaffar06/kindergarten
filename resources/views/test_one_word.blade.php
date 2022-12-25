@@ -70,15 +70,16 @@ previous??
 <script>
     function getNext() {
         let id = "{{$word->id}}";
-        let url = "{{route('word.learn' , ['category'=>':category' , 'id'=>':id'])}}?query=1" ;
+        let url = "{{route('word.learn' , ['category'=>':category' , 'id'=>':id'])}}?query=1";
         url = url.replace(':id', id);
         url = url.replace(':category', "{{$category}}");
         if ("{{$nextable}}")
             window.location.replace(url);
     }
+
     function getPrev() {
         let id = "{{$word->id}}";
-        let url = "{{route('word.learn' , ['category'=>':category' , 'id'=>':id'])}}?query=-1" ;
+        let url = "{{route('word.learn' , ['category'=>':category' , 'id'=>':id'])}}?query=-1";
         url = url.replace(':id', id);
         url = url.replace(':category', "{{$category}}");
         if ("{{$previousable}}")

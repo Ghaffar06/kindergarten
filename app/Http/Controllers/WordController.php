@@ -27,7 +27,7 @@ class WordController extends Controller
 
     public function index($category, Request $request)
     {
-        $all = $this->getAll($request, 'words', 10 , $this->getQueryWords($category) );
+        $all = $this->getAll($request, 'words', 10, $this->getQueryWords($category));
         $child_id = 1;
         if ($child_id != -1) {
             foreach ($all['words'] as $word) {
@@ -38,7 +38,19 @@ class WordController extends Controller
                     ) > 0;
             }
         }
-        return view('test_word', array_merge($all, ['category'=>$category]));
+        return view('test_word', array_merge($all, ['category' => $category]));
+    }
+
+    private function getQueryWords($category)
+    {
+
+        $category_id = Category::where('title', '=', $category)->first('id')['id'];
+        return Word::whereIn('id',
+            WordCategory::select('word_id')
+                ->where('category_id', '=', $category_id)
+                ->get()
+                ->toArray()
+        );
     }
 
     public function create(Request $request)
@@ -90,39 +102,29 @@ class WordController extends Controller
     {
         $child_id = 1;
         $direction = $request->get('query') !== null ? $request->get('query') : 0;
-        $query = $this->getNotLearned($this->getQueryWords($category), $direction != 0) ;
+        $query = $this->getNotLearned($this->getQueryWords($category), $direction != 0);
         $word = $query->orderBy('id', $direction < 0 ? 'desc' : 'asc')
-            ->where('id', $direction == 1 ? '>' :( $direction == -1 ? '<' : '='), $id)
+            ->where('id', $direction == 1 ? '>' : ($direction == -1 ? '<' : '='), $id)
             ->first();
 
 
         return view('test_one_word', [
             'word' => $word,
             'nextable' => $this->checkWord(
-                $this->getNotLearned($this->getQueryWords($category), $child_id ),
+                $this->getNotLearned($this->getQueryWords($category), $child_id),
                 $word->id,
                 1),
             'previousable' => $this->checkWord(
-                $this->getNotLearned($this->getQueryWords($category) , $child_id),
+                $this->getNotLearned($this->getQueryWords($category), $child_id),
                 $word->id,
                 -1),
             'category' => $category,
         ]);
     }
 
-    private function getQueryWords($category) {
-
-        $category_id = Category::where('title', '=', $category)->first('id')['id'];
-        return Word::whereIn('id',
-            WordCategory::select('word_id')
-                ->where('category_id', '=', $category_id)
-                ->get()
-                ->toArray()
-        );
-    }
-
-    private function getNotLearned($query, $child_id , $flag = true) {
-        if (! $flag)
+    private function getNotLearned($query, $child_id, $flag = true)
+    {
+        if (!$flag)
             return $query;
         return $query->whereNotIn(
             'id',
@@ -136,10 +138,10 @@ class WordController extends Controller
     private function checkWord($query, $id, $direction)
     {
         return count(
-            $query->orderBy('id', $direction < 0 ? 'desc' : 'asc')
-                ->where('id', $direction == 1 ? '>' : ($direction == -1 ? '<' : '='), $id)
-                ->get()
-        ) > 0 ;
+                $query->orderBy('id', $direction < 0 ? 'desc' : 'asc')
+                    ->where('id', $direction == 1 ? '>' : ($direction == -1 ? '<' : '='), $id)
+                    ->get()
+            ) > 0;
     }
 
 

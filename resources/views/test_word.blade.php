@@ -44,35 +44,35 @@
     @enderror
 
 
-{{--    <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">--}}
-        @csrf
-        <label for="text">text: </label>
-        <input type="text" name="text">
-        <br>
-        <label for="score">score: </label>
-        <input type="text" name="score">
-        <br>
-        <label for="category1">category1: </label>
-        <input type="text" name="category1" class="search-category">
-        <br>
-        <label for="category2">category2: </label>
-        <input type="text" name="category2" class="search-category">
-        <br>
-        <label for="image1">image1: </label>
-        <input type="file" name="image1">
-        <br>
-        <label for="image2">image2: </label>
-        <input type="file" name="image2">
-        <br>
-        <label for="voice1">voice1: </label>
-        <input type="file" name="voice1">
-        <br>
-        <label for="voice2">voice2: </label>
-        <input type="file" name="voice2">
-        <br>
+    {{--    <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">--}}
+    @csrf
+    <label for="text">text: </label>
+    <input type="text" name="text">
+    <br>
+    <label for="score">score: </label>
+    <input type="text" name="score">
+    <br>
+    <label for="category1">category1: </label>
+    <input type="text" name="category1" class="search-category">
+    <br>
+    <label for="category2">category2: </label>
+    <input type="text" name="category2" class="search-category">
+    <br>
+    <label for="image1">image1: </label>
+    <input type="file" name="image1">
+    <br>
+    <label for="image2">image2: </label>
+    <input type="file" name="image2">
+    <br>
+    <label for="voice1">voice1: </label>
+    <input type="file" name="voice1">
+    <br>
+    <label for="voice2">voice2: </label>
+    <input type="file" name="voice2">
+    <br>
 
-        <button type="submit">Submit</button>
-        <br>
+    <button type="submit">Submit</button>
+    <br>
     </form>
 </div>
 <br>

@@ -3,7 +3,6 @@
 
 namespace App\Http\Controllers\Traits;
 
-use http\QueryString;
 use Illuminate\Http\Request;
 
 trait HasList
@@ -18,12 +17,12 @@ trait HasList
         } else {
             $query = $query->where($this->mainColumn, 'LIKE', '%' . $param . '%');
         }
-        $max = max((integer) ((count($query->get()) + $count - 1) / $count), 1) ;
-        $page = min($page, $max) ;
+        $max = max((integer)((count($query->get()) + $count - 1) / $count), 1);
+        $page = min($page, $max);
         return [
             $key => $query->limit($count)->offset($offset)->get(),
-            'paginate_' . $key . '_page'=> $page ,
-            'paginate_' . $key . '_last_page'=>  $max,
+            'paginate_' . $key . '_page' => $page,
+            'paginate_' . $key . '_last_page' => $max,
         ];
     }
 }
