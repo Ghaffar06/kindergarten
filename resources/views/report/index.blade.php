@@ -14,13 +14,12 @@
         @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
         <div class="row mt--80">
             <div class="col-lg-12">
                 <div class="contact-form-wrap">
-                    <form id="contact-form" action="{{ route('report.add')}}" method="post">
+                    <form action="{{ route('report.add')}}" method="POST">
                         @csrf
                         <div class="single-contact-form name">
                             <input type="text" name="title" placeholder="Report Title">
