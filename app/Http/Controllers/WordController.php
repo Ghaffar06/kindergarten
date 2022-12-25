@@ -25,7 +25,7 @@ class WordController extends Controller
 
     public function index(Request $request)
     {
-        $all = $this->getAll($request , 'words' , 2);
+        $all = $this->getAll($request, 'words', 2);
         $child_id = -1;
         if ($child_id != -1) {
             foreach ($all['words'] as $word) {
@@ -83,4 +83,27 @@ class WordController extends Controller
         $word->save();
         return $word;
     }
+
+    public function getLearningWord($index)
+    {
+        $child_id = 1;
+
+        $total = Word::whereNotIn(
+            'id',
+            ChildWord::select('word_id')
+                ->where('user_id', '=', $child_id)
+                ->get()->toArray()
+        )->count();
+
+        $word = Word::whereNotIn(
+            'id',
+            ChildWord::select('word_id')
+                ->where('user_id', '=', $child_id)
+                ->get()->toArray()
+        )->offset($index - 1)->first();
+
+
+        return view('test_one_word', ['word' => $word, 'index' => $index, 'total' => $total]);
+    }
+
 }

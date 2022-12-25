@@ -85,6 +85,9 @@ function wordRoutes()
     Route::get($prefix . '/del/{id}', 'delete')
         ->name('word.delete');
 
+    Route::get($prefix.'-learn/{index}','getLearningWord')
+        ->name('word.learn');
+
     Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
         ->name('word.autocomplete-search');
 }
