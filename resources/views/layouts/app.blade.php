@@ -63,14 +63,15 @@
                                     <li><a class="accountbox-trigger" href="{{route("register form")}}">Register</a></li>
                                     @else
                                     <li><a href="#">{{Auth::user()->name}}</a></li>
-                                    <li><a  href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                            {{ __('Logout') }}
+                                        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
                                     @endguest
                                 </ul>
                             </div>
@@ -346,7 +347,7 @@
                 </div>
             </div>
         </footer>
-        
+
 
         <script>
             let role = 'student';
@@ -471,6 +472,53 @@
                 <div class="accountbox__inner">
                     <h4>Login to Continue</h4>
                     <div class="accountbox__login">
+
+
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+
+                            <div class="row mb-3">
+                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                                <div class="single-input">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                                <div class="single-input">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="single-input text-center">
+                                <div class="single-input text-center">
+                                    <button type="submit" class="sign__btn">
+                                        {{ __('Login') }}
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+
+<!-- 
+
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="single-input">
@@ -483,7 +531,7 @@
                                 <button type="submit" class="sign__btn">SUBMIT</button>
                             </div>
 
-                        </form>
+                        </form> -->
                     </div>
                     <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
                 </div>
