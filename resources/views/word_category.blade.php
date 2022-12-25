@@ -73,6 +73,12 @@
         </div>
     </section>
     <!-- End Subscribe Area -->
+    <script>
+        function delete_category(id) {
+            alert(id);
+        }
+    </script>
+
     <!-- Start Blog Area -->
     <section class="dcare__blog__area section-padding--lg bg--white">
         <div class="container">
@@ -100,7 +106,11 @@
                                     </div>
                                     <div class="blog__btn">
                                         <a class="bl__btn" href="blog-details.html">Start Learning</a>
-                                        <a class="bl__share__btn" href="#"><i class="fa fa-share-alt"></i></a>
+                                        <a class="bl__share__btn">
+                                            <span onclick="delete_category('{{$category->id}}')">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -143,16 +153,7 @@
                             <input type="text" placeholder="description">
                         </div>
                         <div class="single-input">
-                            <input class="dcare__btn" type="file" placeholder="photo" id="file_input"
-                                   onchange="updateImg('photo_container', 'file_input')">
-                            <div class="dcare__btn" onclick="deleteImg('photo_container');
-                                    document.getElementById('file_input').value = null">
-                                clear image
-                            </div>
-                        </div>
-
-                        <div id="photo_container">
-                            <img src = "{{asset('images/default.jpg')}}" width="200px" height="200px">
+                            <input class="" type="file" accept="image/png, image/jpeg" placeholder="photo" id="file_input">
                         </div>
                         <div class="single-input text-center">
                             <button type="submit" class="sign__btn">SUBMIT</button>

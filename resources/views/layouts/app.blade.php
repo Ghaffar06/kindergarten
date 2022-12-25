@@ -127,16 +127,7 @@
         <!-- End Mainmenu Area -->
     </header>
     <!-- //Header -->
-    <script>
-        function deleteImg(PhotoContainerId) {
-            $("#" + PhotoContainerId + " img").attr('src', {{asset('images/default.jpg')}});
-        }
 
-        function updateImg(photoContainerId, fileInputId) {
-            let files = document.querySelector("#" + fileInputId).files;
-            $("#" + photoContainerId + " img").attr('src', URL.createObjectURL(files[0]));
-        }
-    </script>
     <main>
         @yield('content')
     </main>
