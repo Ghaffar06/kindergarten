@@ -13,6 +13,7 @@ use App\Models\WordCategory;
 use App\Models\WordPhoto;
 use App\Models\WordVoiceRecord;
 use Illuminate\Http\Request;
+use Nette\Utils\Random;
 
 class WordController extends Controller
 {
@@ -81,6 +82,22 @@ class WordController extends Controller
         $this->cascadeDelete($request->id);
         $this->saveAttachments($request, $word);
         return back()->with('success', 'word added successfully');
+    }
+
+    public function generateTest($category) {
+        $child_id = 1 ;
+        $x = 10 ;
+        $wordsF = shuffle($this->getNotLearned($this->getQueryWords($category), $child_id)->limit($x)->get()) ;
+        $wordsT = shuffle($this->getLearned($this->getQueryWords($category), $child_id)->get()) ;
+        $voiceQuestions = [];
+        foreach ($wordsF as $word) {
+            $keyVoice = array_rand($word->wordVoiceRecords);
+            $voiceQuestions[] = [
+                'text' =>$word->text,
+                'voice'=>$word->wordVoiceRecords[$keyVoice],
+            ];
+        }
+        return view('test_word_test' , ['voiceQuestions' => $voiceQuestions]);
     }
 
     private function saveAttachments(Request $request, $word) {
@@ -152,6 +169,17 @@ class WordController extends Controller
                 ->toArray()
         );
     }
+    private function getLearned($query, $child_id)
+    {
+        return $query->whereIn(
+            'id',
+            ChildWord::select('word_id')
+                ->where('user_id', '=', $child_id)
+                ->get()
+                ->toArray()
+        );
+    }
+
 
     private function checkWord($query, $id, $direction)
     {
