@@ -228,6 +228,36 @@
         </div>
     </div>
 
+    @error('text')
+    <br>
+    <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+    @error('score')
+    <br>
+    <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+    @error('image1')
+    <br>
+    <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+    @error('voice1')
+    <br>
+    <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+    @error('category1')
+    <br>
+    <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
 
     <!-- End Bradcaump area -->
     <section class="htc__checkout bg--white section-padding--lg">
