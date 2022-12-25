@@ -14,7 +14,7 @@ class ChildArticle extends Model
     protected $fillable = [
         'max_score',
         'article_id',
-        'child_id',
+        'user_id',
     ];
 
     public function child(): BelongsTo

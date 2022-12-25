@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
@@ -26,6 +27,11 @@ Route::controller(CategoryController::class)
 Route::controller(WordController::class)
     ->group(function () {
         wordRoutes();
+    });
+
+Route::controller(ArticleController::class)
+    ->group(function () {
+        articleRoutes();
     });
 
 
@@ -118,8 +124,33 @@ function reportRoutes()
 
     Route::get($prefix . '/handle/{id}', 'handleReport')
         ->name('report.handle');
-    
+
     Route::get($prefix . '/view/{id}', 'viewReport')
         ->name('report.view');
 
+}
+
+
+
+function articleRoutes()
+{
+    $prefix = '/article';
+
+    Route::get($prefix, 'index')
+        ->name('article.index');
+
+    Route::get($prefix . '/{id}', 'getArticle')
+        ->name('article.single_article');
+
+    Route::post($prefix . '/{id}', 'validateArticle')
+        ->name('article.single_article_validate');
+
+    Route::post($prefix, 'create')
+        ->name('article.add');
+
+    Route::get($prefix . '/del/{id}', 'delete')
+        ->name('article.delete');
+
+    Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
+        ->name('article.autocomplete-search');
 }
