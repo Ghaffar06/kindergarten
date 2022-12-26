@@ -13,6 +13,5 @@ class LetterPhoto extends Model
     protected $fillable = [
         'url',
         'letter',
-        'is_small',
     ];
 }
