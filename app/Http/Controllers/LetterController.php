@@ -36,7 +36,7 @@ class LetterController extends Controller
     }
 
     public function index2(){
-        return view('test_list_letters') ;
+        return view('letters') ;
     }
 
     public function create($letter, Request $request)
