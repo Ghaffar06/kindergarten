@@ -23,11 +23,16 @@ class LetterController extends Controller
         if (! ctype_alpha($letter) || strlen($letter) != 1)
             abort(404);
 
-        return view('test_one_letter', [
+        return view('single_letter', [
             'letter' => $letter,
             'photos' => LetterPhoto::whereRaw("BINARY `letter`= ?", [$letter])
-                    ->get(),
+                ->get(),
         ]);
+//        return view('test_one_letter', [
+//            'letter' => $letter,
+//            'photos' => LetterPhoto::whereRaw("BINARY `letter`= ?", [$letter])
+//                ->get(),
+//        ]);
     }
 
     public function index2(){
