@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Child;
 use App\Models\Event;
 use App\Models\EventSubscription;
 use Carbon\Carbon;
@@ -22,8 +23,9 @@ class EventController extends Controller
         $event = new Event;
         $event->title = $request->title;
         $event->text = $request->text;
+        $event->save();
         $admin = Admin::findOrFail($request->user()->id);
-        $admin->reports()->save($event);
+        $admin->events()->save($event);
 
         return back()->with('success', 'your event was created!');
     }
@@ -33,8 +35,14 @@ class EventController extends Controller
         $eventSubscription = new EventSubscription;
         $eventSubscription->child_id = Auth::user()->id;
         $eventSubscription->event_id = $event;
-        $eventSubscription->date_sub = Carbon::now();
         $eventSubscription->save();
+        Event::findOrFail($event)
+            ->eventSubscriptions()
+            ->save($eventSubscription);
+        Child::findOrFail(Auth::user()->id)
+            ->eventSubscriptions()
+            ->save($eventSubscription);
+
         return back()->with('success', 'You have subscribed the event successfully!');
     }
 
