@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-        <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
     <!-- Start Bradcaump area -->
     <div class="ht__bradcaump__area">
         <div class="ht__bradcaump__container">
-{{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
+            {{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
             <div style="max-width:1918px;width: 1918px"></div>
             <div class="container">
                 <div class="row">
@@ -48,7 +48,8 @@
                             <div>
                                 <h2><i class="fa fa-play"></i> Check the Correct Answers</h2>
                                 <br><br>
-                                <form action="{{route('article.single_article_validate' , ['id'=>$article->id])}}" method="post">
+                                <form action="{{route('article.single_article_validate' , ['id'=>$article->id])}}"
+                                      method="post">
                                     @csrf
                                     @foreach($article->articleQuestions as $question)
                                         <div class="col-6">
@@ -68,7 +69,7 @@
                                                         <input type="checkbox" name="{{$question->id}}">
                                                     </li>
                                                 @endif
-                                                </div>
+                                            </div>
                                         </div>
                                         <br>
                                     @endforeach
@@ -78,11 +79,13 @@
 
                                     <div class="d-flex justify-content-around align-items-center">
                                         <h3>
-                                            Your Current Max Score =  {{(($article-> max_score != 0)?($article-> last_score):'0').'%'}}<br><br>
+                                            Your Current Max Score
+                                            = {{(($article-> max_score != 0)?($article-> last_score):'0').'%'}}<br><br>
                                             {{(($article-> last_score !== null)?('Your Current last Score = '. $article-> last_score.'%'):'')}}
                                         </h3>
                                         <div style="max-width: 50%; width: 50%"></div>
-                                        <input class="dcare__btn mt--40" type="submit" value="Submit" style="background-color: #1AB7EA !important;">
+                                        <input class="dcare__btn mt--40" type="submit" value="Submit"
+                                               style="background-color: #1AB7EA !important;">
                                     </div>
                                 </form>
                             </div>

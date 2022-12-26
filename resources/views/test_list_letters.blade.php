@@ -25,5 +25,5 @@
         <button onclick="window.location.replace('{{route('letter.index' , ['letter' => $c])}}')">{{$c}}</button>
     @endfor
 </div>
-
+</body>
 </html>

@@ -11,10 +11,10 @@ class CreateLettersGameTable extends Migration
         Schema::create('letters_game', function (Blueprint $table) {
 
             $table->id();
-            $table->integer('level',);
+            $table->integer('level');
             $table->string('letter', 1);
-            $table->integer('correct',);
-            $table->integer('wrong',);
+            $table->integer('correct');
+            $table->integer('wrong');
 
 
         });

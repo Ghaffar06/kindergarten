@@ -11,7 +11,7 @@ class CreateChildArticleTable extends Migration
         Schema::create('child_article', function (Blueprint $table) {
 
             $table->id();
-            $table->integer('max_score',);
+            $table->integer('max_score');
             $table->integer('user_id');
             $table->integer('article_id');
             $table->timestamps();

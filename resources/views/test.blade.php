@@ -82,7 +82,7 @@
     id of category to display:
     <input type="text" id='id11'>
     <button onclick="openCategory()">open</button>
-    <a hidden="true" href="" id="href-words" target="_blank"></a>
+    <a hidden href="" id="href-words" target="_blank"></a>
     <br>
 </div>
 <br>
@@ -90,7 +90,7 @@
 <div>
     search by title of a category:
     <div class="container mt-5">
-        <div classs="form-group">
+        <div class="form-group">
             <input type="text" id="search" name="search" placeholder="Search" class="form-control"/>
         </div>
         <button onclick="search()">Search!</button>
@@ -126,14 +126,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
 </script>
 <script type="text/javascript">
-    var route = "{{ route('category.autocomplete-search') }}";
+    let route = "{{ route('category.autocomplete-search') }}";
     $('#search').typeahead({
         source: function (query, process) {
             return $.get(route, {
                 query: query
             }, function (data) {
-                var res = [];
-                for (d of data)
+                let res = [];
+                for (let d of data)
                     res.push(d.title)
                 return process(res);
             });

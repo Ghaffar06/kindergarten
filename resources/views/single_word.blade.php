@@ -11,7 +11,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Word</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">CATEGORY NAME</a>
+                                <a class="breadcrumb-item">CATEGORY NAME</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">Word</span>
@@ -68,10 +68,10 @@
                             </div>
                             <div class="row d-flex justify-content-between">
                                 <div class="wel__btn">
-                                    <a class="dcare__btn" href="about-us.html">Privous Word</a>
+                                    <a class="dcare__btn">Previous Word</a>
                                 </div>
                                 <div class="wel__btn">
-                                    <a class="dcare__btn" href="about-us.html">Next Word</a>
+                                    <a class="dcare__btn">Next Word</a>
                                 </div>
                             </div>
                         </div>

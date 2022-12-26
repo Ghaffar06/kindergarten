@@ -5,16 +5,17 @@
     <script>
         function reassignment() {
             selected_categories = []
-            $('#all_category_selector').find('select option:selected').each(
+            let all_category_selector = $('#all_category_selector');
+            all_category_selector.find('select option:selected').each(
                 function () {
                     if ($(this).val() !== '0')
                         selected_categories.push({'id': $(this).val(), 'name': $(this).text()})
                 }
             )
 
-            $('#all_category_selector').find('select').each(
+            all_category_selector.find('select').each(
                 function () {
-                    let id = $(this).find('option:selected').val();
+                    let id = $(this).find('option:selected').val().toInteger;
                     $(this).children().remove();
                     $(this).append(
                         $('<option/>', {
@@ -24,17 +25,17 @@
                     for (let c of categories) {
                         let ok = true;
                         for (let sc of selected_categories) {
-                            if (sc['id'] == c['id']) {
+                            if (sc['id'] === c['id']) {
                                 ok = false;
                             }
                         }
-                        if (id == c['id'])
+                        if (id === c['id'])
                             ok = true;
                         if (ok) {
                             $(this).append(
                                 $('<option/>', {
                                     'value': c['id'],
-                                    'selected': (id == c['id'])
+                                    'selected': (id === c['id'])
                                 }).text(c['name'])
                             );
                         }
@@ -176,7 +177,7 @@
             $('#all_category_selector')
                 .find('select option:selected')
                 .each(function () {
-                    if ($(this).val() != 0) {
+                    if ($(this).val() !== '0') {
                         $(this).val($(this).text())
                         $(this).parent().attr('name', 'category' + (++index))
                     }
@@ -185,7 +186,7 @@
             $('#all_photo_selector')
                 .find('input')
                 .each(function () {
-                    if ($(this).val() != '') {
+                    if ($(this).val() !== '') {
                         $(this).attr('name', 'image' + (++index))
                     }
                 });
@@ -193,7 +194,7 @@
             $('#all_audio_selector')
                 .find('input')
                 .each(function () {
-                    if ($(this).val() != '') {
+                    if ($(this).val() !== '') {
                         $(this).attr('name', 'voice' + (++index))
                     }
                 });
@@ -218,7 +219,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Add New Word</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">Word's Category</a>
+                                <a class="breadcrumb-item">Word's Category</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">Add New Word</span>
@@ -245,7 +246,8 @@
                     <div class="col-lg-12 col-12 mb-30">
                         <!-- Checkout Accordion Start -->
                         <div id="checkout-accordion">
-                            <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data" id="add-word">
+                            <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data"
+                                  id="add-word">
                                 @csrf
                                 <!-- Checkout Method -->
                                 <div class="single-accordion">

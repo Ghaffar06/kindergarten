@@ -13,7 +13,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Word's Category</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">Home</a>
+                                <a class="breadcrumb-item">Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">Word's Category</span>
@@ -90,14 +90,14 @@
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="blog__2">
                             <div class="blog__thumb">
-                                <a href="blog-details.html">
+                                <a>
                                     <img src="{{asset($category->url)}}" height="304" width="370"
                                          alt="blog images">
                                 </a>
                             </div>
                             <div class="blog__inner">
                                 <div class="blog__hover__inner">
-                                    <h2><a href="blog-details.html">{{$category->title}}</a></h2>
+                                    <h2><a>{{$category->title}}</a></h2>
                                     <div class="bl__meta">
                                         <p>{{$category->created_at}}</p>
                                     </div>
@@ -105,7 +105,7 @@
                                         <p>{{$category->description}}</p>
                                     </div>
                                     <div class="blog__btn">
-                                        <a class="bl__btn" href="blog-details.html">Start Learning</a>
+                                        <a class="bl__btn">Start Learning</a>
                                         <a class="bl__share__btn">
                                             <span onclick="delete_category('{{$category->id}}')">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -194,8 +194,8 @@
                 return $.get(route, {
                     query: query
                 }, function (data) {
-                    var res = [];
-                    for (d of data)
+                    let res = [];
+                    for (let d of data)
                         res.push(d.title)
                     return process(res);
                 });

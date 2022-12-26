@@ -8,7 +8,7 @@ use Illuminate\Http\UploadedFile;
 
 trait SaveFile
 {
-    public function saveFile(UploadedFile $file, $path, $name)
+    public function saveFile(UploadedFile $file, $path, $name): string
     {
         $url = $name . time() . '.' . $file->extension();
         $file->move(public_path($path), $url);

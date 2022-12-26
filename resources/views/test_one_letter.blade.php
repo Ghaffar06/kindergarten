@@ -56,5 +56,5 @@
         window.location.replace(url);
     }
 </script>
-
+</body>
 </html>
