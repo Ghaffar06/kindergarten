@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
@@ -8,6 +10,7 @@ use App\Http\Controllers\Traits\HasList;
 use App\Http\Controllers\Traits\SaveFile;
 use App\Models\Category;
 use App\Models\WordCategory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -20,9 +23,9 @@ class CategoryController extends Controller
     private $model = Category::class;
     private $mainColumn = 'title';
 
-    public static function addWord($word, $title)
+    public static function addWord($word, $title): bool
     {
-        $category = Category::where('title', $title)->first();
+        $category = (new Category)->where('title', $title)->first();
         if (!$category)
             return false;
         $wordCategory = new WordCategory([
@@ -41,7 +44,7 @@ class CategoryController extends Controller
         return view('word_category',  $this->getAll($request, 'categories', 10000));
     }
 
-    public function create(Request $request)
+    public function create(Request $request): RedirectResponse
     {
         $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',

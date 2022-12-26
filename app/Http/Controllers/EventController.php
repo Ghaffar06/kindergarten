@@ -3,39 +3,58 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Child;
 use App\Models\Event;
 use App\Models\EventSubscription;
-use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
     //
-    public function create(Request $request)
+    public function create(Request $request): RedirectResponse
     {
         $request->validate([
             'text' => ['required', 'string'],
             'title' => ['required', 'string'],
             'event_date' => ['required'],
+            'level' => ['required'],
         ]);
-        $event = new Event;
-        $event->title = $request->title;
-        $event->text = $request->text;
-        $admin = Admin::findOrFail($request->user()->id);
-        $admin->reports()->save($event);
+        $event = new Event(array_merge(
+            request()->all(),
+            ['admin_id' => $request->user()->id]
+        ));
+
+        $event->save();
+        (new Admin)->findOrFail($request->user()->id)
+            ->events()
+            ->save($event);
 
         return back()->with('success', 'your event was created!');
     }
 
-    public function signToEvent($event)
+    public function signToEvent(Event $event): RedirectResponse
     {
-        $eventSubscription = new EventSubscription;
-        $eventSubscription->child_id = Auth::user()->id;
-        $eventSubscription->event_id = $event;
-        $eventSubscription->date_sub = Carbon::now();
+        $eventSubscription = new EventSubscription([
+            'event_id' => $event->id,
+            'child_id' => Auth::user()->id,
+        ]);
         $eventSubscription->save();
+
+        $event->eventSubscriptions()
+            ->save($eventSubscription);
+        (new Child)->findOrFail(Auth::user()->id)
+            ->eventSubscriptions()
+            ->save($eventSubscription);
+
         return back()->with('success', 'You have subscribed the event successfully!');
+    }
+
+    public function signOutEvent(EventSubscription $eventSubscription): RedirectResponse
+    {
+        $eventSubscription->delete();
+        return back()->with('success', 'You have unsubscribed the event successfully!');
     }
 
     public function index()

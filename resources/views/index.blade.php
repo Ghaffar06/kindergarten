@@ -28,12 +28,11 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="slider__area bg-pngimage--1  d-flex fullscreen justify-content-start align-items-center">
+        <div class="slider__area bg-pngimage--1  d-flex fullscreen justify-content-start align-items-center">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="slider__activation">
-                            Start Single Slide
                             <div class="slide">
                                 <div class="slide__inner">
                                     <h1>Play & learn How to</h1>
@@ -45,12 +44,11 @@
                                     </div>
                                 </div>
                             </div>
-                            End Single Slide
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
     <!-- End Slider Area -->
 
@@ -75,7 +73,7 @@
                             aborum. Sed ut perspiciatis unde omnis iste natus error svolupt accu doloremque laudantium,
                             totam rem.</p>
                         <div class="wel__btn">
-                            <a class="dcare__btn" href="about-us.html">Read More</a>
+                            <a class="dcare__btn">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +150,7 @@
                             <img src="{{asset('images/shape/sm-icon/4.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="service.html">Game Time</a></h6>
+                            <h6><a>Game Time</a></h6>
                             <p>learn while playing some amazing mini-games related to education</p>
                             <div class="service__btn">
                                 <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Start Playing</a>
@@ -562,13 +560,13 @@
                             <span>Date : 10th November, 2017</span>
                         </div>
                         <div class="blog__thumb">
-                            <a href="blog-details.html">
+                            <a >
                                 <img src="images/blog/md-img/1.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__inner">
                             <span>Children Blog : Post By Ariana</span>
-                            <h4><a href="blog-details.html">Basic Knowledge About Drawing</a></h4>
+                            <h4><a >Basic Knowledge About Drawing</a></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur ad modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                             <ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                                 <li><a href="#">Comments : 05</a></li>
@@ -585,13 +583,13 @@
                             <span>Date : 10th November, 2017</span>
                         </div>
                         <div class="blog__thumb">
-                            <a href="blog-details.html">
+                            <a >
                                 <img src="images/blog/md-img/2.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__inner">
                             <span>Children Blog : Post By Jonson</span>
-                            <h4><a href="blog-details.html">Study Tour</a></h4>
+                            <h4><a >Study Tour</a></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur ad modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                             <ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                                 <li><a href="#">Comments : 05</a></li>
@@ -608,13 +606,13 @@
                             <span>Date : 10th November, 2017</span>
                         </div>
                         <div class="blog__thumb">
-                            <a href="blog-details.html">
+                            <a >
                                 <img src="images/blog/md-img/3.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__inner">
                             <span>Children Blog : Post By Michel Jack</span>
-                            <h4><a href="blog-details.html">Childrens Day</a></h4>
+                            <h4><a >Childrens Day</a></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur ad modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                             <ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                                 <li><a href="#">Comments : 05</a></li>

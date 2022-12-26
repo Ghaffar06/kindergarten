@@ -12,7 +12,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Home Category</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">Home</a>
+                                <a class="breadcrumb-item">Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">Home Category</span>
@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="product__inner">
                                         <div class="pro__title">
-                                            <h4><a href="shop-single.html">Father {{$index}}</a></h4>
+                                            <h4><a>Father {{$index}}</a></h4>
                                         </div>
                                         <!-- <div class="pro__prize">
                                             <span class="old__prize">$65.00</span>

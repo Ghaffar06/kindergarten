@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
@@ -8,6 +10,7 @@ use App\Http\Controllers\Traits\HasList;
 use App\Models\Article;
 use App\Models\ArticleQuestion;
 use App\Models\ChildArticle;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Session;
 
@@ -28,14 +31,14 @@ class ArticleController extends Controller
         $query = null;
         $onlyMe = $request->get('only_me') !== null && strtolower($request->get('only_me')) === 'true';
         if ($onlyMe && $teacher_id != -1) {
-            $query = Article::where('teacher_id', '=', $teacher_id);
+            $query = (new Article)->where('teacher_id', '=', $teacher_id);
         }
 
         $all = $this->getAll($request, 'articles', 10, $query);
 
         foreach ($all['articles'] as $article) {
             if ($child_id != -1) {
-                $score = ChildArticle::where('article_id', '=', $article->id)
+                $score = (new ChildArticle)->where('article_id', '=', $article->id)
                     ->where('child_id', '=', $child_id)
                     ->first('max_score');
                 if ($score != null)
@@ -48,17 +51,16 @@ class ArticleController extends Controller
         return view('test_articles', $all);
     }
 
-    public function getArticle($id, Request $request)
+    public function getArticle(Article $article)
     {
-        $article = Article::where('id', $id)->first();
         if (Session::get('article') != null)
             $article = Session::get('article');
         return view('test_single_articles', ['article' => $article]);
     }
 
-    public function validateArticle($id, Request $request)
+    public function validateArticle($id, Request $request): RedirectResponse
     {
-        $article = Article::where('id', $id)->first();
+        $article = (new Article)->where('id', $id)->first();
         $child_id = 1;
         $score = 0;
         foreach ($article->articleQuestions as $question) {
@@ -69,7 +71,7 @@ class ArticleController extends Controller
         }
         $score *= 100 / count($article->articleQuestions);
 
-        $childArticle = ChildArticle::where('article_id', '=', $id)
+        $childArticle = (new ChildArticle)->where('article_id', '=', $id)
             ->where('child_id', '=', $child_id)
             ->first();
         if ($childArticle == null)
@@ -83,19 +85,17 @@ class ArticleController extends Controller
         if ($delta > 0) {
             $childArticle->max_score += $delta;
             $childArticle->save();
-            Article::where('id', $id)->first()->childArticles()->save($childArticle);
+            (new Article)->where('id', $id)->first()->childArticles()->save($childArticle);
             // TODO::child should save the result also!.
         }
 
         $article->last_score = $score;
         $article->score = max($score, $article->score);
 
-        return redirect()
-            ->route('article.single_article', ['id' => $id])
-            ->with(['article' => $article]);
+        return back()->with(['article' => $article]);
     }
 
-    public function create(Request $request)
+    public function create(Request $request): RedirectResponse
     {
         $teacher_id = 1;
         $request->validate([
@@ -121,7 +121,7 @@ class ArticleController extends Controller
 
     private function cascadeDelete($id)
     {
-        ArticleQuestion::where('article_id', '=', $id)->delete();
+        (new ArticleQuestion)->where('article_id', '=', $id)->delete();
     }
 
 }

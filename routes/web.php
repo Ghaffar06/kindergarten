@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -52,8 +54,8 @@ Route::get('/mullham/words', function () {
 })->name('words');
 
 
-Route::get('/mullham/add_word', function (\Illuminate\Http\Request $request) {
-    return view('add_new_word', ['categories' => \App\Models\Category::all()]);
+Route::get('/mullham/add_word', function () {
+    return view('add_new_word', ['categories' => Category::all()]);
 })->name('add_new_word');
 
 Route::get('/mullham/single_word', function () {
@@ -68,8 +70,10 @@ Route::get('/mullham/single_letter', function () {
     return view('single_letter');
 })->name('single_letter');
 
-Route::get('/mullham/text', function () {
-    return view('text');
+Route::get('/mullham/article/{article}', function (Article $article) {
+    if (Session::get('article') != null)
+        $article = Session::get('article');
+    return view('text', ['article' => $article]);
 })->name('text');
 
 Route::get('/home', function () {
@@ -79,6 +83,7 @@ Route::get('/home', function () {
 Route::get('/register-form', function () {
     return view('auth.register');
 })->name('register form');
+
 
 Auth::routes();
 
@@ -108,7 +113,7 @@ function categoryRoutes()
 
 function wordRoutes()
 {
-    Route::get('word-create','createForm')
+    Route::get('word-create', 'createForm')
         ->name('word.add-get');
 
     Route::post('word-create', 'create')
@@ -143,10 +148,10 @@ function reportRoutes()
     Route::post($prefix, 'create')
         ->name('report.add');
 
-    Route::get($prefix . '/handle/{id}', 'handleReport')
+    Route::get($prefix . '/handle/{report}', 'handleReport')
         ->name('report.handle');
 
-    Route::get($prefix . '/view/{id}', 'viewReport')
+    Route::get($prefix . '/view/{report}', 'viewReport')
         ->name('report.view');
 
 }
@@ -159,7 +164,7 @@ function articleRoutes()
     Route::get($prefix, 'index')
         ->name('article.index');
 
-    Route::get($prefix . '/{id}', 'getArticle')
+    Route::get($prefix . '/{article}', 'getArticle')
         ->name('article.single_article');
 
     Route::post($prefix . '/{id}', 'validateArticle')
@@ -178,6 +183,14 @@ function articleRoutes()
 function letterRoutes()
 {
 
+    $prefix = '/letter';
+
+    Route::get($prefix, 'index2')
+        ->name('letter.list');
+
+    Route::get($prefix . '/del/{id}', 'delete')
+        ->name('letter.delete');
+
     $prefix = '/letter/{letter}';
     Route::get($prefix, 'index')
         ->name('letter.index');
@@ -185,6 +198,4 @@ function letterRoutes()
     Route::post($prefix, 'create')
         ->name('letter.add');
 
-    Route::get($prefix . '/del/{id}', 'delete')
-        ->name('letter.delete');
 }

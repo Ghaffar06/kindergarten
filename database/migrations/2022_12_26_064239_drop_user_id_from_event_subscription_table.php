@@ -1,10 +1,10 @@
-<?php /** @noinspection PhpMethodParametersCountMismatchInspection */
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddChildIdToChildArticleTable extends Migration
+class DropUserIdFromEventSubscriptionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddChildIdToChildArticleTable extends Migration
      */
     public function up()
     {
-        Schema::table('child_article', function (Blueprint $table) {
-            //
-            $table->integer('child_id');
-
+        Schema::table('event_subscription', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 
@@ -27,10 +25,8 @@ class AddChildIdToChildArticleTable extends Migration
      */
     public function down()
     {
-        Schema::table('child_article', function (Blueprint $table) {
+        Schema::table('event_subscription', function (Blueprint $table) {
             //
-            $table->drop('child_id');
-
         });
     }
 }

@@ -1,15 +1,16 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
 use App\Models\Report;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
     //
-    public function create(Request $request)
+    public function create(Request $request): RedirectResponse
     {
         $request->validate([
             'message' => 'required',
@@ -19,13 +20,15 @@ class ReportController extends Controller
         $report->title = $request->title;
         $report->message = $request->message;
         $report->handled = 'N';
-        $user = User::findOrFail($request->user()->id);
+        $report->user_id = $request->user()->id;
+        $report->save();
+        $user = (new User)->findOrFail($request->user()->id);
         $user->reports()->save($report);
 
         return back()->with('success', 'your report has sent!');
     }
 
-    public function handleReport(Report $report)
+    public function handleReport(Report $report): RedirectResponse
     {
         $report->handled = 'Y';
         $report->save();

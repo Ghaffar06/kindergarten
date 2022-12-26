@@ -12,7 +12,6 @@ class EventSubscription extends Model
 
     protected $table = 'event_subscription';
     protected $fillable = [
-        'date_sub',
         'event_id',
         'child_id',
     ];
