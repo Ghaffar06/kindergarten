@@ -29,7 +29,17 @@
     <section class="bcare__subscribe bg-image--7 subscrive--1">
         <div class="container">
             <div class="row">
-                <div class="position-absolute" style="left: 1100px; top: 25px">
+                <div class="position-absolute" style="left: 5%; top: 25px">
+                    <li>
+                        <a href="{{route('word.add-get')}}">
+                            <div class="dcare__btn align-items-center d-flex">
+                                <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
+                                Add New Word
+                            </div>
+                        </a>
+                    </li>
+                </div>
+                <div class="position-absolute" style="right: 5%; top: 25px">
                     <li>
                         <a class="cate-trigger" href="#">
                             <div class="dcare__btn align-items-center d-flex">
@@ -41,7 +51,7 @@
                 </div>
                 <div class="col-lg-12 col-sm-12 col-lg-12">
                     <div class="subscribe__inner">
-                        <h2>Search for a specifice Category</h2>
+                        <h2>Search for a specific Category</h2>
                         <div class="newsletter__form">
                             <div class="input__box">
                                 <div id="mc_embed_signup">
@@ -145,7 +155,7 @@
     <div class="accountbox">
         <div class="accountbox__inner">
             <h4>Add New Category</h4>
-            
+
             <div class="accountbox__login">
                 <form action="{{route('category.add')}}" method="post" enctype="multipart/form-data">
                     @csrf
