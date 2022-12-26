@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
@@ -12,6 +14,7 @@ use App\Models\Word;
 use App\Models\WordCategory;
 use App\Models\WordPhoto;
 use App\Models\WordVoiceRecord;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class WordController extends Controller
@@ -32,7 +35,7 @@ class WordController extends Controller
         if ($child_id != -1) {
             foreach ($all['words'] as $word) {
                 $word->learned = count(
-                        ChildWord::where('word_id', $word->id)
+                        (new ChildWord)->where('word_id', $word->id)
                             ->where('child_id', $child_id)
                             ->get()
                     ) > 0;
@@ -48,9 +51,9 @@ class WordController extends Controller
     private function getQueryWords($category)
     {
 
-        $category_id = Category::where('title', '=', $category)->first('id')['id'];
-        return Word::whereIn('id',
-            WordCategory::select('word_id')
+        $category_id = (new Category)->where('title', '=', $category)->first('id')['id'];
+        return (new Word)->whereIn('id',
+            (new WordCategory)->select('word_id')
                 ->where('category_id', '=', $category_id)
                 ->get()
                 ->toArray()
@@ -62,7 +65,7 @@ class WordController extends Controller
         return view('add_new_word', ['categories' => Category::all()]);
     }
 
-    public function create(Request $request)
+    public function create(Request $request): RedirectResponse
     {
         $request->validate([
             'text' => 'required',
@@ -112,7 +115,7 @@ class WordController extends Controller
         return $word;
     }
 
-    public function updateWord(Request $request)
+    public function updateWord(Request $request): RedirectResponse
     {
         $request->validate([
             'text' => 'required',
@@ -121,7 +124,7 @@ class WordController extends Controller
             'voice1' => 'required',
             'category1' => 'required',
         ]);
-        $word = Word::where('id', '=', $request->id)->first();
+        $word = (new Word)->where('id', '=', $request->id)->first();
         $this->cascadeDelete($request->id);
         $this->saveAttachments($request, $word);
         return back()->with('success', 'word added successfully');
@@ -129,9 +132,9 @@ class WordController extends Controller
 
     private function cascadeDelete($id)
     {
-        WordCategory::where('word_id', '=', $id)->delete();
-        WordVoiceRecord::where('word_id', '=', $id)->delete();
-        WordCategory::where('word_id', '=', $id)->delete();
+        (new WordCategory)->where('word_id', '=', $id)->delete();
+        (new WordVoiceRecord)->where('word_id', '=', $id)->delete();
+        (new WordCategory)->where('word_id', '=', $id)->delete();
     }
 
     public function generateTest($category)
@@ -193,7 +196,7 @@ class WordController extends Controller
             return $query;
         return $query->whereNotIn(
             'id',
-            ChildWord::select('word_id')
+            (new ChildWord)->select('word_id')
                 ->where('child_id', '=', $child_id)
                 ->get()
                 ->toArray()
@@ -204,7 +207,7 @@ class WordController extends Controller
     {
         return $query->whereIn(
             'id',
-            ChildWord::select('word_id')
+            (new ChildWord)->select('word_id')
                 ->where('child_id', '=', $child_id)
                 ->get()
                 ->toArray()
@@ -235,7 +238,7 @@ class WordController extends Controller
         ]);
     }
 
-    private function checkWord($query, $id, $direction)
+    private function checkWord($query, $id, $direction): bool
     {
         return count(
                 $query->orderBy('id', $direction < 0 ? 'desc' : 'asc')

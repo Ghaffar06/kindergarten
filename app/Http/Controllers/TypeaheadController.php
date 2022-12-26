@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TypeaheadController extends Controller
@@ -13,11 +14,11 @@ class TypeaheadController extends Controller
         return view('welcome');
     }
 
-    public function autocompleteSearch(Request $request)
+    public function autocompleteSearch(Request $request): JsonResponse
     {
         /// 'query' is what the search field contains now , NAME IT CORRECTLY!
         $query = $request->get('query');
-        $filterResult = Category::where('title', 'LIKE', '%' . $query . '%')->get('title');
+        $filterResult = (new Category)->where('title', 'LIKE', '%' . $query . '%')->get('title');
         return response()->json($filterResult);
     }
 }

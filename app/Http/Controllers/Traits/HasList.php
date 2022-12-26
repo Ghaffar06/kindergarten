@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 trait HasList
 {
-    public function getAll(Request $request, $key, $count = 25, $query = null)
+    public function getAll(Request $request, $key, $count = 25, $query = null): array
     {
         $page = $request->get('page') !== null ? $request->get('page') : 1;
         $offset = ($page - 1) * $count;

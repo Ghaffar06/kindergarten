@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
@@ -6,6 +6,7 @@ use App\Http\Controllers\Traits\HasDelete;
 use App\Http\Controllers\Traits\HasList;
 use App\Http\Controllers\Traits\SaveFile;
 use App\Models\LetterPhoto;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class LetterController extends Controller
@@ -17,7 +18,7 @@ class LetterController extends Controller
     private $model = LetterPhoto::class;
     private $mainColumn = 'letter';
 
-    public function index(Request $request, $letter)
+    public function index($letter)
     {
 
         if (!ctype_alpha($letter) || strlen($letter) != 1)
@@ -25,7 +26,7 @@ class LetterController extends Controller
 
         return view('single_letter', [
             'letter' => $letter,
-            'photos' => LetterPhoto::whereRaw("BINARY `letter`= ?", [$letter])
+            'photos' => (new LetterPhoto)->whereRaw("BINARY `letter`= ?", [$letter])
                 ->get(),
         ]);
 //        return view('test_one_letter', [
@@ -40,7 +41,7 @@ class LetterController extends Controller
         return view('letters');
     }
 
-    public function create($letter, Request $request)
+    public function create($letter, Request $request): RedirectResponse
     {
         $request->validate([
             'image' => 'required',
