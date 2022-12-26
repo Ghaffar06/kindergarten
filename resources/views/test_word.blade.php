@@ -42,9 +42,7 @@
 {{--            <strong>{{ $message }}</strong>--}}
         </span>
     @enderror
-
-
-    {{--    <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">--}}
+    <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">
     @csrf
     <label for="text">text: </label>
     <input type="text" name="text">
