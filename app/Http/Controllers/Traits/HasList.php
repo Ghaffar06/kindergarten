@@ -11,8 +11,8 @@ trait HasList
     {
         $page = $request->get('page') !== null ? $request->get('page') : 1;
         $offset = ($page - 1) * $count;
-        $query1 = $this->__getAll($request, $key, $count, $query) ;
-        $query2 = $this->__getAll($request, $key, $count, $query) ;
+        $query1 = $this->__getAll($request, $key, $count, $query);
+        $query2 = $this->__getAll($request, $key, $count, $query);
 
         $max = max((integer)((count($query1->get()) + $count - 1) / $count), 1);
         $page = min($page, $max);
@@ -22,7 +22,9 @@ trait HasList
             'paginate_' . $key . '_last_page' => $max,
         ];
     }
-    private function __getAll(Request $request, $key, $count , $query) {
+
+    private function __getAll(Request $request, $key, $count, $query)
+    {
         $param = $request->get('search') !== null ? $request->get('search') : '';
         if ($query == null) {
             $query = $this->model::where($this->mainColumn, 'LIKE', '%' . $param . '%');

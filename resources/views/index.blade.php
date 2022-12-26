@@ -121,7 +121,8 @@
                             <h6><a href="{{route('word_category')}}">Word Class</a></h6>
                             <p>Learning more and more english words with the ability to chose certain word-group</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="{{route('word_category')}}">Discover Categories</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn"
+                                   href="{{route('word_category')}}">Discover Categories</a>
                             </div>
                         </div>
                     </div>

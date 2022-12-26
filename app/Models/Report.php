@@ -18,7 +18,6 @@ class Report extends Model
         'user_id',
     ];
 
-  
 
     public function user(): BelongsTo
     {

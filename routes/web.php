@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
 use Illuminate\Support\Facades\Auth;
@@ -18,11 +19,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::controller(LetterController::class)
+    ->group(function () {
+        letterRoutes();
+    });
+
 Route::controller(CategoryController::class)
     ->group(function () {
         categoryRoutes();
     });
-
 
 Route::controller(WordController::class)
     ->group(function () {
@@ -40,7 +45,7 @@ Route::controller(ReportController::class)
         reportRoutes();
     });
 
-Route::get('/mullham/category',[CategoryController::class,'index'])->name('word_category');
+Route::get('/mullham/category', [CategoryController::class, 'index'])->name('word_category');
 
 Route::get('/mullham/words', function () {
     return view('words');
@@ -48,7 +53,7 @@ Route::get('/mullham/words', function () {
 
 
 Route::get('/mullham/add_word', function (\Illuminate\Http\Request $request) {
-    return view('add_new_word',['categories' => \App\Models\Category::all()]);
+    return view('add_new_word', ['categories' => \App\Models\Category::all()]);
 })->name('add_new_word');
 
 Route::get('/mullham/single_word', function () {
@@ -106,7 +111,7 @@ function wordRoutes()
     Route::get($prefix, 'index')
         ->name('word.index');
 
-    Route::get($prefix .'/test', 'generateTest')
+    Route::get($prefix . '/test', 'generateTest')
         ->name('word.test');
 
     Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
@@ -124,7 +129,7 @@ function reportRoutes()
     Route::get($prefix, 'index')
         ->name('report');
 
-    Route::post($prefix , 'create')
+    Route::post($prefix, 'create')
         ->name('report.add');
 
     Route::get($prefix . '/handle/{id}', 'handleReport')
@@ -134,7 +139,6 @@ function reportRoutes()
         ->name('report.view');
 
 }
-
 
 
 function articleRoutes()
@@ -158,4 +162,18 @@ function articleRoutes()
 
     Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
         ->name('article.autocomplete-search');
+}
+
+function letterRoutes()
+{
+
+    $prefix = '/letter/{letter}';
+    Route::get($prefix, 'index')
+        ->name('letter.index');
+
+    Route::post($prefix, 'create')
+        ->name('letter.add');
+
+    Route::get($prefix . '/del/{id}', 'delete')
+        ->name('letter.delete');
 }

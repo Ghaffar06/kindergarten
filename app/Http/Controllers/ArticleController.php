@@ -59,7 +59,7 @@ class ArticleController extends Controller
     public function validateArticle($id, Request $request)
     {
         $article = Article::where('id', $id)->first();
-        $child_id = 1 ;
+        $child_id = 1;
         $score = 0;
         foreach ($article->articleQuestions as $question) {
             $checked = $request->{$question->id} == 'on' ? 1 : 0;
@@ -69,8 +69,8 @@ class ArticleController extends Controller
         }
         $score *= 100 / count($article->articleQuestions);
 
-        $childArticle = ChildArticle::where('article_id' , '=',$id)
-            ->where('child_id' , '=' , $child_id)
+        $childArticle = ChildArticle::where('article_id', '=', $id)
+            ->where('child_id', '=', $child_id)
             ->first();
         if ($childArticle == null)
             $childArticle = new ChildArticle([
@@ -80,7 +80,7 @@ class ArticleController extends Controller
             ]);
         $delta = max(0, $score - $childArticle->max_score);
 
-        if ($delta > 0){
+        if ($delta > 0) {
             $childArticle->max_score += $delta;
             $childArticle->save();
             Article::where('id', $id)->first()->childArticles()->save($childArticle);
@@ -88,7 +88,7 @@ class ArticleController extends Controller
         }
 
         $article->last_score = $score;
-        $article->score = max($score , $article->score);
+        $article->score = max($score, $article->score);
 
         return redirect()
             ->route('article.single_article', ['id' => $id])

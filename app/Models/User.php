@@ -48,10 +48,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Report::class);
     }
+
     public function child(): HasOne
     {
         return $this->hasOne(Child::class);
     }
+
     public function teacher(): HasOne
     {
         return $this->hasOne(Teacher::class);

@@ -16,8 +16,8 @@ class ReportController extends Controller
             'title' => 'required',
         ]);
         $report = new Report;
-        $report->title = $request->title ;
-        $report->message = $request->message ;
+        $report->title = $request->title;
+        $report->message = $request->message;
         $report->handled = 'N';
         $user = User::findOrFail($request->user()->id);
         $user->reports()->save($report);
