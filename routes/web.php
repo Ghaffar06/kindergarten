@@ -100,6 +100,9 @@ function categoryRoutes()
 
 function wordRoutes()
 {
+    Route::get('word-create','createForm')
+        ->name('word.add-get');
+
     Route::post('word-create', 'create')
         ->name('word.add');
 
