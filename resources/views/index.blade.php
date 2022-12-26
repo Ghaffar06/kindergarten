@@ -28,29 +28,27 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="slider__area bg-pngimage--1  d-flex fullscreen justify-content-start align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="slider__activation">
-                            Start Single Slide
-                            <div class="slide">
-                                <div class="slide__inner">
-                                    <h1>Play & learn How to</h1>
-                                    <div class="slider__text">
-                                        <h2>Creat New Things</h2>
-                                    </div>
-                                    <div class="slider__btn">
-                                        <a class="dcare__btn" href="#">Read More</a>
+            <div class="slider__area bg-pngimage--1  d-flex fullscreen justify-content-start align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                            <div class="slider__activation">
+                                <div class="slide">
+                                    <div class="slide__inner">
+                                        <h1>Play & learn How to</h1>
+                                        <div class="slider__text">
+                                            <h2>Creat New Things</h2>
+                                        </div>
+                                        <div class="slider__btn">
+                                            <a class="dcare__btn" href="#">Read More</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            End Single Slide
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
     </div>
     <!-- End Slider Area -->
 
@@ -75,7 +73,7 @@
                             aborum. Sed ut perspiciatis unde omnis iste natus error svolupt accu doloremque laudantium,
                             totam rem.</p>
                         <div class="wel__btn">
-                            <a class="dcare__btn" href="about-us.html">Read More</a>
+                            <a class="dcare__btn">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +150,7 @@
                             <img src="{{asset('images/shape/sm-icon/4.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="service.html">Game Time</a></h6>
+                            <h6><a >Game Time</a></h6>
                             <p>learn while playing some amazing mini-games related to education</p>
                             <div class="service__btn">
                                 <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Start Playing</a>

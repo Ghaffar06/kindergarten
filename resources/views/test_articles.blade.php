@@ -93,7 +93,7 @@
     id of article to display:
     <input type="text" id='id11'>
     <button onclick="openArticle()">open</button>
-    <a hidden="true" href="" id="href-words" target="_blank"></a>
+    <a hidden href="" id="href-words" target="_blank"></a>
     <br>
     <br>
 
@@ -103,7 +103,7 @@
 <div>
     search by title of an article:
     <div class="container mt-5">
-        <div classs="form-group">
+        <div class="form-group">
             <input type="text" id="search" name="search" placeholder="Search" class="form-control"/>
         </div>
         <button onclick="search()">Search!</button>
@@ -122,11 +122,11 @@
     }
 
     function openArticle() {
-        let id = document.getElementById('id11').value;
-        let url = "{{route('article.single_article' , ['id'=>':id'])}}";
-        url = url.replace(':id', id);
-        document.getElementById('href-words').setAttribute('href', url);
-        document.getElementById('href-words').click();
+        {{--let id = document.getElementById('id11').value;--}}
+        {{--let url = "{{route('article.single_article' , ['id'=>':id'])}}";--}}
+        {{--url = url.replace(':id', id);--}}
+        {{--document.getElementById('href-words').setAttribute('href', url);--}}
+        {{--document.getElementById('href-words').click();--}}
     }
 
     function search() {

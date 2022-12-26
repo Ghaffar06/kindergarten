@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -69,8 +70,10 @@ Route::get('/mullham/single_letter', function () {
     return view('single_letter');
 })->name('single_letter');
 
-Route::get('/mullham/text', function () {
-    return view('text');
+Route::get('/mullham/article/{article}', function (Article $article) {
+    if (Session::get('article') != null)
+        $article = Session::get('article');
+    return view('text', ['article' => $article]);
 })->name('text');
 
 Route::get('/home', function () {
