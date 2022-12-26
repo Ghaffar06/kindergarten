@@ -60,6 +60,14 @@ Route::get('/mullham/single_word', function () {
     return view('single_word');
 })->name('single_word');
 
+Route::get('/mullham/letters', function () {
+    return view('letters');
+})->name('letters');
+
+Route::get('/mullham/single_letter', function () {
+    return view('single_letter');
+})->name('single_letter');
+
 Route::get('/mullham/text', function () {
     return view('text');
 })->name('text');

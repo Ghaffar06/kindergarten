@@ -158,7 +158,7 @@
                 .on('change', () => {
                     let input = $('#' + id);
                     input.parent()
-                        .find('img')
+                        .find('audio')
                         .remove();
                     if (input.val() != null) {
                         $('<audio controls/>')
@@ -178,7 +178,7 @@
                 .each(function () {
                     if ($(this).val() != 0) {
                         $(this).val($(this).text())
-                        $(this).attr('name', 'category' + (++index))
+                        $(this).parent().attr('name', 'category' + (++index))
                     }
                 });
             index = 0
@@ -186,7 +186,7 @@
                 .find('input')
                 .each(function () {
                     if ($(this).val() != '') {
-                        $(this).attr('name', 'photo' + (++index))
+                        $(this).attr('name', 'image' + (++index))
                     }
                 });
             index = 0
@@ -197,6 +197,7 @@
                         $(this).attr('name', 'voice' + (++index))
                     }
                 });
+
             $('#submit_form').click();
         }
 
@@ -244,7 +245,7 @@
                     <div class="col-lg-12 col-12 mb-30">
                         <!-- Checkout Accordion Start -->
                         <div id="checkout-accordion">
-                            <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data" id="add-word">
                                 @csrf
                                 <!-- Checkout Method -->
                                 <div class="single-accordion">
