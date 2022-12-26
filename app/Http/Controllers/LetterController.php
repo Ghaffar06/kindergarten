@@ -17,15 +17,16 @@ class LetterController extends Controller
     private $model = LetterPhoto::class;
     private $mainColumn = 'letter';
 
-    public function index(Request $request, $letter = 'XX')
+    public function index(Request $request, $letter)
     {
-        if ($letter == 'XX')
-            dd($request);
+
+        if (! ctype_alpha($letter) || strlen($letter) != 1)
+            abort(404);
 
         return view('test_one_letter', [
             'letter' => $letter,
             'photos' => LetterPhoto::whereRaw("BINARY `letter`= ?", [$letter])
-                ->get(),
+                    ->get(),
         ]);
     }
 
