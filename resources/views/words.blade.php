@@ -32,12 +32,13 @@
                 <div class="col-lg-12">
                     <div class="row shop-grid-page">
                         <!-- Start Single Product -->
-                        @for($index=0;$index<10;$index++)
+                        @foreach($words as $word)
                             <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                 <div class="product--2 product__grid">
                                     <div class="product__imges">
-                                        <a>
-                                            <img src="{{asset('images/product/dress/1.png')}}" alt="product images">
+                                        <a href="shop-single.html">
+                                        <img src="{{asset('$word->wordPhotos[0]')}}" alt="product images">
+                                        <!-- <img src="{{$word->wordPhotos[0]}}" alt="product images"> -->
                                         </a>
                                         <div class="pro__label">
                                             <span>New</span>
@@ -61,7 +62,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                         <!-- End Single Product -->
                     </div>
                     <!-- Start Pagination -->

@@ -79,12 +79,12 @@
         }
     </script>
 
-    <!-- Start Blog Area -->
-    <section class="dcare__blog__area section-padding--lg bg--white">
-        <div class="container">
-            <div class="row blog-page">
+<!-- Start Blog Area -->
+<section class="dcare__blog__area section-padding--lg bg--white">
+    <div class="container">
+        <div class="row blog-page">
 
-                @foreach($categories as $category)
+            @foreach($categories as $category)
 
                     <!-- Start Single Blog -->
                     <div class="col-lg-4 col-md-6 col-sm-12">
@@ -118,71 +118,64 @@
                     </div>
                     <!-- End Single Blog -->
 
-                @endforeach
+            @endforeach
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="dcare__pagination mt--80">
+                    <ul class="dcare__page__list d-flex justify-content-center">
+                        <li><a href="#"><span class="ti-angle-double-left"></span></a></li>
+                        <li><a class="page" href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
+                        <li><a href="#">28</a></li>
+                        <li><a class="page" href="#">Next</a></li>
+                        <li><a href="#"><span class="ti-angle-double-right"></span></a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="dcare__pagination mt--80">
-                        <ul class="dcare__page__list d-flex justify-content-center">
-                            <li><a href="#"><span class="ti-angle-double-left"></span></a></li>
-                            <li><a class="page" href="#">Prev</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
-                            <li><a href="#">28</a></li>
-                            <li><a class="page" href="#">Next</a></li>
-                            <li><a href="#"><span class="ti-angle-double-right"></span></a></li>
-                        </ul>
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->
+
+
+<div class="login-wrapper" id="cate-wrapper">
+    <div class="accountbox">
+        <div class="accountbox__inner">
+            <h4>Add New Category</h4>
+            
+            <div class="accountbox__login">
+                <form action="{{route('category.add')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="single-input">
+                        <input type="text" name= "title" placeholder="category name">
                     </div>
-                </div>
+                    <div class="single-input">
+                        <input type="text" name= "description" placeholder="description">
+                    </div>
+                    <div class="single-input">
+                        <input type="file" name= "image" accept="image/png, image/jpeg" placeholder="photo" id="file_input">
+                    </div>
+                    <div class="single-input text-center">`
+                        <button type="submit" class="sign__btn">SUBMIT</button>
+                    </div>
+
+                </form>
             </div>
+            <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
         </div>
-    </section>
-    <!-- End Blog Area -->
-
-    <div class="login-wrapper" id="cate-wrapper">
-        <div class="accountbox">
-            <div class="accountbox__inner">
-                <h4>Add New Category</h4>
-                <div class="accountbox__login">
-                    <form action="#">
-                        <div class="single-input">
-                            <input type="text" placeholder="category name">
-                        </div>
-                        <div class="single-input">
-                            <input type="text" placeholder="description">
-                        </div>
-                        <div class="single-input">
-                            <input class="" type="file" accept="image/png, image/jpeg" placeholder="photo"
-                                   id="file_input">
-                        </div>
-                        <div class="single-input text-center">`
-                            <button type="submit" class="sign__btn">SUBMIT</button>
-                        </div>
-                        {{--                                                <div class="accountbox-login__others text-center">--}}
-                        {{--                                                    <ul class="dacre__social__link d-flex justify-content-center">--}}
-                        {{--                                                        <li class="facebook"><a target="_blank" href="https://www.facebook.com/"><span--}}
-                        {{--                                                                    class="ti-facebook"></span></a></li>--}}
-                        {{--                                                        <li class="twitter"><a target="_blank" href="https://twitter.com/"><span--}}
-                        {{--                                                                    class="ti-twitter"></span></a></li>--}}
-                        {{--                                                        <li class="pinterest"><a target="_blank" href="#"><span class="ti-google"></span></a>--}}
-                        {{--                                                        </li>--}}
-                        {{--                                                    </ul>--}}
-                        {{--                                                </div>--}}
-                    </form>
-                </div>
-                <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
-            </div>
-        </div>
-    </div><!-- //Login Form -->
+    </div>
+</div><!-- //Login Form -->
 
 
-    <script>
-        function search() {
-            let title = document.getElementById('cate_search').value;
-            window.location.replace("{{route('category.index')}}" + "?search=" + title);
-        }
-    </script>
+<script>
+    function search() {
+        let title = document.getElementById('cate_search').value;
+        window.location.replace("{{route('category.index')}}" + "?search=" + title);
+    }
+</script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
@@ -204,5 +197,3 @@
     </script>
 
 @endsection
-
-
