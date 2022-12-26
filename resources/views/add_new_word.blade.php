@@ -8,14 +8,14 @@
             let all_category_selector = $('#all_category_selector');
             all_category_selector.find('select option:selected').each(
                 function () {
-                    if ($(this).val() !== '0')
+                    if ($(this).val() != '0')
                         selected_categories.push({'id': $(this).val(), 'name': $(this).text()})
                 }
             )
 
             all_category_selector.find('select').each(
                 function () {
-                    let id = $(this).find('option:selected').val().toInteger;
+                    let id = $(this).find('option:selected').val();
                     $(this).children().remove();
                     $(this).append(
                         $('<option/>', {
@@ -25,17 +25,17 @@
                     for (let c of categories) {
                         let ok = true;
                         for (let sc of selected_categories) {
-                            if (sc['id'] === c['id']) {
+                            if (sc['id'] == c['id']) {
                                 ok = false;
                             }
                         }
-                        if (id === c['id'])
+                        if (id == c['id'])
                             ok = true;
                         if (ok) {
                             $(this).append(
                                 $('<option/>', {
                                     'value': c['id'],
-                                    'selected': (id === c['id'])
+                                    'selected': (id == c['id'])
                                 }).text(c['name'])
                             );
                         }
