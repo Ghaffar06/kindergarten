@@ -54,7 +54,7 @@ Route::get('/mullham/words', function () {
 })->name('words');
 
 
-Route::get('/mullham/add_word', function (\Illuminate\Http\Request $request) {
+Route::get('/mullham/add_word', function () {
     return view('add_new_word', ['categories' => Category::all()]);
 })->name('add_new_word');
 
