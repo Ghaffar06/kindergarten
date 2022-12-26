@@ -84,6 +84,7 @@ Route::get('/register-form', function () {
     return view('auth.register');
 })->name('register form');
 
+
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
