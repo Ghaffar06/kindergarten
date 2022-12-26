@@ -11,9 +11,9 @@ class CreateChildTable extends Migration
         Schema::create('child', function (Blueprint $table) {
 
             $table->integer('user_id');
-            $table->integer('score',);
+            $table->integer('score');
             $table->datetime('birthdate');
-            $table->integer('level',);
+            $table->integer('level');
 
         });
     }

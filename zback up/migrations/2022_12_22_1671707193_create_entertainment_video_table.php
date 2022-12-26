@@ -13,7 +13,7 @@ class CreateEntertainmentVideoTable extends Migration
             $table->id();
 
             $table->string('url', 200);
-            $table->integer('cost',);
+            $table->integer('cost');
 
 
         });

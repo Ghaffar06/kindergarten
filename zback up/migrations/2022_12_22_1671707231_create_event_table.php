@@ -15,7 +15,7 @@ class CreateEventTable extends Migration
             $table->string('text', 200);
             $table->datetime('announcement_date');
             $table->datetime('event_date');
-            $table->integer('level',);
+            $table->integer('level');
 
         });
     }
