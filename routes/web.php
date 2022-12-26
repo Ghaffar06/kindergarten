@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -53,7 +54,7 @@ Route::get('/mullham/words', function () {
 
 
 Route::get('/mullham/add_word', function (\Illuminate\Http\Request $request) {
-    return view('add_new_word', ['categories' => \App\Models\Category::all()]);
+    return view('add_new_word', ['categories' => Category::all()]);
 })->name('add_new_word');
 
 Route::get('/mullham/single_word', function () {
@@ -100,7 +101,7 @@ function categoryRoutes()
 
 function wordRoutes()
 {
-    Route::get('word-create','createForm')
+    Route::get('word-create', 'createForm')
         ->name('word.add-get');
 
     Route::post('word-create', 'create')
@@ -170,6 +171,11 @@ function articleRoutes()
 function letterRoutes()
 {
 
+    $prefix = '/letter';
+
+    Route::get($prefix . '/del/{id}', 'delete')
+        ->name('letter.delete');
+
     $prefix = '/letter/{letter}';
     Route::get($prefix, 'index')
         ->name('letter.index');
@@ -177,6 +183,4 @@ function letterRoutes()
     Route::post($prefix, 'create')
         ->name('letter.add');
 
-    Route::get($prefix . '/del/{id}', 'delete')
-        ->name('letter.delete');
 }
