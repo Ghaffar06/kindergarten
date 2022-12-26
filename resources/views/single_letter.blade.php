@@ -3,71 +3,7 @@
 
 @section('content')
     <script>
-        all_photo = 0;
-        all_audio = 0;
-
-        function add_new_photo_selector() {
-            let id = 'photo-' + all_photo;
-            all_photo++;
-            $('#all_photo_selector').append(
-                $('<div/>', {
-                    'class': "col-12 d-flex align-items-center mb--20 justify-content-between"
-                }).append(
-                    $('<input/>', {
-                        'id': id,
-                        'type': 'file',
-                        'accept': "image/png, image/jpeg"
-                    }),
-
-                    (all_photo !== 1) ?
-                        $('<h2/>', {
-                            'class': 'dcare__btn'
-                        }).append(
-                            $('<i/>', {
-                                'class': "fa fa-trash",
-                                'aria-hidden': true
-                            })
-                        ).on('click', (e) => {
-                            e.currentTarget.parentNode.remove()
-                        }) :
-                        $('<div/>')
-                            .attr({
-                                'width': '50%',
-                                'min-width': '50%'
-                            })
-                )
-            );
-            addPhoto(id);
-        }
-
-        function addPhoto(id) {
-            $('#' + id)
-                .on('change', () => {
-                    let input = $('#' + id);
-                    input.parent()
-                        .find('img')
-                        .remove();
-                    if (input.val() != null) {
-                        $('<img/>', {
-                            'width': '150px',
-                            'height': '150px',
-                            'src': URL.createObjectURL(document.querySelector('#' + id).files[0])
-                        }).insertAfter(input);
-                    }
-                });
-        }
-
-        function submit_form() {
-            let index = 0
-            $('#all_photo_selector')
-                .find('input')
-                .each(function () {
-                    if ($(this).val() != '') {
-                        $(this).attr('name', 'photo' + (++index))
-                    }
-                });
-        }
-
+        let deleted_id = 0;
     </script>
 
     <!-- Start Bradcaump area -->
@@ -78,12 +14,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">Add New Word</h2>
+                            <h2 class="bradcaump-title">Manage letter's photo</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">Word's Category</a>
+                                <a class="breadcrumb-item" href="index.html">Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
-                                <span class="breadcrumb-item active">Add New Word</span>
+                                <span class="breadcrumb-item active">manage letter's photo</span>
                             </nav>
                         </div>
                     </div>
@@ -91,12 +27,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
     <!-- End Bradcaump area -->
     <section class="htc__checkout bg--white section-padding--lg">
@@ -107,8 +37,6 @@
                     <div class="col-lg-12 col-12 mb-30">
                         <!-- Checkout Accordion Start -->
                         <div id="checkout-accordion">
-                            <form action="{{route('word.add')}}" method="post" enctype="multipart/form-data">
-                                @csrf
                                 <!-- Shipping Method -->
                                 <div class="single-accordion">
                                     <a class="accordion-head collapsed" data-toggle=""
@@ -118,68 +46,120 @@
                                             <div
                                                 class="col-12 d-flex justify-content-between mb--20 align-items-center">
                                                 <h3>
-                                                    The word must have at least one photo
+                                                    The letter must have at least one photo
                                                 </h3>
-                                                <div class="dcare__btn d-flex align-items-center"
-                                                     onclick="add_new_photo_selector()">
+                                                <div class="dcare__btn d-flex align-items-center new_photo-trigger">
                                                     <h3><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add Photo
                                                     </h3>
                                                 </div>
                                             </div>
-                                            <div class="col-12" id="all_photo_selector">
-                                                <div class="col-12 d-flex justify-content-between align-items-center"
-                                                     style="margin-bottom: 30px">
-                                                    @error('voice1')
-                                                    <br>
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
+
+                                            <!-- Start Our Gallery Area -->
+                                            <div class="junior__gallery__area gallery-page-one gallery__masonry__activation gallery--3">
+                                                <div class="container">
+                                                    <div class="row galler__wrap masonry__wrap">
+                                                        <!-- Start Single Gallery -->
+                                                        @foreach($photos as $photo)
+                                                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery__item cat--2">
+                                                            <div class="gallery">
+                                                                <div class="gallery__thumb">
+                                                                    <a href="{{asset($photo->url)}}" data-lightbox="grportimg" data-title="My caption">
+                                                                        <img src="{{asset($photo->url)}}" alt="gallery images">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="gallery__hover__inner">
+                                                                    <div class="gallery__hover__action">
+                                                                        <ul class="gallery__zoom">
+                                                                            <li><a href="{{asset($photo->url)}}" data-lightbox="grportimg" data-title="My caption"><i class="fa fa-search"></i></a></li>
+                                                                            <li onclick="deleted_id = '{{$photo->id}}'" class="delete-trigger" style="cursor: pointer;"><a style="pointer-events: none;"><i class="fa fa-trash"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                        <!-- End Single Gallery -->
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <!-- End Our Gallery Area -->
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <input id="submit_form" hidden type="submit" value="Submit">
-                                    <div class="dcare__btn" onclick="submit_form()">Submit</div>
-                                </div>
-                            </form>
                         </div><!-- Checkout Accordion Start -->
                     </div>
-
-                    <!-- Order Details -->
-                    {{--                    <div class="col-lg-6 col-12 mb-30">--}}
-
-                    {{--                        <div class="order-details-wrapper">--}}
-                    {{--                            <h2>your order</h2>--}}
-                    {{--                            <div class="order-details">--}}
-                    {{--                                <form action="#">--}}
-                    {{--                                    <ul>--}}
-                    {{--                                        <li><p class="strong">product</p><p class="strong">total</p></li>--}}
-                    {{--                                        <li><p>Fishing Reel x1</p><p>$104.99</p></li>--}}
-                    {{--                                        <li><p>Fishing Rods x1 </p><p>$85.99</p></li>--}}
-                    {{--                                        <li><p class="strong">cart subtotal</p><p class="strong">$190.98</p></li>--}}
-                    {{--                                        <li><p class="strong">shipping</p><p>--}}
-                    {{--                                                <input type="radio" name="order-shipping" id="flat" /><label for="flat">Flat Rate $ 7.00</label><br />--}}
-                    {{--                                                <input type="radio" name="order-shipping" id="free" /><label for="free">Free Shipping</label>--}}
-                    {{--                                            </p></li>--}}
-                    {{--                                        <li><p class="strong">order total</p><p class="strong">$190.98</p></li>--}}
-                    {{--                                        <li><button class="dcare__btn">place order</button></li>--}}
-                    {{--                                    </ul>--}}
-                    {{--                                </form>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-
-                    {{--                    </div>--}}
-
                 </div>
             </div>
         </div><!-- Checkout Section End-->
     </section>
 
+    <div class="login-wrapper" id="new_photo-wrapper">
+        <div class="accountbox">
+            <div class="accountbox__inner">
+                <h4>Add New Photo</h4>
+                <div class="accountbox__login">
+                    <form action="{{route('letter.add',['letter'=> $letter])}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                        <div class="single-input">
+                            <input class="" type="file" accept="image/png, image/jpeg" placeholder="photo"
+                                   id="image_input" name="image">
+                        </div>
+                        <div id="image-container" class="d-flex justify-content-center" style="margin-top: 50px">
+                        </div>
+                        <div class="single-input text-center">`
+                            <button type="submit" class="sign__btn">SUBMIT</button>
+                        </div>
+                    </form>
+                </div>
+                <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
+            </div>
+        </div>
+    </div><!-- //Login Form -->
+
+    <div class="login-wrapper" id="delete-wrapper">
+        <div class="accountbox">
+            <div class="accountbox__inner">
+                <h4>Delete Photo Confirmation</h4>
+                <div class="accountbox__login">
+                    <div class="single-input">
+                        <h5 style="font-size: 16pt !important;">
+                            Are you sure you want to delete this photo?
+                        </h5>
+                    </div>
+                    <div class="single-input text-center">
+                        <script>
+                            function deleteP(){
+                                let url = "{{route('letter.delete' , ['letter'=>':letter' , 'id'=>':id'])}}";
+                                url = url.replace(':id','' + deleted_id);
+                                {{--url = url.replace(':letter', "{{$letter}}");--}}
+                                document.getElementById('delete_href').setAttribute('href', url);
+                                document.getElementById('delete_href').click();
+                            }
+                        </script>
+                        <div onclick="deleteP()" class="sign__btn dcare__btn">Confirm</div>
+                        <a id="delete_href" class="sign__btn"></a>
+                    </div>
+                </div>
+                <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
+            </div>
+        </div>
+    </div><!-- //Login Form -->
+
     <script>
-        add_new_photo_selector()
-        add_new_audio_selector()
+        $('#image_input')
+            .on('change',()=>{
+                let input = $('#image-container');
+                input.children().remove()
+
+                if($('#image_input').val() != null){
+                    input.append(
+                            $('<img/>',{
+                                'width': '350px',
+                                'height': '350px',
+                                'src': URL.createObjectURL(document.querySelector('#image_input').files[0])
+                            })
+                        );
+                }
+            })
     </script>
 @endsection

@@ -471,8 +471,10 @@
     }
 
     popupForm('cate-trigger', 'cate-wrapper');
+    popupForm('delete-trigger', 'delete-wrapper');
     popupForm('login-trigger', 'login-wrapper');
     popupForm('accountbox-trigger', 'accountbox-wrapper');
+    popupForm('new_photo-trigger', 'new_photo-wrapper');
 
     /*============= Checkout Login/Register Toggle ==============*/
 
