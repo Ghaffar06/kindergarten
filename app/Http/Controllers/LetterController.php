@@ -20,7 +20,7 @@ class LetterController extends Controller
     public function index(Request $request, $letter)
     {
 
-        if (! ctype_alpha($letter) || strlen($letter) != 1)
+        if (!ctype_alpha($letter) || strlen($letter) != 1)
             abort(404);
 
         return view('single_letter', [
@@ -35,8 +35,9 @@ class LetterController extends Controller
 //        ]);
     }
 
-    public function index2(){
-        return view('letters') ;
+    public function index2()
+    {
+        return view('letters');
     }
 
     public function create($letter, Request $request)

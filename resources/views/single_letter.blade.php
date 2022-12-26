@@ -16,7 +16,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Manage letter's photo</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">Home</a>
+                                <a class="breadcrumb-item">Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">manage letter's photo</span>
@@ -37,57 +37,71 @@
                     <div class="col-lg-12 col-12 mb-30">
                         <!-- Checkout Accordion Start -->
                         <div id="checkout-accordion">
-                                <!-- Shipping Method -->
-                                <div class="single-accordion">
-                                    <a class="accordion-head collapsed" data-toggle=""
-                                       data-parent="#checkout-accordion" style="text-transform: none !important;">
-                                        Photos for letter {{$letter}}
-                                    </a>
-                                    <div id="photo-section" class="collapse show">
-                                        <div class="accordion-body shipping-method fix">
-                                            <div
-                                                class="col-12 d-flex justify-content-between mb--20 align-items-center">
-                                                <h3>
-                                                    The letter must have at least one photo
+                            <!-- Shipping Method -->
+                            <div class="single-accordion">
+                                <a class="accordion-head collapsed" data-toggle=""
+                                   data-parent="#checkout-accordion" style="text-transform: none !important;">
+                                    Photos for letter {{$letter}}
+                                </a>
+                                <div id="photo-section" class="collapse show">
+                                    <div class="accordion-body shipping-method fix">
+                                        <div
+                                            class="col-12 d-flex justify-content-between mb--20 align-items-center">
+                                            <h3>
+                                                The letter must have at least one photo
+                                            </h3>
+                                            <div class="dcare__btn d-flex align-items-center new_photo-trigger">
+                                                <h3><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add Photo
                                                 </h3>
-                                                <div class="dcare__btn d-flex align-items-center new_photo-trigger">
-                                                    <h3><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add Photo
-                                                    </h3>
-                                                </div>
                                             </div>
+                                        </div>
 
-                                            <!-- Start Our Gallery Area -->
-                                            <div class="junior__gallery__area gallery-page-one gallery__masonry__activation gallery--3">
-                                                <div class="container">
-                                                    <div class="row galler__wrap masonry__wrap">
-                                                        <!-- Start Single Gallery -->
-                                                        @foreach($photos as $photo)
-                                                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 gallery__item cat--2">
+                                        <!-- Start Our Gallery Area -->
+                                        <div
+                                            class="junior__gallery__area gallery-page-one gallery__masonry__activation gallery--3">
+                                            <div class="container">
+                                                <div class="row galler__wrap masonry__wrap">
+                                                    <!-- Start Single Gallery -->
+                                                    @foreach($photos as $photo)
+                                                        <div
+                                                            class="col-lg-3 col-md-4 col-sm-6 col-12 gallery__item cat--2">
                                                             <div class="gallery">
                                                                 <div class="gallery__thumb">
-                                                                    <a href="{{asset($photo->url)}}" data-lightbox="grportimg" data-title="My caption">
-                                                                        <img src="{{asset($photo->url)}}" alt="gallery images">
+                                                                    <a href="{{asset($photo->url)}}"
+                                                                       data-lightbox="grportimg"
+                                                                       data-title="My caption">
+                                                                        <img src="{{asset($photo->url)}}"
+                                                                             alt="gallery images">
                                                                     </a>
                                                                 </div>
                                                                 <div class="gallery__hover__inner">
                                                                     <div class="gallery__hover__action">
                                                                         <ul class="gallery__zoom">
-                                                                            <li><a href="{{asset($photo->url)}}" data-lightbox="grportimg" data-title="My caption"><i class="fa fa-search"></i></a></li>
-                                                                            <li onclick="deleted_id = '{{$photo->id}}'" class="delete-trigger" style="cursor: pointer;"><a style="pointer-events: none;"><i class="fa fa-trash"></i></a></li>
+                                                                            <li><a href="{{asset($photo->url)}}"
+                                                                                   data-lightbox="grportimg"
+                                                                                   data-title="My caption"><i
+                                                                                        class="fa fa-search"></i></a>
+                                                                            </li>
+                                                                            <li onclick="deleted_id = '{{$photo->id}}'"
+                                                                                class="delete-trigger"
+                                                                                style="cursor: pointer;"><a
+                                                                                    style="pointer-events: none;"><i
+                                                                                        class="fa fa-trash"></i></a>
+                                                                            </li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        @endforeach
-                                                        <!-- End Single Gallery -->
-                                                    </div>
+                                                    @endforeach
+                                                    <!-- End Single Gallery -->
                                                 </div>
                                             </div>
-                                            <!-- End Our Gallery Area -->
                                         </div>
+                                        <!-- End Our Gallery Area -->
                                     </div>
                                 </div>
+                            </div>
                         </div><!-- Checkout Accordion Start -->
                     </div>
                 </div>
@@ -100,8 +114,9 @@
             <div class="accountbox__inner">
                 <h4>Add New Photo</h4>
                 <div class="accountbox__login">
-                    <form action="{{route('letter.add',['letter'=> $letter])}}" method="post" enctype="multipart/form-data">
-                    @csrf
+                    <form action="{{route('letter.add',['letter'=> $letter])}}" method="post"
+                          enctype="multipart/form-data">
+                        @csrf
                         <div class="single-input">
                             <input class="" type="file" accept="image/png, image/jpeg" placeholder="photo"
                                    id="image_input" name="image">
@@ -130,9 +145,9 @@
                     </div>
                     <div class="single-input text-center">
                         <script>
-                            function deleteP(){
+                            function deleteP() {
                                 let url = "{{route('letter.delete' , ['letter'=>':letter' , 'id'=>':id'])}}";
-                                url = url.replace(':id','' + deleted_id);
+                                url = url.replace(':id', '' + deleted_id);
                                 {{--url = url.replace(':letter', "{{$letter}}");--}}
                                 document.getElementById('delete_href').setAttribute('href', url);
                                 document.getElementById('delete_href').click();
@@ -149,18 +164,18 @@
 
     <script>
         $('#image_input')
-            .on('change',()=>{
+            .on('change', () => {
                 let input = $('#image-container');
                 input.children().remove()
 
-                if($('#image_input').val() != null){
+                if ($('#image_input').val() != null) {
                     input.append(
-                            $('<img/>',{
-                                'width': '350px',
-                                'height': '350px',
-                                'src': URL.createObjectURL(document.querySelector('#image_input').files[0])
-                            })
-                        );
+                        $('<img/>', {
+                            'width': '350px',
+                            'height': '350px',
+                            'src': URL.createObjectURL(document.querySelector('#image_input').files[0])
+                        })
+                    );
                 }
             })
     </script>

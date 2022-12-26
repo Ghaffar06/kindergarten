@@ -6,7 +6,6 @@ use App\Models\Admin;
 use App\Models\Child;
 use App\Models\Event;
 use App\Models\EventSubscription;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +22,7 @@ class EventController extends Controller
         ]);
         $event = new Event(array_merge(
             request()->all(),
-            ['admin_id'=>$request->user()->id]
+            ['admin_id' => $request->user()->id]
         ));
 
         $event->save();
@@ -37,7 +36,7 @@ class EventController extends Controller
     public function signToEvent(Event $event)
     {
         $eventSubscription = new EventSubscription([
-            'event_id' => $event->id ,
+            'event_id' => $event->id,
             'child_id' => Auth::user()->id,
         ]);
         $eventSubscription->save();
@@ -51,7 +50,8 @@ class EventController extends Controller
         return back()->with('success', 'You have subscribed the event successfully!');
     }
 
-    public function signOutEvent(EventSubscription $eventSubscription) {
+    public function signOutEvent(EventSubscription $eventSubscription)
+    {
         $eventSubscription->delete();
         return back()->with('success', 'You have unsubscribed the event successfully!');
     }

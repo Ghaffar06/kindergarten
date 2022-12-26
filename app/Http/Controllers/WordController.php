@@ -39,14 +39,10 @@ class WordController extends Controller
             }
         }
         return view('words', array_merge(
-            $all, ['category' => $category , 'categories'=>Category::all()]
+                $all, ['category' => $category, 'categories' => Category::all()]
             )
         );
 //        return view('test_word', array_merge($all, ['category' => $category]));
-    }
-
-    public function createForm() {
-        return view('add_new_word' , ['categories' => Category::all()]) ;
     }
 
     private function getQueryWords($category)
@@ -59,6 +55,11 @@ class WordController extends Controller
                 ->get()
                 ->toArray()
         );
+    }
+
+    public function createForm()
+    {
+        return view('add_new_word', ['categories' => Category::all()]);
     }
 
     public function create(Request $request)

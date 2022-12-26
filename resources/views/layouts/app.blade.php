@@ -83,10 +83,11 @@
         </div>
         <!-- End Header Top Area -->
         <!-- Start Mainmenu Area -->
-        <div class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header" style="max-height: 100px;height: 100px;">
+        <div class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header"
+             style="max-height: 100px;height: 100px;">
             <div class="container" style="margin-top: -15px">
                 <div class="row d-none d-lg-flex">
-                    <div class="col-sm-4 col-md-6 col-lg-2 order-1 order-lg-1" >
+                    <div class="col-sm-4 col-md-6 col-lg-2 order-1 order-lg-1">
                         <div class="logo">
                             <a href="{{route("index") }}">
                                 <img src="{{asset('images/logo/junior.png')}}" alt="logo images">
@@ -98,22 +99,22 @@
                             <nav class="mainmenu__nav ">
                                 <ul class="mainmenu ">
                                     <li class="drop"><a href="{{route("index")}}">Home</a></li>
-                                    <li class="drop"><a >Class</a></li>
-                                    <li class="drop"><a >Teachers</a></li>
-                                    <li class="drop"><a >Pages</a>
+                                    <li class="drop"><a>Class</a></li>
+                                    <li class="drop"><a>Teachers</a></li>
+                                    <li class="drop"><a>Pages</a>
                                         <ul class="dropdown__menu">
-                                            <li><a >about us</a></li>
-                                            <li><a >our service</a></li>
-                                            <li><a >class details</a></li>
-                                            <li><a >gallery</a></li>
-                                            <li><a >gallery Details</a></li>
+                                            <li><a>about us</a></li>
+                                            <li><a>our service</a></li>
+                                            <li><a>class details</a></li>
+                                            <li><a>gallery</a></li>
+                                            <li><a>gallery Details</a></li>
                                             <!--<li><a href="cart.html">cart Page</a></li>-->
-                                            <li><a >wishlist page</a></li>
-                                            <li><a >checkout page</a></li>
+                                            <li><a>wishlist page</a></li>
+                                            <li><a>checkout page</a></li>
                                         </ul>
                                     </li>
-                                    <li class="drop"><a >Shop</a></li>
-                                    <li class="drop"><a >Blog</a></li>
+                                    <li class="drop"><a>Shop</a></li>
+                                    <li class="drop"><a>Blog</a></li>
                                     <li><a href="{{route('report')}}">Contact</a></li>
                                 </ul>
                             </nav>
@@ -131,7 +132,7 @@
                 <!-- Mobile Menu -->
                 <div class="mobile-menu d-block d-lg-none">
                     <div class="logo">
-                        <a ><img src="{{asset('images/logo/junior.png')}}" alt="logo"></a>
+                        <a><img src="{{asset('images/logo/junior.png')}}" alt="logo"></a>
                     </div>
                     <a class="minicart-trigger" href="#">
                         <i class="fa fa-shopping-basket"></i>
@@ -156,7 +157,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="footer__widget">
                             <div class="ft__logo">
-                                <a >
+                                <a>
                                     <img src="{{asset('images/logo/junior.png')}}" alt="logo images">
                                 </a>
                             </div>
@@ -193,12 +194,12 @@
                                     <!-- Start Single -->
                                     <div class="single__ftr__post d-flex">
                                         <div class="ftr__post__thumb">
-                                            <a  >
+                                            <a>
                                                 <img src="{{asset('images/blog/post-img/2.jpg')}}" alt="post images">
                                             </a>
                                         </div>
                                         <div class="ftr__post__details">
-                                            <h6><a  >Sports Day is near! so lets get ready
+                                            <h6><a>Sports Day is near! so lets get ready
                                                     soon</a></h6>
                                             <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
                                         </div>
@@ -207,12 +208,12 @@
                                     <!-- Start Single -->
                                     <div class="single__ftr__post d-flex">
                                         <div class="ftr__post__thumb">
-                                            <a  >
+                                            <a>
                                                 <img src="{{asset('images/blog/post-img/3.jpg')}}" alt="post images">
                                             </a>
                                         </div>
                                         <div class="ftr__post__details">
-                                            <h6><a  >Sports Day Celebration</a></h6>
+                                            <h6><a>Sports Day Celebration</a></h6>
                                             <span><i class="fa fa-calendar"></i>21th Dec, 2017</span>
                                         </div>
                                     </div>
@@ -220,12 +221,12 @@
                                     <!-- Start Single -->
                                     <div class="single__ftr__post d-flex">
                                         <div class="ftr__post__thumb">
-                                            <a  >
+                                            <a>
                                                 <img src="{{asset('images/blog/post-img/4.jpg')}}" alt="post images">
                                             </a>
                                         </div>
                                         <div class="ftr__post__details">
-                                            <h6><a  >Sports Day Celebration</a></h6>
+                                            <h6><a>Sports Day Celebration</a></h6>
                                             <span><i class="fa fa-calendar"></i>10th Dec, 2017</span>
                                         </div>
                                     </div>
