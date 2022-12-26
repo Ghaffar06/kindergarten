@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<p1>Learning Word Section!</p1>
+<p1>Letter Photo Section!</p1>
 <br>
 <br>
 <div>

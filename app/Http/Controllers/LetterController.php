@@ -30,6 +30,10 @@ class LetterController extends Controller
         ]);
     }
 
+    public function index2(){
+        return view('test_list_letters') ;
+    }
+
     public function create($letter, Request $request)
     {
         $request->validate([

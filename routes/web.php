@@ -181,6 +181,9 @@ function letterRoutes()
 
     $prefix = '/letter';
 
+    Route::get($prefix , 'index2')
+        ->name('letter.list');
+
     Route::get($prefix . '/del/{id}', 'delete')
         ->name('letter.delete');
 
