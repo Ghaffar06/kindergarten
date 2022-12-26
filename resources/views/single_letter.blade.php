@@ -40,7 +40,9 @@
                                 <!-- Shipping Method -->
                                 <div class="single-accordion">
                                     <a class="accordion-head collapsed" data-toggle=""
-                                       data-parent="#checkout-accordion">Photos</a>
+                                       data-parent="#checkout-accordion" style="text-transform: none !important;">
+                                        Photos for letter {{$letter}}
+                                    </a>
                                     <div id="photo-section" class="collapse show">
                                         <div class="accordion-body shipping-method fix">
                                             <div

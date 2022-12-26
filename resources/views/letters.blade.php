@@ -33,24 +33,26 @@
                     <div class="row shop-grid-page">
                         <!-- Start Single Product -->
                         @for($index=0;$index<26;$index++)
-                            <div class="col-lg-1 col-md-4 col-sm-6 col-12">
-                                <div class="product--2 product__grid">
+                            <div class="col-lg-1 col-md-4 col-sm-6 col-12" >
+                                <div class="product--2 product__grid" style="cursor: pointer !important;" onclick="document.getElementById('href-' + '{{chr($index +97)}}').click();">
                                     <div class="product__imges">
                                     </div>
                                     <div class="product__inner">
                                         <div class="pro__title">
-                                            <h4 style="text-transform: lowercase !important;"><a href="shop-single.html">{{chr($index +97)}}</a></h4>
+                                            <h4 style="text-transform: lowercase !important;"><a id="href-{{chr($index +97)}}" href="{{route('letter.index',['letter'=> chr($index +97)])}}">{{chr($index +97)}}</a></h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endfor
                         @for($index=0;$index<26;$index++)
-                            <div class="col-lg-1 col-md-4 col-sm-6 col-12">
-                                <div class="product--2 product__grid">
+                            <div class="col-lg-1 col-md-4 col-sm-6 col-12" >
+                                <div class="product--2 product__grid" style="cursor: pointer !important;" onclick="document.getElementById('href-' + '{{chr($index +65)}}').click();">
+                                    <div class="product__imges">
+                                    </div>
                                     <div class="product__inner">
                                         <div class="pro__title">
-                                            <h4><a href="shop-single.html">{{chr($index + 65)}}</a></h4>
+                                            <h4 style="text-transform: uppercase !important;"><a id="href-{{chr($index +65)}}" href="{{route('letter.index',['letter'=> chr($index +65)])}}">{{chr($index +65)}}</a></h4>
                                         </div>
                                     </div>
                                 </div>
