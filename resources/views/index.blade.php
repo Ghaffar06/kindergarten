@@ -560,13 +560,13 @@
                             <span>Date : 10th November, 2017</span>
                         </div>
                         <div class="blog__thumb">
-                            <a href="blog-details.html">
+                            <a >
                                 <img src="images/blog/md-img/1.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__inner">
                             <span>Children Blog : Post By Ariana</span>
-                            <h4><a href="blog-details.html">Basic Knowledge About Drawing</a></h4>
+                            <h4><a >Basic Knowledge About Drawing</a></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur ad modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                             <ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                                 <li><a href="#">Comments : 05</a></li>
@@ -583,13 +583,13 @@
                             <span>Date : 10th November, 2017</span>
                         </div>
                         <div class="blog__thumb">
-                            <a href="blog-details.html">
+                            <a >
                                 <img src="images/blog/md-img/2.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__inner">
                             <span>Children Blog : Post By Jonson</span>
-                            <h4><a href="blog-details.html">Study Tour</a></h4>
+                            <h4><a >Study Tour</a></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur ad modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                             <ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                                 <li><a href="#">Comments : 05</a></li>
@@ -606,13 +606,13 @@
                             <span>Date : 10th November, 2017</span>
                         </div>
                         <div class="blog__thumb">
-                            <a href="blog-details.html">
+                            <a >
                                 <img src="images/blog/md-img/3.jpg" alt="blog images">
                             </a>
                         </div>
                         <div class="blog__inner">
                             <span>Children Blog : Post By Michel Jack</span>
-                            <h4><a href="blog-details.html">Childrens Day</a></h4>
+                            <h4><a >Childrens Day</a></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur ad modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                             <ul class="blog__meta d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                                 <li><a href="#">Comments : 05</a></li>

@@ -146,8 +146,8 @@
             return $.get(url, {
                 query: query
             }, function (data) {
-                var res = [];
-                for (d of data)
+                let res = [];
+                for (let d of data)
                     res.push(d.title)
                 return process(res);
             });
