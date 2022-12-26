@@ -85,7 +85,10 @@
     <!-- End Subscribe Area -->
     <script>
         function delete_category(id) {
-            alert(id);
+            let url = "{{route('category.delete' , ['id'=>':id'])}}";
+            url = url.replace(':id', id);
+            url.replace(':id',id);
+            window.location.href = url;
         }
     </script>
 
@@ -115,7 +118,7 @@
                                         <p>{{$category->description}}</p>
                                     </div>
                                     <div class="blog__btn">
-                                        <a class="bl__btn">Start Learning</a>
+                                        <a href="{{route('word.index',['category'=> $category->title])}}" class="bl__btn">Start Learning</a>
                                         <a class="bl__share__btn">
                                             <span onclick="delete_category('{{$category->id}}')">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
