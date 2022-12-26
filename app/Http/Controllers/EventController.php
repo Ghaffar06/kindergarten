@@ -19,31 +19,41 @@ class EventController extends Controller
             'text' => ['required', 'string'],
             'title' => ['required', 'string'],
             'event_date' => ['required'],
+            'level' => ['required'],
         ]);
-        $event = new Event;
-        $event->title = $request->title;
-        $event->text = $request->text;
+        $event = new Event(array_merge(
+            request()->all(),
+            ['admin_id'=>$request->user()->id]
+        ));
+
         $event->save();
-        $admin = Admin::findOrFail($request->user()->id);
-        $admin->events()->save($event);
+        Admin::findOrFail($request->user()->id)
+            ->events()
+            ->save($event);
 
         return back()->with('success', 'your event was created!');
     }
 
-    public function signToEvent($event)
+    public function signToEvent(Event $event)
     {
-        $eventSubscription = new EventSubscription;
-        $eventSubscription->child_id = Auth::user()->id;
-        $eventSubscription->event_id = $event;
+        $eventSubscription = new EventSubscription([
+            'event_id' => $event->id ,
+            'child_id' => Auth::user()->id,
+        ]);
         $eventSubscription->save();
-        Event::findOrFail($event)
-            ->eventSubscriptions()
+
+        $event->eventSubscriptions()
             ->save($eventSubscription);
         Child::findOrFail(Auth::user()->id)
             ->eventSubscriptions()
             ->save($eventSubscription);
 
         return back()->with('success', 'You have subscribed the event successfully!');
+    }
+
+    public function signOutEvent(EventSubscription $eventSubscription) {
+        $eventSubscription->delete();
+        return back()->with('success', 'You have unsubscribed the event successfully!');
     }
 
     public function index()

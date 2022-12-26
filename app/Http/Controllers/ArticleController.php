@@ -48,9 +48,8 @@ class ArticleController extends Controller
         return view('test_articles', $all);
     }
 
-    public function getArticle($id, Request $request)
+    public function getArticle(Article $article, Request $request)
     {
-        $article = Article::where('id', $id)->first();
         if (Session::get('article') != null)
             $article = Session::get('article');
         return view('test_single_articles', ['article' => $article]);
@@ -90,9 +89,7 @@ class ArticleController extends Controller
         $article->last_score = $score;
         $article->score = max($score, $article->score);
 
-        return redirect()
-            ->route('article.single_article', ['id' => $id])
-            ->with(['article' => $article]);
+        return back()->with(['article' => $article]);
     }
 
     public function create(Request $request)

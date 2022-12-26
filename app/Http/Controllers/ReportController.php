@@ -19,6 +19,8 @@ class ReportController extends Controller
         $report->title = $request->title;
         $report->message = $request->message;
         $report->handled = 'N';
+        $report->user_id = $request->user()->id;
+        $report->save();
         $user = User::findOrFail($request->user()->id);
         $user->reports()->save($report);
 
