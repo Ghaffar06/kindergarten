@@ -23,6 +23,7 @@ class EventController extends Controller
         $event = new Event;
         $event->title = $request->title;
         $event->text = $request->text;
+        $event->save();
         $admin = Admin::findOrFail($request->user()->id);
         $admin->events()->save($event);
 
