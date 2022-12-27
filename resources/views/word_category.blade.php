@@ -13,7 +13,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Word's Category</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item" href="index.html">Home</a>
+                                <a class="breadcrumb-item">Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">Word's Category</span>
@@ -29,7 +29,17 @@
     <section class="bcare__subscribe bg-image--7 subscrive--1">
         <div class="container">
             <div class="row">
-                <div class="position-absolute" style="left: 1100px; top: 25px">
+                <div class="position-absolute" style="left: 5%; top: 25px">
+                    <li>
+                        <a href="{{route('word.add-get')}}">
+                            <div class="dcare__btn align-items-center d-flex">
+                                <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
+                                Add New Word
+                            </div>
+                        </a>
+                    </li>
+                </div>
+                <div class="position-absolute" style="right: 5%; top: 25px">
                     <li>
                         <a class="cate-trigger" href="#">
                             <div class="dcare__btn align-items-center d-flex">
@@ -41,7 +51,7 @@
                 </div>
                 <div class="col-lg-12 col-sm-12 col-lg-12">
                     <div class="subscribe__inner">
-                        <h2>Search for a specifice Category</h2>
+                        <h2>Search for a specific Category</h2>
                         <div class="newsletter__form">
                             <div class="input__box">
                                 <div id="mc_embed_signup">
@@ -75,7 +85,10 @@
     <!-- End Subscribe Area -->
     <script>
         function delete_category(id) {
-            alert(id);
+            let url = "{{route('category.delete' , ['id'=>':id'])}}";
+            url = url.replace(':id', id);
+            url.replace(':id',id);
+            window.location.href = url;
         }
     </script>
 
@@ -90,14 +103,14 @@
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="blog__2">
                             <div class="blog__thumb">
-                                <a href="blog-details.html">
+                                <a>
                                     <img src="{{asset($category->url)}}" height="304" width="370"
                                          alt="blog images">
                                 </a>
                             </div>
                             <div class="blog__inner">
                                 <div class="blog__hover__inner">
-                                    <h2><a href="blog-details.html">{{$category->title}}</a></h2>
+                                    <h2><a>{{$category->title}}</a></h2>
                                     <div class="bl__meta">
                                         <p>{{$category->created_at}}</p>
                                     </div>
@@ -105,7 +118,7 @@
                                         <p>{{$category->description}}</p>
                                     </div>
                                     <div class="blog__btn">
-                                        <a class="bl__btn" href="blog-details.html">Start Learning</a>
+                                        <a href="{{route('word.index',['category'=> $category->title])}}" class="bl__btn">Start Learning</a>
                                         <a class="bl__share__btn">
                                             <span onclick="delete_category('{{$category->id}}')">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -145,7 +158,7 @@
     <div class="accountbox">
         <div class="accountbox__inner">
             <h4>Add New Category</h4>
-            
+
             <div class="accountbox__login">
                 <form action="{{route('category.add')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -187,8 +200,8 @@
                 return $.get(route, {
                     query: query
                 }, function (data) {
-                    var res = [];
-                    for (d of data)
+                    let res = [];
+                    for (let d of data)
                         res.push(d.title)
                     return process(res);
                 });
