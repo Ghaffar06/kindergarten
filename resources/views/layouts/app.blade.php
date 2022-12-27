@@ -408,7 +408,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+               im             </div>
                         </div>
 
                         <div class="row mb-3">
@@ -425,7 +425,7 @@
                                 <div>
                                     <img id="image_s" class="rounded border border-warning "
                                          style="border-width:5px !important;" onclick="changeSelected(1)"
-                                         src="{{asset('images/cart/1.jpg')}}" width="100" height="75" alt="">
+                                         src="{{asset('images/boy1.png')}}" width="150" height="150" alt="">
                                 </div>
                             </div>
                             <div class="w--10">
@@ -435,7 +435,7 @@
                                 <div>
                                     <img id="image_t" class="rounded border-warning"
                                          style="border-width:5px !important;" onclick="changeSelected(2)"
-                                         src="{{asset('images/cart/1.jpg')}}" width="100" height="75" alt="">
+                                         src="{{asset('images/teacher.png')}}" width="150" height="150" alt="">
                                 </div>
                             </div>
                         </div>
