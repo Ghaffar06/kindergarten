@@ -100,10 +100,13 @@
                             <img src="{{asset('images/shape/sm-icon/1.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="">Alphabet Class</a></h6>
-                            <p>Learning the Alphabet with some amazing photo and audio</p>
+                            <h6><a href="{{route('letter.list')}}">Alphabet Photo List</a></h6>
+                            <p>Learning the Alphabet with some amazing photo</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Learn More</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn"
+                                   href="{{route('letter.list')}}">
+                                    Learn More
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -116,8 +119,8 @@
                             <img src="{{asset('images/shape/sm-icon/2.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="{{route('category.index')}}">Word Class</a></h6>
-                            <p>Learning more and more english words with the ability to chose certain word-group</p>
+                            <h6><a href="{{route('category.index')}}">Words</a></h6>
+                            <p>Learning more and more english words with the ability to chose certain word-Categories</p>
                             <div class="service__btn">
                                 <a class="dcare__btn btn__gray hover--theme min__height-btn"
                                    href="{{route('category.index')}}">Discover Categories</a>
@@ -133,11 +136,14 @@
                             <img src="{{asset('images/shape/sm-icon/3.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="">Text Class</a></h6>
-                            <p>Learning wide english texts with some challengeing questions to test your
-                                aknowlegment</p>
+                            <h6><a href="{{route('article.index')}}">Articles</a></h6>
+                            <p>Learning wide english texts with some challenging questions to test your
+                                acknowledgment</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Start Reading</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn"
+                                   href="{{route('article.index')}}">
+                                    Start Reading
+                                </a>
                             </div>
                         </div>
                     </div>

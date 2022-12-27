@@ -133,8 +133,14 @@ function articleRoutes()
 {
     $prefix = '/article';
 
+    Route::get($prefix . '/article-create', 'getCreateFrom')
+        ->name('article.add-form');
+
     Route::get($prefix, 'index')
         ->name('article.index');
+
+    Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
+        ->name('article.autocomplete-search');
 
     Route::get($prefix . '/{article}', 'getArticle')
         ->name('article.single_article');
@@ -148,8 +154,6 @@ function articleRoutes()
     Route::get($prefix . '/del/{id}', 'delete')
         ->name('article.delete');
 
-    Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
-        ->name('article.autocomplete-search');
 }
 
 function letterRoutes()

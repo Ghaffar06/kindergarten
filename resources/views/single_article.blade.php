@@ -14,7 +14,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Article: {{$article->title}}</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item">All Article </a>
+                                <a href="{{route('article.index')}}" class="breadcrumb-item">All Article </a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">{{$article->title}}</span>

@@ -48,14 +48,20 @@ class ArticleController extends Controller
             }
             $article->short = substr($article->text, 0, 30);
         }
-        return view('test_articles', $all);
+//        return view('test_articles', $all);
+        return view('articles', $all);
     }
 
     public function getArticle(Article $article)
     {
         if (Session::get('article') != null)
             $article = Session::get('article');
-        return view('text', ['article' => $article]);
+        return view('single_article', ['article' => $article]);
+    }
+
+    public function getCreateFrom()
+    {
+        return view('test_articles2');
     }
 
     public function validateArticle($id, Request $request): RedirectResponse

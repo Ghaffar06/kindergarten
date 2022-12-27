@@ -137,7 +137,7 @@
     <div class="login-wrapper" id="delete-wrapper">
         <div class="accountbox">
             <div class="accountbox__inner">
-                <h4>Delete Photo Confirmation</h4>
+                <h4>Photo Deletion Confirmation</h4>
                 <div class="accountbox__login">
                     <div class="single-input">
                         <h5 style="font-size: 16pt !important;">
