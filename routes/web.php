@@ -47,34 +47,6 @@ Route::controller(ReportController::class)
         reportRoutes();
     });
 
-Route::get('/mullham/category', [CategoryController::class, 'index'])->name('word_category');
-
-Route::get('/mullham/words', function () {
-    return view('words');
-})->name('words');
-
-
-Route::get('/mullham/add_word', function () {
-    return view('add_new_word', ['categories' => Category::all()]);
-})->name('add_new_word');
-
-Route::get('/mullham/single_word', function () {
-    return view('single_word');
-})->name('single_word');
-
-Route::get('/mullham/letters', function () {
-    return view('letters');
-})->name('letters');
-
-Route::get('/mullham/single_letter', function () {
-    return view('single_letter');
-})->name('single_letter');
-
-Route::get('/mullham/article/{article}', function (Article $article) {
-    if (Session::get('article') != null)
-        $article = Session::get('article');
-    return view('text', ['article' => $article]);
-})->name('text');
 
 Route::get('/home', function () {
     return view('index');

@@ -9,17 +9,18 @@
     <!-- Start Bradcaump area -->
     <div class="ht__bradcaump__area">
         <div class="ht__bradcaump__container">
-            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">
+{{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
+            <div style="max-width:1918px;width: 1918px"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">Manage letter's photo</h2>
+                            <h2 class="bradcaump-title">Manage photos for letter({{$letter}})</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item">Home</a>
+                                <a href="{{route('letter.list')}}" class="breadcrumb-item">back to: All letters</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
-                                <span class="breadcrumb-item active">manage letter's photo</span>
+                                <span class="breadcrumb-item active">manage ({{$letter}})'s photo</span>
                             </nav>
                         </div>
                     </div>

@@ -78,7 +78,8 @@ class WordController extends Controller
         $word = new Word(request()->all());
         $word->save();
         $this->saveAttachments($request, $word);
-        return back()->with('success', 'word added successfully');
+//        return back()->with('success', 'word added successfully');
+        return redirect()->route('word.learn',['category' => $request->category1, 'id'=>$word->id]);
     }
 
     private function saveAttachments(Request $request, $word)
@@ -224,7 +225,7 @@ class WordController extends Controller
             ->first();
 
 
-        return view('test_one_word', [
+        return view('single_word', [
             'word' => $word,
             'nextable' => $this->checkWord(
                 $this->getNotLearned($this->getQueryWords($category), $child_id),
@@ -236,6 +237,18 @@ class WordController extends Controller
                 -1),
             'category' => $category,
         ]);
+//        return view('test_one_word', [
+//            'word' => $word,
+//            'nextable' => $this->checkWord(
+//                $this->getNotLearned($this->getQueryWords($category), $child_id),
+//                $word->id,
+//                1),
+//            'previousable' => $this->checkWord(
+//                $this->getNotLearned($this->getQueryWords($category), $child_id),
+//                $word->id,
+//                -1),
+//            'category' => $category,
+//        ]);
     }
 
     private function checkWord($query, $id, $direction): bool

@@ -150,11 +150,11 @@
     </main>
     <!-- Start Footer Area -->
     <footer id="footer" class="footer-area footer--1">
-        <div class="footer__wrapper bg-pngimage--6 section-padding--lg">
+        <div class="footer__wrapper bg-pngimage--8 section-padding--md">
             <div class="container">
-                <div class="row">
+                <div class="row" style="margin-left: 25%">
                     <!-- Start Single Widget -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-6 col-sm-12 mx-2">
                         <div class="footer__widget">
                             <div class="ft__logo">
                                 <a>
@@ -186,7 +186,7 @@
                     </div>
                     <!-- End Single Widget -->
                     <!-- Start Single Widget -->
-                    <div class="col-lg-4 col-md-6 col-sm-12 sm-mt-40">
+                    <div class="col-lg-4 col-md-6 col-sm-12 sm-mt-40 mx-2">
                         <div class="footer__widget">
                             <h4>Latest Blog</h4>
                             <div class="footer__innner">
@@ -236,28 +236,9 @@
                         </div>
                     </div>
                     <!-- End Single Widget -->
-                    <!-- Start Single Wedget -->
-                    <div class="col-lg-2 col-md-6 col-sm-12 md-mt-40 sm-mt-40">
-                        <div class="footer__widget">
-                            <h4>Categories</h4>
-                            <div class="footer__innner">
-                                <div class="ftr__latest__post">
-                                    <ul class="ftr__catrgory">
-                                        <li><a href="#">Painting</a></li>
-                                        <li><a href="#">Alphabet Matching</a></li>
-                                        <li><a href="#">Drawing</a></li>
-                                        <li><a href="#">Swimming</a></li>
-                                        <li><a href="#">Sports & Games</a></li>
-                                        <li><a href="#">Painting</a></li>
-                                        <li><a href="#">Alphabet Matching</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Wedget -->
+
                     <!-- Start Single Widget -->
-                    <div class="col-lg-3 col-md-6 col-sm-12 md-mt-40 sm-mt-40">
+                    <div class="col-lg-3 col-md-6 col-sm-12 md-mt-40 sm-mt-40 mx-2">
                         <div class="footer__widget">
                             <h4>Twitter Widget</h4>
                             <div class="footer__innner">

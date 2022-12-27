@@ -6,17 +6,18 @@
     <!-- Start Bradcaump area -->
     <div class="ht__bradcaump__area">
         <div class="ht__bradcaump__container">
-            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">
+{{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
+            <div style="max-width:1918px;width: 1918px"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">Word's Category</h2>
+                            <h2 class="bradcaump-title">All Categories</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item">Home</a>
+                                <a href="{{route('index')}}" class="breadcrumb-item">back to: Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
-                                <span class="breadcrumb-item active">Word's Category</span>
+                                <span class="breadcrumb-item active">Word's Categories</span>
                             </nav>
                         </div>
                     </div>

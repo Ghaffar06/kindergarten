@@ -55,7 +55,7 @@ class ArticleController extends Controller
     {
         if (Session::get('article') != null)
             $article = Session::get('article');
-        return view('test_single_articles', ['article' => $article]);
+        return view('text', ['article' => $article]);
     }
 
     public function validateArticle($id, Request $request): RedirectResponse
