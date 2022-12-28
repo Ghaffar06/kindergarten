@@ -61,7 +61,7 @@ class ArticleController extends Controller
 
     public function getCreateFrom()
     {
-        return view('test_articles2');
+        return view('add_new_article');
     }
 
     public function validateArticle($id, Request $request): RedirectResponse
@@ -112,6 +112,7 @@ class ArticleController extends Controller
 
         $article = new Article(request()->all());
         $article->teacher_id = $teacher_id;
+        $article->text = str_replace(array("\r\n","\n","\r"),'<br>',$article->text);
         $article->save();
         for ($i = 1; isset($request->{'question' . $i}); $i++) {
             $articleQuestion = new ArticleQuestion([
@@ -122,7 +123,8 @@ class ArticleController extends Controller
             $articleQuestion->save();
             $article->articleQuestions()->save($articleQuestion);
         }
-        return back()->with('success', 'word added successfully');
+        return redirect()->route('article.single_article', ['article' => $article->id]);
+//        return back()->with('success', 'word added successfully');
     }
 
     private function cascadeDelete($id)

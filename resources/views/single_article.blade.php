@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <!--suppress ALL -->
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
     <!-- Start Bradcaump area -->
@@ -41,7 +42,7 @@
                                     </h1>
                                 </div>
                                 <br><br>
-                                <div class="h2" style="margin-left: 50px">{{$article->text}}</div>
+                                <div id='article-text' class="h2" style="margin-left: 50px"></div>
                                 <br><br><br>
                                 <hr style="border-top: 1px solid #0b2e13;">
                             </div>
@@ -95,5 +96,8 @@
             </div>
         </div>
     </section>
+    <script>
+        document.getElementById('article-text').innerHTML = "{{$article->text}}".replaceAll('&lt;br&gt;','<br>');
+    </script>
     <!-- End Class Details -->
 @endsection
