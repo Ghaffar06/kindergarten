@@ -47,7 +47,7 @@ class ReportController extends Controller
 
     public function index()
     {
-        $authorization = RoleController::can('view report list');
+        $authorization = RoleController::can('create report');
         if ($authorization !== null) {
             return $authorization;
         }
