@@ -16,7 +16,7 @@ class AddRoleIdToUser extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->integer('role_id');
-            $table->tinyInteger('active');
+            $table->string('active', 1);
         });
     }
 
