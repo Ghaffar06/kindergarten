@@ -4,6 +4,7 @@
 @section('content')
 
     <!-- Start Bradcaump area -->
+    <!--suppress ALL -->
     <div class="ht__bradcaump__area">
         <div class="ht__bradcaump__container">
             {{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
@@ -31,9 +32,19 @@
     <!-- Shop Ggrid Page -->
     <section class="dcare__shop__grid  section-padding--lg bg--white">
         <div class="container">
-            <div class="row">
                 <!-- Shop Grid -->
                 <div class="col-lg-12">
+                    <div class="row">
+                        <div class="position-absolute" style="right: 5%; top: -100px">
+                            <li style="list-style: none">
+                                <a href="{{route('word.test',['category'=>$category])}}">
+                                    <div class="dcare__btn align-items-center d-flex">
+                                        <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
+                                        Take A Test
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
                     <div class="row shop-grid-page">
                         <!-- Start Single Product -->
                         @foreach($words as $word)

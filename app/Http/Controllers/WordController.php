@@ -185,9 +185,10 @@ class WordController extends Controller
 
         shuffle($voiceQuestions);
         shuffle($photoQuestions);
-        return view('test_word_test', [
+        return view('category_test', [
             'voiceQuestions' => $voiceQuestions,
             'photoQuestions' => $photoQuestions,
+            'category'       => $category
         ]);
     }
 
