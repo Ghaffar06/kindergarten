@@ -112,7 +112,7 @@ class ArticleController extends Controller
 
         $article = new Article(request()->all());
         $article->teacher_id = $teacher_id;
-        $article->text = str_replace(array("\r\n","\n","\r"),'<br>',$article->text);
+        $article->text = str_replace(array("\r\n", "\n", "\r"), '<br>', $article->text);
         $article->save();
         for ($i = 1; isset($request->{'question' . $i}); $i++) {
             $articleQuestion = new ArticleQuestion([

@@ -79,7 +79,7 @@ class WordController extends Controller
         $word->save();
         $this->saveAttachments($request, $word);
 //        return back()->with('success', 'word added successfully');
-        return redirect()->route('word.learn',['category' => $request->category1, 'id'=>$word->id]);
+        return redirect()->route('word.learn', ['category' => $request->category1, 'id' => $word->id]);
     }
 
     private function saveAttachments(Request $request, $word)
@@ -188,7 +188,7 @@ class WordController extends Controller
         return view('category_test', [
             'voiceQuestions' => $voiceQuestions,
             'photoQuestions' => $photoQuestions,
-            'category'       => $category
+            'category' => $category
         ]);
     }
 

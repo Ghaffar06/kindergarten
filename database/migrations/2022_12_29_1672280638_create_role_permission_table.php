@@ -10,12 +10,12 @@ class CreateRolePermissionTable extends Migration
     {
         Schema::create('role_permission', function (Blueprint $table) {
             $table->id();
-		$table->integer('role_id',);
-		$table->integer('permission_id',);
-		$table->tinyInteger('read',)->nullable();
-		$table->tinyInteger('write',)->nullable();
-		$table->tinyInteger('update',)->nullable();
-		$table->tinyInteger('delete',)->nullable();
+            $table->integer('role_id');
+            $table->integer('permission_id');
+            $table->string('read', 1);
+            $table->string('write', 1);
+            $table->string('update', 1);
+            $table->string('delete', 1);
             $table->timestamps();
 
         });

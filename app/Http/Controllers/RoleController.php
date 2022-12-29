@@ -23,12 +23,12 @@ class RoleController extends Controller
             $teacher = new Teacher();
             $teacher->id = $user->id;
             $teacher->admin_confirmed = 'N';
-            $user->child()->save($teacher);
+            $user->teacher()->save($teacher);
         }
         if ($user->role == 'admin') {
             $admin = new Admin();
             $admin->id = $user->id;
-            $user->child()->save($admin);
+            $user->admin()->save($admin);
         }
     }
 }
