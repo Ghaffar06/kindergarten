@@ -408,7 +408,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-               im             </div>
+                            </div>
                         </div>
 
                         <div class="row mb-3">
@@ -523,21 +523,6 @@
                         </div>
                     </form>
 
-                    <!--
-
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                    <div class="single-input">
-                        <input type="email" placeholder="E-mail">
-                    </div>
-                    <div class="single-input">
-                        <input type="password" placeholder="Password">
-                    </div>
-                    <div class="single-input text-center">
-                        <button type="submit" class="sign__btn">SUBMIT</button>
-                    </div>
-
-                </form> -->
                 </div>
                 <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
             </div>
