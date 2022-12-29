@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
@@ -22,6 +23,12 @@ use Illuminate\Support\Facades\Route;
 Route::controller(LetterController::class)
     ->group(function () {
         letterRoutes();
+    });
+
+
+Route::controller(GameController::class)
+    ->group(function () {
+        gameRoutes();
     });
 
 Route::controller(CategoryController::class)
@@ -172,5 +179,21 @@ function letterRoutes()
 
     Route::post($prefix, 'create')
         ->name('letter.add');
+
+}
+
+
+function gameRoutes()
+{
+    $prefix = '/game';
+
+    Route::get($prefix, 'index')
+        ->name('game.index');
+
+    Route::get($prefix . '/play/balloon', 'bolloonGame')
+        ->name('game.balloon');
+
+    Route::get($prefix . '/play/tictactoe', 'tictactoeGame')
+        ->name('game.tictactoe');
 
 }

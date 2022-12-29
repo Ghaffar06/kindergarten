@@ -157,7 +157,7 @@
                             <img src="{{asset('images/shape/sm-icon/4.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a>Game Time</a></h6>
+                        <h6><a href="{{route('game.index')}}">Game Time</a></h6>
                             <p>learn while playing some amazing mini-games related to education</p>
                             <div class="service__btn">
                                 <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Start Playing</a>
