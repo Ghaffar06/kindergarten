@@ -14,10 +14,6 @@ class RolePermission extends Model
     protected $fillable = [
         'role_id',
         'permission_id',
-        'read',
-        'write',
-        'update',
-        'delete',
     ];
 
 

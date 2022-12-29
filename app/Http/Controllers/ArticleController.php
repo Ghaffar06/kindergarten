@@ -25,8 +25,22 @@ class ArticleController extends Controller
 
     public function index(Request $request)
     {
-        $teacher_id = 2;
-        $child_id = 1;
+        $authorization = RoleController::can('view article list');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $user_id = RoleController::get_user_id();
+        if ($user_id != -1) {
+            if (\Auth::user()->role == 'teacher')
+                $teacher_id = $user_id ;
+            else
+                $teacher_id = -1 ;
+            if (\Auth::user()->role == 'student')
+                $child_id = $user_id ;
+            else
+                $child_id = -1 ;
+        }
 
         $query = null;
         $onlyMe = $request->get('only_me') !== null && strtolower($request->get('only_me')) === 'true';
@@ -54,6 +68,11 @@ class ArticleController extends Controller
 
     public function getArticle(Article $article)
     {
+        $authorization = RoleController::can('view article details');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         if (Session::get('article') != null)
             $article = Session::get('article');
         return view('single_article', ['article' => $article]);
@@ -61,13 +80,22 @@ class ArticleController extends Controller
 
     public function getCreateFrom()
     {
+        $authorization = RoleController::can('create article');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         return view('add_new_article');
     }
 
-    public function validateArticle($id, Request $request): RedirectResponse
+    public function validateArticle(Article $article, Request $request): RedirectResponse
     {
-        $article = (new Article)->where('id', $id)->first();
-        $child_id = 1;
+        $authorization = RoleController::can('submit answers\'s article');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $child_id = \Auth::user()->id;
         $score = 0;
         foreach ($article->articleQuestions as $question) {
             $checked = $request->{$question->id} == 'on' ? 1 : 0;
@@ -103,7 +131,13 @@ class ArticleController extends Controller
 
     public function create(Request $request): RedirectResponse
     {
-        $teacher_id = 1;
+        $authorization = RoleController::can('create article');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $teacher_id = \Auth::user()->id;
+
         $request->validate([
             'title' => 'required',
             'text' => 'required',

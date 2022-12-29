@@ -49,7 +49,7 @@
                             <div>
                                 <h2><i class="fa fa-play"></i> Check the Correct Answers</h2>
                                 <br><br>
-                                <form action="{{route('article.single_article_validate' , ['id'=>$article->id])}}"
+                                <form action="{{route('article.single_article_validate' , ['article'=>$article->id])}}"
                                       method="post">
                                     @csrf
                                     @foreach($article->articleQuestions as $question)

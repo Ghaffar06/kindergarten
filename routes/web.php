@@ -64,6 +64,7 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
+Route::get('/temptemptemp', [\App\Http\Controllers\RoleController::class, 'temp']);
 
 function categoryRoutes()
 {
@@ -145,7 +146,7 @@ function articleRoutes()
     Route::get($prefix . '/{article}', 'getArticle')
         ->name('article.single_article');
 
-    Route::post($prefix . '/{id}', 'validateArticle')
+    Route::post($prefix . '/{article}', 'validateArticle')
         ->name('article.single_article_validate');
 
     Route::post($prefix, 'create')

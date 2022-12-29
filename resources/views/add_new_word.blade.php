@@ -178,7 +178,6 @@
                 .find('select option:selected')
                 .each(function () {
                     if ($(this).val() !== '0') {
-                        $(this).val($(this).text())
                         $(this).parent().attr('name', 'category' + (++index))
                     }
                 });

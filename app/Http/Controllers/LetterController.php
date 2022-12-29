@@ -20,6 +20,10 @@ class LetterController extends Controller
 
     public function index($letter)
     {
+        $authorization = RoleController::can('view letter photos');
+        if ($authorization !== null) {
+            return $authorization;
+        }
 
         if (!ctype_alpha($letter) || strlen($letter) != 1)
             abort(404);
@@ -38,11 +42,22 @@ class LetterController extends Controller
 
     public function index2()
     {
+        $authorization = RoleController::can('view letter list');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         return view('letters');
     }
 
     public function create($letter, Request $request): RedirectResponse
     {
+        $authorization = RoleController::can('create letter photo');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+
         $request->validate([
             'image' => 'required',
         ]);

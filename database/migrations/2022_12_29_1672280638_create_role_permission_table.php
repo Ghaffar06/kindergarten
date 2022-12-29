@@ -12,10 +12,6 @@ class CreateRolePermissionTable extends Migration
             $table->id();
             $table->integer('role_id');
             $table->integer('permission_id');
-            $table->string('read', 1);
-            $table->string('write', 1);
-            $table->string('update', 1);
-            $table->string('delete', 1);
             $table->timestamps();
 
         });

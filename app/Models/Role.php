@@ -13,6 +13,7 @@ class Role extends Model
     protected $table = 'role';
     protected $fillable = [
         'title',
+        'id',
     ];
 
     public function rolePermissions(): HasMany

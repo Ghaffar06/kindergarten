@@ -13,14 +13,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">{{$category}} Category's Test</h2>
+                            <h2 class="bradcaump-title">{{$category->title}} Category's Test</h2>
                             <nav class="bradcaump-inner">
-                                <a href="{{route('word.index',['category' =>$category])}}" class="breadcrumb-item">
-                                    back to: {{$category}} Category
+                                <a href="{{route('word.index',['category' =>$category->id])}}" class="breadcrumb-item">
+                                    back to: {{$category->title}} Category
                                 </a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
-                                <span class="breadcrumb-item active">test in {{$category}} category</span>
+                                <span class="breadcrumb-item active">test in {{$category->title}} category</span>
                             </nav>
                         </div>
                     </div>

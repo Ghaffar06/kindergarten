@@ -19,13 +19,23 @@ class EntertainmentVideoController extends Controller
 
     public function index(Request $request)
     {
+        $authorization = RoleController::can('view entertainment video list');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         $all = $this->getAll($request, 'videos');
 
     }
 
     public function create(Request $request)
     {
-        $teacher_id = 1;
+        $authorization = RoleController::can('view entertainment video');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $teacher_id = \Auth::user()->id;
         $request->validate([
             'title' => 'required',
             'url' => 'required',
