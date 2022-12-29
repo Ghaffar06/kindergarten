@@ -71,8 +71,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
-            'role_id'=> (new Role)->where ('title', '=' , $data['role'])->first('id')['id'],
-            'active'=>1,
+            'role_id' => (new Role)->where('title', '=', $data['role'])->first('id')['id'],
+            'active' => 1,
         ]);
     }
 }

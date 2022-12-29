@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class RolePermission extends Model
 {
     use HasFactory;
+
     protected $table = 'role_permission';
     protected $fillable = [
         'role_id',
@@ -24,6 +25,7 @@ class RolePermission extends Model
     {
         return $this->belongsTo(Role::class);
     }
+
     public function permission(): BelongsTo
     {
         return $this->belongsTo(Permission::class);
