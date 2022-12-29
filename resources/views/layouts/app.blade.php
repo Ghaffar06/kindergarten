@@ -115,19 +115,18 @@
                                     </li>
                                     <li class="drop"><a>Shop</a></li>
                                     <li class="drop"><a>Blog</a></li>
-                                    <li><a href="{{route('report')}}">Contact</a></li>
+                                    <li><a>Contact</a></li>
+                                    <div id='report-section' class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
+                                        <div class="shopbox d-flex justify-content-end align-items-center">
+                                            <a href="{{route('report')}}">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
-                    <div class="shopbox d-flex justify-content-end align-items-center">
-                        <a class="minicart-trigger" href="#">
-                            <i class="fa fa-shopping-basket"></i>
-                        </a>
-                        <span>03</span>
-                    </div>
-                </div> -->
                 </div>
                 <!-- Mobile Menu -->
                 <div class="mobile-menu d-block d-lg-none">
@@ -363,7 +362,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                        <div class="row mb-3  d-flex align-items-center">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="single-input">
@@ -378,12 +377,12 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="email"
+                        <div class="row mb-3  d-flex align-items-center">
+                            <label for="email-re"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="single-input">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                <input id="email-re" type="email" class="form-control @error('email') is-invalid @enderror"
                                        name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -394,12 +393,12 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password"
+                        <div class="row mb-3 d-flex align-items-center">
+                            <label for="password-re"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="single-input">
-                                <input id="password" type="password"
+                                <input id="password-re" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                        required autocomplete="new-password">
 
@@ -411,7 +410,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3  d-flex align-items-center">
                             <label for="password-confirm"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
@@ -479,12 +478,12 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="email"
+                        <div class="row mb-3  d-flex align-items-center">
+                            <label for="email-log"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="single-input">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                <input id="email-log" type="email" class="form-control @error('email') is-invalid @enderror"
                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -495,12 +494,12 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password"
+                        <div class="row mb-3  d-flex align-items-center">
+                            <label for="password-log"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="single-input">
-                                <input id="password" type="password"
+                                <input id="password-log" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                        required autocomplete="current-password">
 
@@ -531,6 +530,10 @@
 
 
 </div><!-- //Main wrapper -->
+<script>
+    if(window.location.href.split('//')[1].split('/')[1] === 'report')
+        $('#report-section').remove();
+</script>
 
 
 <!-- JS Files -->
