@@ -39,9 +39,9 @@ class WordController extends Controller
         $user_id = RoleController::get_user_id();
         if ($user_id != -1)
             if (\Auth::user()->role == 'student')
-                $child_id = $user_id ;
+                $child_id = $user_id;
             else
-                $child_id = -1 ;
+                $child_id = -1;
 
         if ($child_id != -1) {
             foreach ($all['words'] as $word) {
@@ -61,7 +61,7 @@ class WordController extends Controller
 
     private function getQueryWords(Category $category)
     {
-        $category_id = $category->id ;
+        $category_id = $category->id;
         return (new Word)->whereIn('id',
             (new WordCategory)->select('word_id')
                 ->where('category_id', '=', $category_id)
@@ -102,7 +102,7 @@ class WordController extends Controller
         return redirect()->route('word.learn', ['category' => $request->category1, 'id' => $word->id]);
     }
 
-    private function saveAttachments(Request $request,Word $word)
+    private function saveAttachments(Request $request, Word $word)
     {
         $this->saveFilesToWord($request, $word,
             'voice', WordVoiceRecord::class, 'wordVoiceRecords'
@@ -118,7 +118,7 @@ class WordController extends Controller
         $word->save();
     }
 
-    private function saveFilesToWord(Request $request,Word $word,string $type, $model, $many)
+    private function saveFilesToWord(Request $request, Word $word, string $type, $model, $many)
     {
         for ($i = 1; isset($request->{$type . $i}); $i++) {
             $file = new $model([
@@ -256,9 +256,9 @@ class WordController extends Controller
         $user_id = RoleController::get_user_id();
         if ($user_id != -1)
             if (\Auth::user()->role == 'student')
-                $child_id = $user_id ;
+                $child_id = $user_id;
             else
-                $child_id = -1 ;
+                $child_id = -1;
 
         $direction = $request->get('query') !== null ? $request->get('query') : 0;
         $query = $this->getNotLearned($this->getQueryWords($category), $direction != 0);

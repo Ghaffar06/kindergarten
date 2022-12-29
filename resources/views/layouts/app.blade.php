@@ -33,7 +33,7 @@
 
 <script>
     @if(Session::get('failed') !== null)
-         alert("{{Session::get('failed')}}");
+    alert("{{Session::get('failed')}}");
     @endif
 </script>
 
@@ -390,7 +390,8 @@
                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="single-input">
-                                <input id="email-re" type="email" class="form-control @error('email') is-invalid @enderror"
+                                <input id="email-re" type="email"
+                                       class="form-control @error('email') is-invalid @enderror"
                                        name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -491,7 +492,8 @@
                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="single-input">
-                                <input id="email-log" type="email" class="form-control @error('email') is-invalid @enderror"
+                                <input id="email-log" type="email"
+                                       class="form-control @error('email') is-invalid @enderror"
                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -539,7 +541,7 @@
 
 </div><!-- //Main wrapper -->
 <script>
-    if(window.location.href.split('//')[1].split('/')[1] === 'report')
+    if (window.location.href.split('//')[1].split('/')[1] === 'report')
         $('#report-section').remove();
 </script>
 

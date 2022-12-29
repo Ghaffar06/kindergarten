@@ -4,7 +4,7 @@
     <!-- Start Bradcaump area -->
     <div class="ht__bradcaump__area">
         <div class="ht__bradcaump__container">
-{{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
+            {{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
             <div style="max-width:1918px;width: 1918px"></div>
             <div class="container">
                 <div class="row">
@@ -12,7 +12,8 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Word: {{$word->text}}</h2>
                             <nav class="bradcaump-inner">
-                                <a href="{{route('word.index', ['category'=> $category->id])}}" class="breadcrumb-item">back to: {{$category->title}}'s CATEGORY</a>
+                                <a href="{{route('word.index', ['category'=> $category->id])}}" class="breadcrumb-item">back
+                                    to: {{$category->title}}'s CATEGORY</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">{{$word->text}}</span>
@@ -55,7 +56,8 @@
                                 <div class="d-flex column justify-content-around">
                                     @foreach($word->wordVoiceRecords as $audio)
                                         <audio controls>
-                                            <source src="{{asset($audio->url)}}" type="audio/{{pathinfo($audio->url, PATHINFO_EXTENSION)}}">
+                                            <source src="{{asset($audio->url)}}"
+                                                    type="audio/{{pathinfo($audio->url, PATHINFO_EXTENSION)}}">
                                             Your browser does not support the audio element.
                                         </audio>
                                     @endforeach
@@ -79,14 +81,14 @@
         next_a = $('#ne-word').find('a');
         prev_a = $('#pr-word').find('a');
         @if(!$nextable)
-            next_a.removeClass('dcare__btn').text('');
+        next_a.removeClass('dcare__btn').text('');
         @else
-            next_a.attr('href', window.location.href + '??query=1');
+        next_a.attr('href', "{{route('word.learn', ['category' => $category->id, 'id' => $word->id])}}" + '?query=1');
         @endif
         @if(!$previousable)
-            prev_a.removeClass('dcare__btn').text('');
+        prev_a.removeClass('dcare__btn').text('');
         @else
-            prev_a.attr('href', window.location.href + '??query=-1');
+        prev_a.attr('href', "{{route('word.learn', ['category' => $category->id, 'id' => $word->id])}}" + '?query=-1');
         @endif
     </script>
     <!-- End Class Details -->

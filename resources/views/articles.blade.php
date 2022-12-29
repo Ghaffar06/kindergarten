@@ -4,7 +4,7 @@
     <script>
         let deleted_id = 0;
     </script>
-{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"/>--}}
+    {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"/>--}}
 
     <!-- Start Bradcaump area -->
     <div class="ht__bradcaump__area">
@@ -52,7 +52,8 @@
                                         <div class="htc__news__inner">
                                             <div class="news__input">
                                                 <div class="form-group">
-                                                    <input type="text" id="art_search" name="search" placeholder="Search" class="form-control"/>
+                                                    <input type="text" id="art_search" name="search"
+                                                           placeholder="Search" class="form-control"/>
                                                 </div>
                                             </div>
                                             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
@@ -81,39 +82,40 @@
         <div class="container">
             <div class="row class__grid__page">
                 @foreach($articles as $article)
-                <!-- Start Single Courses -->
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="courses">
-                        <div class="courses__inner">
-                            <ul class="courses__meta d-flex">
-                                <li class="like" style="font-size: 12pt">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                    max score: {{$article->score == 0?0:$article->score}}
-                                </li>
-                            </ul>
-                            <div class="courses__wrap" style="margin-top: -70px">
-                                <div class="courses__date">
-                                    <i class="fa fa-pencil"></i>
-                                    written by: {{$article->teacher_id}}
-                                </div>
-                                <div class="courses__content">
-                                    <h4 style="font-size: 25pt !important">
-                                        <a href="{{route('article.single_article', ['article'=>$article->id])}}">
-                                            {{$article->title}}
-                                        </a>
-                                    </h4>
-                                    <p>{{$article->short}} ...</p>
-                                    <div class="position-absolute dcare__btn delete-trigger" style="bottom: 2.5%; right: 5%"
-                                         onclick="deleted_id = {{$article->id}}">
+                    <!-- Start Single Courses -->
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="courses">
+                            <div class="courses__inner">
+                                <ul class="courses__meta d-flex">
+                                    <li class="like" style="font-size: 12pt">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                        max score: {{$article->score == 0?0:$article->score}}
+                                    </li>
+                                </ul>
+                                <div class="courses__wrap" style="margin-top: -70px">
+                                    <div class="courses__date">
+                                        <i class="fa fa-pencil"></i>
+                                        written by: {{$article->teacher_id}}
+                                    </div>
+                                    <div class="courses__content">
+                                        <h4 style="font-size: 25pt !important">
+                                            <a href="{{route('article.single_article', ['article'=>$article->id])}}">
+                                                {{$article->title}}
+                                            </a>
+                                        </h4>
+                                        <p>{{$article->short}} ...</p>
+                                        <div class="position-absolute dcare__btn delete-trigger"
+                                             style="bottom: 2.5%; right: 5%"
+                                             onclick="deleted_id = {{$article->id}}">
                                         <span>
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
                 <!-- End Single Courses -->
             </div>

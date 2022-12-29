@@ -28,39 +28,45 @@
     </div>
 
     <style>
-        .textarea_span{
-            font-size: 14pt; margin-left: 15px; width: 60%;
+        .textarea_span {
+            font-size: 14pt;
+            margin-left: 15px;
+            width: 60%;
         }
-        .delete_btn{
-            background-color: #e51616; padding: 10px 15px;margin-left: 20px;
+
+        .delete_btn {
+            background-color: #e51616;
+            padding: 10px 15px;
+            margin-left: 20px;
         }
     </style>
 
     <script>
         let id = 0;
-        function addNewQuestion(){
+
+        function addNewQuestion() {
             $('#ques_list')
                 .append(
-                    $('<div/>',{'class':'d-flex mb--20'})
+                    $('<div/>', {'class': 'd-flex mb--20'})
                         .append(
                             $('<li/>')
                                 .append(
-                                    $('<input/>',{'type':'checkbox'})
+                                    $('<input/>', {'type': 'checkbox'})
                                 ),
-                            $('<span/>',{'class':'textarea_span'})
+                            $('<span/>', {'class': 'textarea_span'})
                                 .append(
-                                    $('<textarea/>',{id:'resize-ta'+id})
-                                        .css('width','100%')
+                                    $('<textarea/>', {id: 'resize-ta' + id})
+                                        .css('width', '100%')
                                 ),
-                            $('<div/>',{
-                                'class':'dcare__btn delete_btn'
-                                ,'id': id
+                            $('<div/>', {
+                                'class': 'dcare__btn delete_btn'
+                                , 'id': id
                             })
                                 .append(
                                     $('<h4/>')
-                                        .css('color','white')
+                                        .css('color', 'white')
                                         .append(
-                                            $('<i/>',{'class':'fa fa-trash'})
+                                            $('<i/>', {'class': 'fa fa-trash'})
                                         )
                                 )
                                 .on('click', function (e) {
@@ -83,7 +89,7 @@
                     <div class="class__quality__desc">
                         <div class="class-details-inner">
                             <form action="{{route('article.add')}}" method="post">
-                            @csrf
+                                @csrf
                                 <div class="courses__inner">
                                     <div class="d-flex justify-content-between">
                                         <h1>Article Title:&nbsp;
@@ -95,14 +101,16 @@
                                     </div>
                                     <br><br>
                                     <div class="h2" style="margin-left: 50px">
-                                        <textarea class="h3 resize-ta" style="height: 500px;width: 95%" name="text"></textarea>
+                                        <textarea class="h3 resize-ta" style="height: 500px;width: 95%"
+                                                  name="text"></textarea>
                                     </div>
                                     <br><br><br>
                                     <hr style="border-top: 1px solid #0b2e13;">
                                 </div>
                                 <div>
                                     <div class="col-4">
-                                        <h2 class="btn-light" style="cursor: pointer; user-select: none" onclick="addNewQuestion()">
+                                        <h2 class="btn-light" style="cursor: pointer; user-select: none"
+                                            onclick="addNewQuestion()">
                                             <i class="fa fa-plus"></i> &nbsp;Add True/False Question:
                                         </h2>
                                     </div>
@@ -113,13 +121,13 @@
                                     <br/>
                                     <div class="d-flex justify-content-around align-items-center">
                                         <h3>
-{{--                                            Your Current Max Score--}}
-{{--                                            = {{(($article-> max_score != 0)?($article-> last_score):'0').'%'}}<br><br>--}}
-{{--                                            .{{(($article-> last_score !== null)?('Your Current last Score = '. $article-> last_score.'%'):'')}}.--}}
+                                            {{--                                            Your Current Max Score--}}
+                                            {{--                                            = {{(($article-> max_score != 0)?($article-> last_score):'0').'%'}}<br><br>--}}
+                                            {{--                                            .{{(($article-> last_score !== null)?('Your Current last Score = '. $article-> last_score.'%'):'')}}.--}}
                                         </h3>
                                         <div style="max-width: 50%; width: 50%"></div>
                                         <div class="dcare__btn mt--40" type="submit" onclick="submitForm()"
-                                               style="background-color: #1AB7EA !important;">
+                                             style="background-color: #1AB7EA !important;">
                                             Submit
                                         </div>
                                         <input id="from_submit" hidden type="submit">
@@ -142,8 +150,9 @@
 
         let textarea = $(".resize-ta");
         textarea.on("keyup", () => {
-            textarea.css('height',Math.max(calcHeight(textarea.val()),500) + 'px');
+            textarea.css('height', Math.max(calcHeight(textarea.val()), 500) + 'px');
         });
+
         function set_resize(id) {
             let textarea2 = $("#resize-ta" + id);
             textarea2.on("keyup", () => {
@@ -151,14 +160,14 @@
             });
         }
 
-        function submitForm(){
+        function submitForm() {
             let naming = 0;
             $('#ques_list')
                 .find('textarea')
-                .each(function (){
-                    if($(this).val().length > 0) {
+                .each(function () {
+                    if ($(this).val().length > 0) {
                         $(this).parent().parent().find('input').attr('name', 'answer' + ++naming);
-                        $(this).attr('name','question' + naming);
+                        $(this).attr('name', 'question' + naming);
                     }
                 });
             $('#from_submit').click();

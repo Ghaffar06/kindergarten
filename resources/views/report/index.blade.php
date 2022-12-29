@@ -2,18 +2,20 @@
 
 @section('content')
     <style>
-        .input_form{
+        .input_form {
             font-size: 16pt;
             border-radius: 40px;
         }
-        .input_span{
+
+        .input_span {
             color: white;
             font-size: 18pt;
             font-weight: bold;
         }
-        .title_report{
+
+        .title_report {
             color: white !important;
-            text-shadow: #1b1e21 4px 2px 3px, #1b1e21 4px -2px 3px ;
+            text-shadow: #1b1e21 4px 2px 3px, #1b1e21 4px -2px 3px;
         }
     </style>
     <section class="contact__box section-padding--lg bg-image--27">
@@ -38,16 +40,19 @@
                             @csrf
                             <div class="single-contact-form name d-flex align-items-center" style="margin-left: 3px">
                                 <span class="input_span">Report Title:</span>
-                                <input type="text" class="input_form" name="title" placeholder="What this message about..">
+                                <input type="text" class="input_form" name="title"
+                                       placeholder="What this message about..">
                             </div>
 
                             <div class="single-contact-form message d-flex" style="flex-direction: column">
                                 <span class="input_span" style="margin-bottom: 15px">Report Content:</span>
-                                <textarea name="message" class="input_form" style="width: 100%; height: 40vh" placeholder="Type your message here.."></textarea>
+                                <textarea name="message" class="input_form" style="width: 100%; height: 40vh"
+                                          placeholder="Type your message here.."></textarea>
                             </div>
                             <div class="contact-btn">
                                 <button type="submit" class="dcare__btn" style="width: 20%;
-                                    text-shadow: #1b1e21 4px 2px 3px;font-size: 16pt">submit</button>
+                                    text-shadow: #1b1e21 4px 2px 3px;font-size: 16pt">submit
+                                </button>
                             </div>
                         </form>
                     </div>

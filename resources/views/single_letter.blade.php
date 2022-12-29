@@ -9,7 +9,7 @@
     <!-- Start Bradcaump area -->
     <div class="ht__bradcaump__area">
         <div class="ht__bradcaump__container">
-{{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
+            {{--            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">--}}
             <div style="max-width:1918px;width: 1918px"></div>
             <div class="container">
                 <div class="row">

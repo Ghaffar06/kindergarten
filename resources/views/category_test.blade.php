@@ -30,16 +30,18 @@
     </div>
 
     <style>
-        .selected{
+        .selected {
             border: #5afc19 solid 4px;
         }
-        .photo-border{
+
+        .photo-border {
             border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
             margin: 0 5px;
         }
-        .text_input{
+
+        .text_input {
             border-radius: 25px;
             border: 2px solid #5afc19;
             padding: 0 20px;
@@ -49,55 +51,55 @@
     </style>
 
     <script>
-        function changeSelected_photo(group, selected){
+        function changeSelected_photo(group, selected) {
             console.log(group)
             console.log(selected)
             $('#photosContainer' + group)
                 .children()
                 .each(
-                    function (){
+                    function () {
                         $(this).removeClass('selected')
-                            .css('margin','0 20px')
+                            .css('margin', '0 20px')
                             .find('img').attr({
-                                'height':'220px',
-                                'width':'220px',
-                            });
+                            'height': '220px',
+                            'width': '220px',
+                        });
                     }
                 )
             $('#p-' + group + '-' + selected)
                 .addClass('selected')
-                .css('margin','0 5px')
+                .css('margin', '0 5px')
                 .find('img').attr({
-                    'height':'250px',
-                    'width':'250px',
-                });
+                'height': '250px',
+                'width': '250px',
+            });
         }
     </script>
     <script>
-        function checkScore(){
+        function checkScore() {
             let learnedv = [];
             let learnedp = [];
 
             @foreach($voiceQuestions as $key => $voice)
-                console.log('{{$voice->text}}')
-                if($('#voice-'+'{{$key}}').val() === '{{$voice->text}}')
-                    learnedv.push('{{$voice->text}}');
+            console.log('{{$voice->text}}')
+            if ($('#voice-' + '{{$key}}').val() === '{{$voice->text}}')
+                learnedv.push('{{$voice->text}}');
             @endforeach
 
-            @foreach($photoQuestions as $key => $photoQuestion)
+                @foreach($photoQuestions as $key => $photoQuestion)
                 @foreach($photoQuestion->photos as $p_key => $photo)
-                    if('{{$photo->correct}}' === '1')
-                        if ($('#p-' + '{{$key}}' + '-' +  '{{$p_key}}').hasClass('selected'))
-                            learnedp.push('{{$photoQuestion->text}}');
-                @endforeach
+            if ('{{$photo->correct}}' === '1')
+                if ($('#p-' + '{{$key}}' + '-' + '{{$p_key}}').hasClass('selected'))
+                    learnedp.push('{{$photoQuestion->text}}');
+            @endforeach
             @endforeach
             let index = 0;
             learnedv
                 .filter(w => learnedp.includes(w))
                 .forEach(
-                    w =>{
+                    w => {
                         $('#test-words').append(
-                            $('<input/>',{'name': 'word' + ++index})
+                            $('<input/>', {'name': 'word' + ++index})
                                 .prop('hidden', true)
                                 .val(w)
                         )
@@ -130,7 +132,8 @@
                                                     </span>
                                                 </span>
                                             </div>
-                                            <div id="photosContainer{{$key}}" class="d-flex align-items-center" style="margin-top: 20px">
+                                            <div id="photosContainer{{$key}}" class="d-flex align-items-center"
+                                                 style="margin-top: 20px">
                                                 @foreach($photoQuestion->photos as $p_key => $photo)
                                                     <div id='p-{{$key}}-{{$p_key}}'
                                                          class="photo-border"

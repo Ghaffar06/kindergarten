@@ -15,7 +15,8 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">{{$category->title}}'s Category</h2>
                             <nav class="bradcaump-inner">
-                                <a href="{{route('category.index')}}" class="breadcrumb-item">back to: All Categories</a>
+                                <a href="{{route('category.index')}}" class="breadcrumb-item">back to: All
+                                    Categories</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">{{$category->title}}</span>
@@ -32,19 +33,19 @@
     <!-- Shop Ggrid Page -->
     <section class="dcare__shop__grid  section-padding--lg bg--white">
         <div class="container">
-                <!-- Shop Grid -->
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="position-absolute" style="right: 5%; top: -100px">
-                            <li style="list-style: none">
-                                <a href="{{route('word.test',['category'=>$category->id])}}">
-                                    <div class="dcare__btn align-items-center d-flex">
-                                        <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
-                                        Take A Test
-                                    </div>
-                                </a>
-                            </li>
-                        </div>
+            <!-- Shop Grid -->
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="position-absolute" style="right: 5%; top: -100px">
+                        <li style="list-style: none">
+                            <a href="{{route('word.test',['category'=>$category->id])}}">
+                                <div class="dcare__btn align-items-center d-flex">
+                                    <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
+                                    Take A Test
+                                </div>
+                            </a>
+                        </li>
+                    </div>
                     <div class="row shop-grid-page">
                         <!-- Start Single Product -->
                         @foreach($words as $word)
@@ -59,13 +60,13 @@
                                                 <span>Learned</span>
                                             </div>
                                         @endif
-{{--                                         <div class="product__cart__wrapper">--}}
-{{--                                            <ul class="cart__list">--}}
-{{--                                                <li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>--}}
-{{--                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-search"></span></a></li>--}}
-{{--                                                <li><a href="wishlist.html"><span class="ti-heart"></span></a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div> --}}
+                                        {{--                                         <div class="product__cart__wrapper">--}}
+                                        {{--                                            <ul class="cart__list">--}}
+                                        {{--                                                <li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>--}}
+                                        {{--                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-search"></span></a></li>--}}
+                                        {{--                                                <li><a href="wishlist.html"><span class="ti-heart"></span></a></li>--}}
+                                        {{--                                            </ul>--}}
+                                        {{--                                        </div> --}}
                                     </div>
                                     <div class="product__inner">
                                         <div class="pro__title">

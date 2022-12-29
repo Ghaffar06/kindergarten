@@ -120,7 +120,8 @@
                         </div>
                         <div class="service__details">
                             <h6><a href="{{route('category.index')}}">Words</a></h6>
-                            <p>Learning more and more english words with the ability to chose certain word-Categories</p>
+                            <p>Learning more and more english words with the ability to chose certain
+                                word-Categories</p>
                             <div class="service__btn">
                                 <a class="dcare__btn btn__gray hover--theme min__height-btn"
                                    href="{{route('category.index')}}">Discover Categories</a>
@@ -189,6 +190,5 @@
             </div>
         </div>
     </section>
-
 
 @endsection

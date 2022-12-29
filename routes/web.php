@@ -5,8 +5,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
-use App\Models\Article;
-use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

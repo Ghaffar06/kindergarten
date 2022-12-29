@@ -33,13 +33,13 @@ class ArticleController extends Controller
         $user_id = RoleController::get_user_id();
         if ($user_id != -1) {
             if (\Auth::user()->role == 'teacher')
-                $teacher_id = $user_id ;
+                $teacher_id = $user_id;
             else
-                $teacher_id = -1 ;
+                $teacher_id = -1;
             if (\Auth::user()->role == 'student')
-                $child_id = $user_id ;
+                $child_id = $user_id;
             else
-                $child_id = -1 ;
+                $child_id = -1;
         }
 
         $query = null;

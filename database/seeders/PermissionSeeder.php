@@ -46,9 +46,9 @@ class PermissionSeeder extends Seeder
                 'view article details' => $all_logged,
                 'view entertainment video list' => $all_logged,
                 'view entertainment video' => $all_logged,
-                'view letter photos' => $admin_teacher ,
+                'view letter photos' => $admin_teacher,
                 'view letter list' => $all_logged,
-                'view report list' => ['admin'] ,
+                'view report list' => ['admin'],
                 'view report details' => ['admin'],
                 'view word details' => $all_logged,
                 'create article' => ['teacher'],
@@ -65,13 +65,13 @@ class PermissionSeeder extends Seeder
             ];
             foreach ($all_permission as $permission_title => $roles) {
                 $permission = (new Permission(['title' => $permission_title]));
-                $permission -> save() ;
+                $permission->save();
                 foreach ($roles as $_ => $role) {
                     $rolePermission = new RolePermission([
                         'permission_id' => $permission->id,
-                        'role_id' =>Role::where('title', '=' , $role)->first()['id']
+                        'role_id' => Role::where('title', '=', $role)->first()['id']
                     ]);
-                    $rolePermission->save() ;
+                    $rolePermission->save();
                 }
             }
         }

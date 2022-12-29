@@ -97,7 +97,7 @@
         </div>
     </section>
     <script>
-        document.getElementById('article-text').innerHTML = "{{$article->text}}".replaceAll('&lt;br&gt;','<br>');
+        document.getElementById('article-text').innerHTML = "{{$article->text}}".replaceAll('&lt;br&gt;', '<br>');
     </script>
     <!-- End Class Details -->
 @endsection
