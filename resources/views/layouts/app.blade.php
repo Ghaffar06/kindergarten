@@ -91,7 +91,7 @@
         </div>
         <!-- End Header Top Area -->
         <!-- Start Mainmenu Area -->
-        <div class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header"
+        <div id="main_menu_header" class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header"
              style="max-height: 100px;height: 100px;">
             <div class="container" style="margin-top: -15px">
                 <div class="row d-none d-lg-flex">
@@ -554,4 +554,9 @@
 <script src="{{asset('js/active.js')}}"></script>
 </body>
 
+<script>
+    $(window).on('load',()=>{
+        $('#main_menu_header').removeClass('header_top_line');
+    })
+</script>
 </html>

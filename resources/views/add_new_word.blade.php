@@ -2,6 +2,7 @@
 
 
 @section('content')
+    <!--suppress ALL -->
     <script>
         function reassignment() {
             selected_categories = []
@@ -229,29 +230,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area">
-        <div class="ht__bradcaump__container">
-            <img src="{{asset('images/bg-png/6.png')}}" alt="bradcaump images">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">Add New Word</h2>
-                            <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item">Word's Category</a>
-                                <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
-                                                                 alt="separator images"></span>
-                                <span class="breadcrumb-item active">Add New Word</span>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
 
