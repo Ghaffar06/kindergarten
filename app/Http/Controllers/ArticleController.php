@@ -105,13 +105,13 @@ class ArticleController extends Controller
         }
         $score *= 100 / count($article->articleQuestions);
 
-        $childArticle = (new ChildArticle)->where('article_id', '=', $id)
+        $childArticle = (new ChildArticle)->where('article_id', '=', $article->id)
             ->where('child_id', '=', $child_id)
             ->first();
         if ($childArticle == null)
             $childArticle = new ChildArticle([
                 'child_id' => $child_id,
-                'article_id' => $id,
+                'article_id' => $article->id,
                 'max_score' => 0,
             ]);
         $delta = max(0, $score - $childArticle->max_score);
@@ -119,7 +119,7 @@ class ArticleController extends Controller
         if ($delta > 0) {
             $childArticle->max_score += $delta;
             $childArticle->save();
-            (new Article)->where('id', $id)->first()->childArticles()->save($childArticle);
+            $article->childArticles()->save($childArticle);
             // TODO::child should save the result also!.
         }
 
