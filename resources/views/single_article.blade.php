@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <!--suppress ALL -->
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
     <!-- Start Bradcaump area -->
@@ -12,9 +13,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">{{$article->title}}</h2>
+                            <h2 class="bradcaump-title">Article: {{$article->title}}</h2>
                             <nav class="bradcaump-inner">
-                                <a class="breadcrumb-item">All TEXT </a>
+                                <a href="{{route('article.index')}}" class="breadcrumb-item">All Article </a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">{{$article->title}}</span>
@@ -41,14 +42,14 @@
                                     </h1>
                                 </div>
                                 <br><br>
-                                <div class="h2" style="margin-left: 50px">{{$article->text}}</div>
+                                <div id='article-text' class="h2" style="margin-left: 50px"></div>
                                 <br><br><br>
                                 <hr style="border-top: 1px solid #0b2e13;">
                             </div>
                             <div>
                                 <h2><i class="fa fa-play"></i> Check the Correct Answers</h2>
                                 <br><br>
-                                <form action="{{route('article.single_article_validate' , ['id'=>$article->id])}}"
+                                <form action="{{route('article.single_article_validate' , ['article'=>$article->id])}}"
                                       method="post">
                                     @csrf
                                     @foreach($article->articleQuestions as $question)
@@ -95,5 +96,8 @@
             </div>
         </div>
     </section>
+    <script>
+        document.getElementById('article-text').innerHTML = "{{$article->text}}".replaceAll('&lt;br&gt;', '<br>');
+    </script>
     <!-- End Class Details -->
 @endsection

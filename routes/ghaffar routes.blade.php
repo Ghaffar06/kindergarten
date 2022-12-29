@@ -48,7 +48,7 @@ Route::get('/mullham/single_word', function () {
 })->name('single_word');
 
 Route::get('/mullham/text', function () {
-    return view('text');
+    return view('single_article');
 })->name('text');
 
 Route::get('/mullham', function () {

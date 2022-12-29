@@ -28,10 +28,21 @@ class WordController extends Controller
     private $model = Word::class;
     private $mainColumn = 'text';
 
-    public function index($category, Request $request)
+    public function index(Category $category, Request $request)
     {
+        $authorization = RoleController::can('view word list');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         $all = $this->getAll($request, 'words', 10, $this->getQueryWords($category));
-        $child_id = 1;
+        $user_id = RoleController::get_user_id();
+        if ($user_id != -1)
+            if (\Auth::user()->role == 'student')
+                $child_id = $user_id;
+            else
+                $child_id = -1;
+
         if ($child_id != -1) {
             foreach ($all['words'] as $word) {
                 $word->learned = count(
@@ -48,10 +59,9 @@ class WordController extends Controller
 //        return view('test_word', array_merge($all, ['category' => $category]));
     }
 
-    private function getQueryWords($category)
+    private function getQueryWords(Category $category)
     {
-
-        $category_id = (new Category)->where('title', '=', $category)->first('id')['id'];
+        $category_id = $category->id;
         return (new Word)->whereIn('id',
             (new WordCategory)->select('word_id')
                 ->where('category_id', '=', $category_id)
@@ -62,11 +72,21 @@ class WordController extends Controller
 
     public function createForm()
     {
+        $authorization = RoleController::can('create word');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         return view('add_new_word', ['categories' => Category::all()]);
     }
 
     public function create(Request $request): RedirectResponse
     {
+        $authorization = RoleController::can('create word');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         $request->validate([
             'text' => 'required',
             'score' => 'required',
@@ -78,10 +98,11 @@ class WordController extends Controller
         $word = new Word(request()->all());
         $word->save();
         $this->saveAttachments($request, $word);
-        return back()->with('success', 'word added successfully');
+//        return back()->with('success', 'word added successfully');
+        return redirect()->route('word.learn', ['category' => $request->category1, 'id' => $word->id]);
     }
 
-    private function saveAttachments(Request $request, $word)
+    private function saveAttachments(Request $request, Word $word)
     {
         $this->saveFilesToWord($request, $word,
             'voice', WordVoiceRecord::class, 'wordVoiceRecords'
@@ -91,13 +112,13 @@ class WordController extends Controller
         );
 
         for ($i = 1; isset($request->{'category' . $i}); $i++) {
-            $title = $request->{'category' . $i};
-            CategoryController::addWord($word, $title);
+            $category_id = $request->{'category' . $i};
+            CategoryController::addWord($word, $category_id);
         }
         $word->save();
     }
 
-    private function saveFilesToWord($request, $word, $type, $model, $many)
+    private function saveFilesToWord(Request $request, Word $word, string $type, $model, $many)
     {
         for ($i = 1; isset($request->{$type . $i}); $i++) {
             $file = new $model([
@@ -117,6 +138,11 @@ class WordController extends Controller
 
     public function updateWord(Request $request): RedirectResponse
     {
+        $authorization = RoleController::can('update word details');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         $request->validate([
             'text' => 'required',
             'score' => 'required',
@@ -130,16 +156,21 @@ class WordController extends Controller
         return back()->with('success', 'word added successfully');
     }
 
-    private function cascadeDelete($id)
+    private function cascadeDelete(int $id)
     {
         (new WordCategory)->where('word_id', '=', $id)->delete();
         (new WordVoiceRecord)->where('word_id', '=', $id)->delete();
         (new WordCategory)->where('word_id', '=', $id)->delete();
     }
 
-    public function generateTest($category)
+    public function generateTest(Category $category)
     {
-        $child_id = 1;
+        $authorization = RoleController::can('take words test');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $child_id = \Auth::user()->id;
         $x = 10;
         $wordsF = $this->getNotLearned($this->getQueryWords($category), $child_id)->limit($x)->get();
         $wordsT = $this->getLearned($this->getQueryWords($category), $child_id)->get();
@@ -184,9 +215,10 @@ class WordController extends Controller
 
         shuffle($voiceQuestions);
         shuffle($photoQuestions);
-        return view('test_word_test', [
+        return view('category_test', [
             'voiceQuestions' => $voiceQuestions,
             'photoQuestions' => $photoQuestions,
+            'category' => $category
         ]);
     }
 
@@ -214,17 +246,27 @@ class WordController extends Controller
         );
     }
 
-    public function getLearningWord($category, $id, Request $request)
+    public function getLearningWord(Category $category, $id, Request $request)
     {
-        $child_id = 1;
+        $authorization = RoleController::can('view word details');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $user_id = RoleController::get_user_id();
+        if ($user_id != -1)
+            if (\Auth::user()->role == 'student')
+                $child_id = $user_id;
+            else
+                $child_id = -1;
+
         $direction = $request->get('query') !== null ? $request->get('query') : 0;
         $query = $this->getNotLearned($this->getQueryWords($category), $direction != 0);
         $word = $query->orderBy('id', $direction < 0 ? 'desc' : 'asc')
             ->where('id', $direction == 1 ? '>' : ($direction == -1 ? '<' : '='), $id)
             ->first();
 
-
-        return view('test_one_word', [
+        return view('single_word', [
             'word' => $word,
             'nextable' => $this->checkWord(
                 $this->getNotLearned($this->getQueryWords($category), $child_id),
@@ -236,6 +278,18 @@ class WordController extends Controller
                 -1),
             'category' => $category,
         ]);
+//        return view('test_one_word', [
+//            'word' => $word,
+//            'nextable' => $this->checkWord(
+//                $this->getNotLearned($this->getQueryWords($category), $child_id),
+//                $word->id,
+//                1),
+//            'previousable' => $this->checkWord(
+//                $this->getNotLearned($this->getQueryWords($category), $child_id),
+//                $word->id,
+//                -1),
+//            'category' => $category,
+//        ]);
     }
 
     private function checkWord($query, $id, $direction): bool

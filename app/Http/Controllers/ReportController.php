@@ -12,6 +12,11 @@ class ReportController extends Controller
     //
     public function create(Request $request): RedirectResponse
     {
+        $authorization = RoleController::can('create report');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         $request->validate([
             'message' => 'required',
             'title' => 'required',
@@ -30,6 +35,11 @@ class ReportController extends Controller
 
     public function handleReport(Report $report): RedirectResponse
     {
+        $authorization = RoleController::can('handle report');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         $report->handled = 'Y';
         $report->save();
         return back()->with('success', 'report marked as read!');
@@ -37,11 +47,21 @@ class ReportController extends Controller
 
     public function index()
     {
+        $authorization = RoleController::can('create report');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         return view('report.index');
     }
 
     public function viewReport(Report $report)
     {
+        $authorization = RoleController::can('view report details');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         return view('report.single_report', ['report' => $report]);
     }
 }

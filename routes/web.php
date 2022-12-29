@@ -5,8 +5,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
-use App\Models\Article;
-use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,34 +45,6 @@ Route::controller(ReportController::class)
         reportRoutes();
     });
 
-Route::get('/mullham/category', [CategoryController::class, 'index'])->name('word_category');
-
-Route::get('/mullham/words', function () {
-    return view('words');
-})->name('words');
-
-
-Route::get('/mullham/add_word', function () {
-    return view('add_new_word', ['categories' => Category::all()]);
-})->name('add_new_word');
-
-Route::get('/mullham/single_word', function () {
-    return view('single_word');
-})->name('single_word');
-
-Route::get('/mullham/letters', function () {
-    return view('letters');
-})->name('letters');
-
-Route::get('/mullham/single_letter', function () {
-    return view('single_letter');
-})->name('single_letter');
-
-Route::get('/mullham/article/{article}', function (Article $article) {
-    if (Session::get('article') != null)
-        $article = Session::get('article');
-    return view('text', ['article' => $article]);
-})->name('text');
 
 Route::get('/home', function () {
     return view('index');
@@ -92,6 +62,7 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
+Route::get('/temptemptemp', [\App\Http\Controllers\RoleController::class, 'temp']);
 
 function categoryRoutes()
 {
@@ -161,13 +132,19 @@ function articleRoutes()
 {
     $prefix = '/article';
 
+    Route::get($prefix . '/article-create', 'getCreateFrom')
+        ->name('article.add-form');
+
     Route::get($prefix, 'index')
         ->name('article.index');
+
+    Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
+        ->name('article.autocomplete-search');
 
     Route::get($prefix . '/{article}', 'getArticle')
         ->name('article.single_article');
 
-    Route::post($prefix . '/{id}', 'validateArticle')
+    Route::post($prefix . '/{article}', 'validateArticle')
         ->name('article.single_article_validate');
 
     Route::post($prefix, 'create')
@@ -176,8 +153,6 @@ function articleRoutes()
     Route::get($prefix . '/del/{id}', 'delete')
         ->name('article.delete');
 
-    Route::get($prefix . '/autocomplete-search', 'autocompleteSearch')
-        ->name('article.autocomplete-search');
 }
 
 function letterRoutes()

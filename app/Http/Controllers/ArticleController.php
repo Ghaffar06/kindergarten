@@ -25,8 +25,22 @@ class ArticleController extends Controller
 
     public function index(Request $request)
     {
-        $teacher_id = 2;
-        $child_id = 1;
+        $authorization = RoleController::can('view article list');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $user_id = RoleController::get_user_id();
+        if ($user_id != -1) {
+            if (\Auth::user()->role == 'teacher')
+                $teacher_id = $user_id;
+            else
+                $teacher_id = -1;
+            if (\Auth::user()->role == 'student')
+                $child_id = $user_id;
+            else
+                $child_id = -1;
+        }
 
         $query = null;
         $onlyMe = $request->get('only_me') !== null && strtolower($request->get('only_me')) === 'true';
@@ -48,20 +62,40 @@ class ArticleController extends Controller
             }
             $article->short = substr($article->text, 0, 30);
         }
-        return view('test_articles', $all);
+//        return view('test_articles', $all);
+        return view('articles', $all);
     }
 
     public function getArticle(Article $article)
     {
+        $authorization = RoleController::can('view article details');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
         if (Session::get('article') != null)
             $article = Session::get('article');
-        return view('test_single_articles', ['article' => $article]);
+        return view('single_article', ['article' => $article]);
     }
 
-    public function validateArticle($id, Request $request): RedirectResponse
+    public function getCreateFrom()
     {
-        $article = (new Article)->where('id', $id)->first();
-        $child_id = 1;
+        $authorization = RoleController::can('create article');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        return view('add_new_article');
+    }
+
+    public function validateArticle(Article $article, Request $request): RedirectResponse
+    {
+        $authorization = RoleController::can('submit answers\'s article');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $child_id = \Auth::user()->id;
         $score = 0;
         foreach ($article->articleQuestions as $question) {
             $checked = $request->{$question->id} == 'on' ? 1 : 0;
@@ -71,13 +105,13 @@ class ArticleController extends Controller
         }
         $score *= 100 / count($article->articleQuestions);
 
-        $childArticle = (new ChildArticle)->where('article_id', '=', $id)
+        $childArticle = (new ChildArticle)->where('article_id', '=', $article->id)
             ->where('child_id', '=', $child_id)
             ->first();
         if ($childArticle == null)
             $childArticle = new ChildArticle([
                 'child_id' => $child_id,
-                'article_id' => $id,
+                'article_id' => $article->id,
                 'max_score' => 0,
             ]);
         $delta = max(0, $score - $childArticle->max_score);
@@ -85,7 +119,7 @@ class ArticleController extends Controller
         if ($delta > 0) {
             $childArticle->max_score += $delta;
             $childArticle->save();
-            (new Article)->where('id', $id)->first()->childArticles()->save($childArticle);
+            $article->childArticles()->save($childArticle);
             // TODO::child should save the result also!.
         }
 
@@ -97,7 +131,13 @@ class ArticleController extends Controller
 
     public function create(Request $request): RedirectResponse
     {
-        $teacher_id = 1;
+        $authorization = RoleController::can('create article');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+
+        $teacher_id = \Auth::user()->id;
+
         $request->validate([
             'title' => 'required',
             'text' => 'required',
@@ -106,6 +146,7 @@ class ArticleController extends Controller
 
         $article = new Article(request()->all());
         $article->teacher_id = $teacher_id;
+        $article->text = str_replace(array("\r\n", "\n", "\r"), '<br>', $article->text);
         $article->save();
         for ($i = 1; isset($request->{'question' . $i}); $i++) {
             $articleQuestion = new ArticleQuestion([
@@ -116,7 +157,8 @@ class ArticleController extends Controller
             $articleQuestion->save();
             $article->articleQuestions()->save($articleQuestion);
         }
-        return back()->with('success', 'word added successfully');
+        return redirect()->route('article.single_article', ['article' => $article->id]);
+//        return back()->with('success', 'word added successfully');
     }
 
     private function cascadeDelete($id)

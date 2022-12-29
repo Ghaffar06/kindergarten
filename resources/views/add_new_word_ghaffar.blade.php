@@ -3,7 +3,7 @@
 
 @section('content')
     <script>
-        
+
         // function reassignment() {
         //     selected_categories = []
         //     let all_category_selector = $('#all_category_selector');
@@ -13,7 +13,7 @@
         //                 selected_categories.push({'id': $(this).val(), 'name': $(this).text()})
         //         }
         //     )
-            
+
         //     all_category_selector.find('select').each(
         //         function () {
         //             let id = $(this).find('option:selected').val().toInteger;
@@ -46,18 +46,18 @@
         // }
 
         function add_new_category_selector() {
-            let str = ("<select name = categories[]><option value='0'>Select a category</option>") ;
+            let str = ("<select name = categories[]><option value='0'>Select a category</option>");
             @foreach($categories as $category)
-                str += ("<option value='{{$category->id}}'>{{$category->title}}</option>") ;
+                str += ("<option value='{{$category->id}}'>{{$category->title}}</option>");
             @endforeach
-            str += ("</select"); 
+                str += ("</select");
             $('#all_category_selector').append(
                 $('<div/>', {
                     'class': "d-flex align-items-center mb--20"
                 }).append(
                     $('<select/>', {
-                    'name': "categories[]",
-                }).innerHTML = str,
+                        'name': "categories[]",
+                    }).innerHTML = str,
                     $('<h2/>', {
                         'class': 'dcare__btn',
                     }).append(
@@ -70,7 +70,7 @@
                         // reassignment();
                     })
                 )
-            ); 
+            );
             // .on('change', () => reassignment());
             // reassignment();
         }
@@ -338,21 +338,22 @@
                                                     </div>
                                                     <div class="col-6 mb--20" id="all_category_selector">
                                                         <div
-                                                            class="d-flex justify-content-between align-items-center mb--20" >
+                                                            class="d-flex justify-content-between align-items-center mb--20">
                                                             <select name="categories[]">
                                                                 <option value="0">Select a category</option>
                                                                 @foreach($categories as $category)
-                                                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                                                    <option
+                                                                        value="{{$category->id}}">{{$category->title}}</option>
                                                                 @endforeach
                                                             </select>
-                                                            
+
                                                         </div>
                                                         @error('category1')
-                                                            <br>
-                                                            <span class="invalid-feedback" role="alert">
+                                                        <br>
+                                                        <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
-                                                            @enderror
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>

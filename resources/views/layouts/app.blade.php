@@ -30,6 +30,14 @@
 </head>
 
 <body>
+
+<script>
+    @if(Session::get('failed') !== null)
+    alert("{{Session::get('failed')}}");
+    @endif
+</script>
+
+
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
     your browser</a> to improve your experience and security.</p>
@@ -83,7 +91,7 @@
         </div>
         <!-- End Header Top Area -->
         <!-- Start Mainmenu Area -->
-        <div class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header"
+        <div id="main_menu_header" class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header"
              style="max-height: 100px;height: 100px;">
             <div class="container" style="margin-top: -15px">
                 <div class="row d-none d-lg-flex">
@@ -115,19 +123,18 @@
                                     </li>
                                     <li class="drop"><a>Shop</a></li>
                                     <li class="drop"><a>Blog</a></li>
-                                    <li><a href="{{route('report')}}">Contact</a></li>
+                                    <li><a>Contact</a></li>
+                                    <div id='report-section' class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
+                                        <div class="shopbox d-flex justify-content-end align-items-center">
+                                            <a href="{{route('report')}}">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
-                    <div class="shopbox d-flex justify-content-end align-items-center">
-                        <a class="minicart-trigger" href="#">
-                            <i class="fa fa-shopping-basket"></i>
-                        </a>
-                        <span>03</span>
-                    </div>
-                </div> -->
                 </div>
                 <!-- Mobile Menu -->
                 <div class="mobile-menu d-block d-lg-none">
@@ -150,11 +157,11 @@
     </main>
     <!-- Start Footer Area -->
     <footer id="footer" class="footer-area footer--1">
-        <div class="footer__wrapper bg-pngimage--6 section-padding--lg">
+        <div class="footer__wrapper bg-pngimage--8 section-padding--md">
             <div class="container">
-                <div class="row">
+                <div class="row" style="margin-left: 25%">
                     <!-- Start Single Widget -->
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-6 col-sm-12 mx-2">
                         <div class="footer__widget">
                             <div class="ft__logo">
                                 <a>
@@ -186,7 +193,7 @@
                     </div>
                     <!-- End Single Widget -->
                     <!-- Start Single Widget -->
-                    <div class="col-lg-4 col-md-6 col-sm-12 sm-mt-40">
+                    <div class="col-lg-4 col-md-6 col-sm-12 sm-mt-40 mx-2">
                         <div class="footer__widget">
                             <h4>Latest Blog</h4>
                             <div class="footer__innner">
@@ -236,28 +243,9 @@
                         </div>
                     </div>
                     <!-- End Single Widget -->
-                    <!-- Start Single Wedget -->
-                    <div class="col-lg-2 col-md-6 col-sm-12 md-mt-40 sm-mt-40">
-                        <div class="footer__widget">
-                            <h4>Categories</h4>
-                            <div class="footer__innner">
-                                <div class="ftr__latest__post">
-                                    <ul class="ftr__catrgory">
-                                        <li><a href="#">Painting</a></li>
-                                        <li><a href="#">Alphabet Matching</a></li>
-                                        <li><a href="#">Drawing</a></li>
-                                        <li><a href="#">Swimming</a></li>
-                                        <li><a href="#">Sports & Games</a></li>
-                                        <li><a href="#">Painting</a></li>
-                                        <li><a href="#">Alphabet Matching</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Wedget -->
+
                     <!-- Start Single Widget -->
-                    <div class="col-lg-3 col-md-6 col-sm-12 md-mt-40 sm-mt-40">
+                    <div class="col-lg-3 col-md-6 col-sm-12 md-mt-40 sm-mt-40 mx-2">
                         <div class="footer__widget">
                             <h4>Twitter Widget</h4>
                             <div class="footer__innner">
@@ -382,7 +370,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                        <div class="row mb-3  d-flex align-items-center">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="single-input">
@@ -397,12 +385,13 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="email"
+                        <div class="row mb-3  d-flex align-items-center">
+                            <label for="email-re"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="single-input">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                <input id="email-re" type="email"
+                                       class="form-control @error('email') is-invalid @enderror"
                                        name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -413,12 +402,12 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password"
+                        <div class="row mb-3 d-flex align-items-center">
+                            <label for="password-re"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="single-input">
-                                <input id="password" type="password"
+                                <input id="password-re" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                        required autocomplete="new-password">
 
@@ -430,7 +419,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3  d-flex align-items-center">
                             <label for="password-confirm"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
@@ -444,7 +433,7 @@
                                 <div>
                                     <img id="image_s" class="rounded border border-warning "
                                          style="border-width:5px !important;" onclick="changeSelected(1)"
-                                         src="{{asset('images/cart/1.jpg')}}" width="100" height="75" alt="">
+                                         src="{{asset('images/boy1.png')}}" width="150" height="150" alt="">
                                 </div>
                             </div>
                             <div class="w--10">
@@ -454,7 +443,7 @@
                                 <div>
                                     <img id="image_t" class="rounded border-warning"
                                          style="border-width:5px !important;" onclick="changeSelected(2)"
-                                         src="{{asset('images/cart/1.jpg')}}" width="100" height="75" alt="">
+                                         src="{{asset('images/teacher.png')}}" width="150" height="150" alt="">
                                 </div>
                             </div>
                         </div>
@@ -498,12 +487,13 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="email"
+                        <div class="row mb-3  d-flex align-items-center">
+                            <label for="email-log"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="single-input">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                <input id="email-log" type="email"
+                                       class="form-control @error('email') is-invalid @enderror"
                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -514,12 +504,12 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password"
+                        <div class="row mb-3  d-flex align-items-center">
+                            <label for="password-log"
                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="single-input">
-                                <input id="password" type="password"
+                                <input id="password-log" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                        required autocomplete="current-password">
 
@@ -542,21 +532,6 @@
                         </div>
                     </form>
 
-                    <!--
-
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                    <div class="single-input">
-                        <input type="email" placeholder="E-mail">
-                    </div>
-                    <div class="single-input">
-                        <input type="password" placeholder="Password">
-                    </div>
-                    <div class="single-input text-center">
-                        <button type="submit" class="sign__btn">SUBMIT</button>
-                    </div>
-
-                </form> -->
                 </div>
                 <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
             </div>
@@ -565,6 +540,10 @@
 
 
 </div><!-- //Main wrapper -->
+<script>
+    if (window.location.href.split('//')[1].split('/')[1] === 'report')
+        $('#report-section').remove();
+</script>
 
 
 <!-- JS Files -->
@@ -575,4 +554,9 @@
 <script src="{{asset('js/active.js')}}"></script>
 </body>
 
+<script>
+    $(window).on('load',()=>{
+        $('#main_menu_header').removeClass('header_top_line');
+    })
+</script>
 </html>

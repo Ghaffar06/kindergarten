@@ -34,7 +34,7 @@
     @endif
     Questions:
     <br>
-    <form action="{{route('article.single_article_validate' , ['id'=>$article->id])}}" method="post">
+    <form action="{{route('article.single_article_validate' , ['article'=>$article->id])}}" method="post">
         @csrf
         @foreach($article->articleQuestions as $question)
             {{$question->option}} [[{{$question->answer}}]]
