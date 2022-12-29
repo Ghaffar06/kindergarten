@@ -16,6 +16,7 @@ class CreateRolePermissionTable extends Migration
 		$table->tinyInteger('write',)->nullable();
 		$table->tinyInteger('update',)->nullable();
 		$table->tinyInteger('delete',)->nullable();
+            $table->timestamps();
 
         });
     }

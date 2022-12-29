@@ -12,6 +12,7 @@ class CreatePermissionTable extends Migration
             $table->id();
 
 		$table->string('title',45);
+            $table->timestamps();
 
         });
     }
