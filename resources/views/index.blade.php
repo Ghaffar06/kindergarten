@@ -13,12 +13,12 @@
                             <!-- Start Single Slide -->
                             <div class="slide">
                                 <div class="slide__inner">
-                                    <h1>Play & learn How to</h1>
+                                    <h1>Read & learn</h1>
                                     <div class="slider__text">
-                                        <h2>Create New Things</h2>
+                                        <h2>Amazing Stories</h2>
                                     </div>
                                     <div class="slider__btn">
-                                        <a class="dcare__btn" href="#">Read More</a>
+                                        <a class="dcare__btn" href="{{route('article.index')}}">Read More Stories</a>
                                     </div>
                                 </div>
                             </div>
@@ -35,12 +35,12 @@
                         <div class="slider__activation">
                             <div class="slide">
                                 <div class="slide__inner">
-                                    <h1>Play & learn How to</h1>
+                                    <h1>Play & learn</h1>
                                     <div class="slider__text">
-                                        <h2>Creat New Things</h2>
+                                        <h2>The Alphabet</h2>
                                     </div>
                                     <div class="slider__btn">
-                                        <a class="dcare__btn" href="#">Read More</a>
+                                        <a class="dcare__btn" href="{{route('letter.list')}}">Learn More about Alphabet</a>
                                     </div>
                                 </div>
                             </div>
@@ -59,21 +59,24 @@
                 <div class="col-lg-12">
                     <div class="section__title text-center">
                         <h2 class="title__line">Welcome To Junior Home</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunte
-                            magna aliquaet, consectetempora incidunt</p>
+                        <p>It is very important to take care of the patient, 
+                            and it will be followed by an increase in income,
+                             but in such a time, some great things will happen, 
+                             and the consequences will happen</p>
                     </div>
                 </div>
             </div>
             <div class="row jn__welcome__wrapper align-items-center">
                 <div class="col-md-12 col-lg-6 col-sm-12">
                     <div class="welcome__juniro__inner">
-                        <h3>Welcome to <span class="theme-color">O</span><span>u</span>r School</h3>
-                        <p class="wow flipInX">Lorem ipsum dolor sit amet, consectetur adipisic ming elit, sed do ei
-                            Excepteur sint occaecat cupida proident, sunt in culpa qui dese runt mol anim id est lai
-                            aborum. Sed ut perspiciatis unde omnis iste natus error svolupt accu doloremque laudantium,
-                            totam rem.</p>
+                        <h3>Welcome to <span class="theme-color">O</span><span>u</span>r e-learn</h3>
+                        <p class="wow flipInX">The pain itself is a lot, it will be followed by adipisic 
+                            ming elit, but let it be excepted that they are blinded by covetousness,
+                             there are those who are in the wrong who run the mol anim that is the lai aborum.
+                              But in order that you may see whence all this born error arises, 
+                              and the pain of those who praise it, the whole thing.</p>
                         <div class="wel__btn">
-                            <a class="dcare__btn">Read More</a>
+                            <a class="dcare__btn" href="{{route('article.index')}}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -160,7 +163,7 @@
                         <h6><a href="{{route('game.index')}}">Game Time</a></h6>
                             <p>learn while playing some amazing mini-games related to education</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Start Playing</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="{{route('game.index')}}">Start Playing</a>
                             </div>
                         </div>
                     </div>
@@ -180,10 +183,10 @@
                         class="jnr__call__action__wrap d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between align-items-center">
                         <div class="callto__action__inner">
                             <h2 class="wow flipInX" data-wow-delay="0.95s">How To Enroll Your Child In A class ?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor </p>
+                            <p>Go to register form and choose the student account, Fill the information correctly!</p>
                         </div>
                         <div class="callto__action__btn">
-                            <a class="dcare__btn btn__white" href="#">Contact Now</a>
+                            <a class="dcare__btn btn__white" href="mailto: Eng.ghaith@gmail.com">Contact Now</a>
                         </div>
                     </div>
                 </div>

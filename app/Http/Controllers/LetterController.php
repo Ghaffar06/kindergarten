@@ -20,7 +20,7 @@ class LetterController extends Controller
 
     public function index($letter)
     {
-        $authorization = RoleController::can('view letter photos');
+        $authorization = RoleController::can('view letter list');
         if ($authorization !== null) {
             return $authorization;
         }

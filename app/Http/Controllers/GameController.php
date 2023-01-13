@@ -17,18 +17,24 @@ class GameController extends Controller
     public function bolloonGame()
     {
     //    / return view('games.index') ;
+        $authorization = RoleController::can('take words test');
+        if ($authorization !== null) {
+            return $authorization;
+        }
         $child = (new Child)->findOrFail(Auth::user()->id);
         $letterPhotos = (new LetterPhoto())->all()->take(10) ;
         ///dd($child) ;
-        if($child->score > -1){
-            //$child->score -= 30 ;
+            $child->score += 5 ;
             $child->save() ;
             return view('games.balloon', ['letterPhotos' => $letterPhotos]) ;
-        }
-        return back()->with('error', 'you dont have enough points!'); 
+        
     }
     public function tictactoeGame()
     {
+        $authorization = RoleController::can('take words test');
+        if ($authorization !== null) {
+            return $authorization;
+        }
         $child = (new Child)->findOrFail(Auth::user()->id);
         if($child->score > 20){
             $child->score -= 20 ;

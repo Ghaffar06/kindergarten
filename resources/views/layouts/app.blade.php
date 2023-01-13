@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Junior || Child Care & Shop HTML5 Template</title>
+    <title>Junior || Learn Children The Language</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicons -->
@@ -58,8 +58,8 @@
                     <div class="col-md-7 col-lg-6 col-sm-12">
                         <div class="jun__header__top__left">
                             <ul class="top__address d-flex justify-content-start align-items-center flex-wrap flex-lg-nowrap flex-md-nowrap">
-                                <li><i class="fa fa-envelope"></i><a href="#">junior@mail.com</a></li>
-                                <li><i class="fa fa-phone"></i><span>Contact Now :</span><a href="#">+003457289</a></li>
+                                <li><i class="fa fa-envelope"></i><a href = "mailto: Eng.ghaith@gmail.com" >Eng.ghaith@gmail.com</a></li>
+                                <li><i class="fa fa-phone"></i><span>Contact Now :</span><a href="tel:+963-936455211">+963936455211</a></li>
                             </ul>
                         </div>
                     </div>
@@ -107,23 +107,19 @@
                             <nav class="mainmenu__nav ">
                                 <ul class="mainmenu ">
                                     <li class="drop"><a href="{{route("index")}}">Home</a></li>
-                                    <li class="drop"><a>Class</a></li>
-                                    <li class="drop"><a>Teachers</a></li>
+                                    <li class="drop"><a href="{{route('letter.list')}}">Alphabet</a></li>
+                                    <li class="drop"><a href="{{route('category.index')}}">Words</a></li>
                                     <li class="drop"><a>Pages</a>
                                         <ul class="dropdown__menu">
-                                            <li><a>about us</a></li>
-                                            <li><a>our service</a></li>
-                                            <li><a>class details</a></li>
-                                            <li><a>gallery</a></li>
-                                            <li><a>gallery Details</a></li>
+                                            <li><a href="{{route('letter.list')}}">Learn Alphabet</a></li>
+                                            <li><a href="{{route('category.index')}}">Spell and Learn new Words</a></li>
+                                            <li><a href="{{route('article.index')}}">Read Amazing articles</a></li>
+                                            <li><a href="{{route('game.index')}}">Game Time</a></li>
                                             <!--<li><a href="cart.html">cart Page</a></li>-->
-                                            <li><a>wishlist page</a></li>
-                                            <li><a>checkout page</a></li>
+                                            <li><a href="{{route('report')}}">Wishlist Page</a></li>
                                         </ul>
                                     </li>
-                                    <li class="drop"><a>Shop</a></li>
-                                    <li class="drop"><a>Blog</a></li>
-                                    <li><a>Contact</a></li>
+                                    
                                     <div id='report-section' class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
                                         <div class="shopbox d-flex justify-content-end align-items-center">
                                             <a href="{{route('report')}}">
@@ -169,8 +165,7 @@
                                 </a>
                             </div>
                             <div class="ftr__details">
-                                <p>Lorem ipsum dolor sit cnr adipisicing elit, sed do eiusmod teagna aliqua. Lorem
-                                    ipsudolor sit cnr adi.</p>
+                                
                             </div>
                             <div class="ftr__address__inner">
                                 <div class="footer__social__icon">
@@ -187,6 +182,9 @@
                                 </div>
                                 <div class="ft__btm__title">
                                     <h4>About Us</h4>
+                                    <p class="wow flipInX">We provide the best e-learn platform to make our children smarter. 
+                                        By improving their skills and make them more interactive with technologies.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +245,6 @@
                     <!-- Start Single Widget -->
                     <div class="col-lg-3 col-md-6 col-sm-12 md-mt-40 sm-mt-40 mx-2">
                         <div class="footer__widget">
-                            <h4>Twitter Widget</h4>
                             <div class="footer__innner">
                                 <div class="dcare__twit__wrap">
                                     <!-- Start Single -->
@@ -256,8 +253,7 @@
                                             <i class="fa fa-twitter"></i>
                                         </div>
                                         <div class="dcare__twit__details">
-                                            <p>Lorem ipsum dolor sit consect ietur adipisicing sed eiipsa<a href="#">#
-                                                    twitter .com?web/lnk/statement</a></p>
+                                           
                                             <span><i class="fa fa-clock-o"></i>30th Dec, 2017</span>
                                             <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
                                         </div>
@@ -269,8 +265,7 @@
                                             <i class="fa fa-twitter"></i>
                                         </div>
                                         <div class="dcare__twit__details">
-                                            <p>Lorem ipsum dolor sit consect ietur adipisicing sed eiipsa<a href="#">#
-                                                    twitter .com?web/lnk/statement</a></p>
+                                            
                                             <span><i class="fa fa-clock-o"></i>30th Dec, 2017</span>
                                             <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
                                         </div>
@@ -297,7 +292,7 @@
                                     <i class="fa fa-home"></i>
                                 </div>
                                 <div class="ft__contact__details">
-                                    <p>Uttara, Zamzam Tower</p>
+                                    <p>Damascus, Four Seasons Tower</p>
                                     <p>Road # 12, Sec #13, 5th Floor</p>
                                 </div>
                             </div>
@@ -306,8 +301,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <div class="ft__contact__details">
-                                    <p><a href="#">+08097-654321</a></p>
-                                    <p><a href="#">+09876-543211</a></p>
+                                    <p><a href="tel: +963-987654321">+963-987654321</a></p>
                                 </div>
                             </div>
                             <div class="single__footer__address">
@@ -315,8 +309,7 @@
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <div class="ft__contact__details">
-                                    <p><a href="#">juniorhomeschool.@email.com</a></p>
-                                    <p><a href="#">Kidscareschool.@yahoo.com</a></p>
+                                    <p><a href="mailto: Eng.ghaith@gmail.com">Eng.ghaith@gmail.com</a></p>
                                 </div>
                             </div>
                         </div>
