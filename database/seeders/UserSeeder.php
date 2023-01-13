@@ -25,5 +25,21 @@ class UserSeeder extends Seeder
             'role_id' => (new Role)->where('title', '=', 'admin')->first('id')['id'],
             'active' => 1,
         ]);
+        (new User)->create([
+            'name' => 'teacher alex',
+            'email' => 'teacher@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'teacher',
+            'role_id' => (new Role)->where('title', '=', 'admin')->first('id')['id'],
+            'active' => 1,
+        ]);
+        (new User)->create([
+            'name' => 'Johnathan',
+            'email' => 'Johnathan@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'student',
+            'role_id' => (new Role)->where('title', '=', 'admin')->first('id')['id'],
+            'active' => 1,
+        ]);
     }
 }
