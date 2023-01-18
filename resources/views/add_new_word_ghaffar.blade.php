@@ -280,7 +280,8 @@
                                                         </label>
                                                         @error('text')
                                                         <br>
-                                                        <span class="invalid-feedback" role="alert">
+                                                        <span class="invalid-feedback" role="alert"
+                                                              style="display: block">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                         @enderror
@@ -294,7 +295,8 @@
                                                         </label>
                                                         @error('score')
                                                         <br>
-                                                        <span class="invalid-feedback" role="alert">
+                                                        <span class="invalid-feedback" role="alert"
+                                                              style="display: block">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                         @enderror
@@ -350,7 +352,8 @@
                                                         </div>
                                                         @error('category1')
                                                         <br>
-                                                        <span class="invalid-feedback" role="alert">
+                                                        <span class="invalid-feedback" role="alert"
+                                                              style="display: block">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                         @enderror
@@ -383,7 +386,7 @@
                                                      style="margin-bottom: 30px">
                                                     @error('image1')
                                                     <br>
-                                                    <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert" style="display: block">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
@@ -415,7 +418,7 @@
                                                      style="margin-bottom: 30px">
                                                     @error('voice1')
                                                     <br>
-                                                    <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert" style="display: block">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror

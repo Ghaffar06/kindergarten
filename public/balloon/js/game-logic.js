@@ -1,26 +1,27 @@
 /**
-* @fileOverview JavaScript Game Logic Function Library.
-* @author <a href="https://github.com/richardhenyash">Richard Ash</a>
-* @version 1.1.1
-*/
+ * @fileOverview JavaScript Game Logic Function Library.
+ * @author <a href="https://github.com/richardhenyash">Richard Ash</a>
+ * @version 1.1.1
+ */
 /*jshint esversion: 6 */
 /* globals $, bpmGameMode: true, bpmQno: true, bpmDifficulty: true, bpmActiveButtons: true, bpmOptionArray: true */
 /* globals bpmQArray: true, bpmHealthArray: true, bpmCQ: true, bpmQCurrent: true, bpmAnswerArray: true, bpmScoreArray: true */
 /* globals returnGameMode, returnQuestions, returnDifficulty, returnActiveButtons, returnOptionArray, returnQuestionArray */
 /* globals initialiseHealthBar, setQuestion, answerArray, setBalloons, setScore, returnCanvasID, getHighScore, soundPop */
 /* globals animateBalloon, checkHighScore, setHighScore, soundHighScore, soundUnlucky, soundWellDone, returnToMenu, setHealthBar */
+
 /* globals soundDeflate */
 
 /**
-* [Function to launch game]
-* @return {[array]}                     [Score array - array of 2 numbers, score and number of questions]          
-*/
+ * [Function to launch game]
+ * @return {[array]}                     [Score array - array of 2 numbers, score and number of questions]
+ */
 function playGame() {
     // Show all balloon canvas elements
     $("[id^=canvas-balloon]").show();
     // Show all balloon text elements
     $("[id^=balloon-answer-text]").show();
-    // Set global variables 
+    // Set global variables
     bpmGameMode = returnGameMode();
     bpmGameMode = "letter";
     bpmQno = returnQuestions();
@@ -53,19 +54,19 @@ function playGame() {
     // Show game section
     $("#game-section").hide();
     $("#game-section").removeClass("d-none");
-    $("#game-section").show(1000);     
+    $("#game-section").show(1000);
     // Return score array
     return bpmScoreArray;
 }
 
 /**
-* [Function to check selected answer on click of balloon]   
-*/
+ * [Function to check selected answer on click of balloon]
+ */
 function checkSelectedAnswer() {
     // Add "#" to ID
-    let answerTextID = "#"+ (this.id);
+    let answerTextID = "#" + (this.id);
     // Get canvas ID
-    let canvasID = "#"+ returnCanvasID(answerTextID);
+    let canvasID = "#" + returnCanvasID(answerTextID);
     // Set selected answer
     let sAnswer = this.innerHTML;
     // Set high score
@@ -110,8 +111,8 @@ function checkSelectedAnswer() {
                 $("#modal-feedback-heading-text").text("Awesome - New High Score!!!");
                 // Play high score sound
                 soundHighScore.play();
-            } else { 
-                // If score is less than 4               
+            } else {
+                // If score is less than 4
                 if ((bpmScoreArray[0]) < 4) {
                     // Set modal heading to unlucky
                     $("#modal-feedback-heading-text").text("Unlucky - try again!!");
@@ -125,7 +126,7 @@ function checkSelectedAnswer() {
                 }
             }
             // Set modal body text to score out of number of questions asked
-            $("#modal-feedback-body-text").text("You scored " +  bpmScoreArray[0] + " out of " + bpmScoreArray[1] + "!");
+            $("#modal-feedback-body-text").text("You scored " + bpmScoreArray[0] + " out of " + bpmScoreArray[1] + "!");
             // Display feedback modal
             $('#modal-feedback').modal();
             // Return to menu
@@ -159,7 +160,7 @@ function checkSelectedAnswer() {
                 // Play high score sound
                 soundHighScore.play();
             } else {
-                // If score is less than 4  
+                // If score is less than 4
                 if ((bpmScoreArray[0]) < 4) {
                     // Set modal heading to unlucky
                     $("#modal-feedback-heading-text").text("Unlucky - try again!!");
@@ -173,7 +174,7 @@ function checkSelectedAnswer() {
                 }
             }
             // Set modal body text to score out of number of questions asked
-            $("#modal-feedback-body-text").text("You scored " +  bpmScoreArray[0] + " out of " + bpmScoreArray[1] + "!");
+            $("#modal-feedback-body-text").text("You scored " + bpmScoreArray[0] + " out of " + bpmScoreArray[1] + "!");
             // Display feedback modal
             $('#modal-feedback').modal();
             // Return to menu

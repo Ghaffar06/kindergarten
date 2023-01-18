@@ -19,7 +19,7 @@ describe("JavaScript Maths Function Library Testing Utilities", function () {
             } else if (gameMode == "divide") {
                 optionsToCheck = [["÷2, ÷5, ÷10"], ["Mixed 1 to 12"], ["÷1"], ["÷2"], ["÷3"], ["÷4"], ["÷5"], ["÷6"], ["÷7"], ["÷8"], ["÷9"], ["÷10"], ["÷11"], ["÷12"], ["÷1", "÷2", "÷3", "÷4", "÷5", "÷6"], ["÷7", "÷8", "÷9", "÷10", "÷11", "÷12"]];
             } else if (gameMode == "add" || gameMode == "subtract") {
-            optionsToCheck = [["Mixed to 10"], ["Mixed to 20"], ["Mixed to 50"], ["Mixed to 100"]];
+                optionsToCheck = [["Mixed to 10"], ["Mixed to 20"], ["Mixed to 50"], ["Mixed to 100"]];
             }
             // Loop through options to check
             for (let oni = 0; oni < optionsToCheck.length; oni++) {
@@ -194,8 +194,8 @@ describe("JavaScript Maths Function Library Testing Utilities", function () {
                 expect(qArray).toHaveSize(5);
             });
         }
-    }    
-    
+    }
+
     // Test wrongAnswersSubtraction function for all possible questions in subtraction game mode
     for (let ttk1 = 1; ttk1 < 100; ttk1++) {
         for (let ttk2 = 1; ttk2 < 100; ttk2++) {
@@ -217,7 +217,7 @@ describe("JavaScript Maths Function Library Testing Utilities", function () {
 
     // Test wrongAnswerArrayComplete function
     it("wrongAnswerArrayComplete", function () {
-        let qArray =  wrongAnswerArrayComplete([6, 8, 9], 10, 4, 12);
+        let qArray = wrongAnswerArrayComplete([6, 8, 9], 10, 4, 12);
         expect(qArray).toBeInstanceOf(Array);
         expect(qArray).toHaveSize(5);
     });
@@ -232,7 +232,7 @@ describe("JavaScript Maths Function Library Testing Utilities", function () {
 
     // Test shuffleArray function
     it("shuffleArray", function () {
-        let qArray =  shuffleArray([6, 8, 9, 10, 12, 14]);
+        let qArray = shuffleArray([6, 8, 9, 10, 12, 14]);
         expect(qArray).toBeInstanceOf(Array);
         expect(qArray).toHaveSize(6);
     });

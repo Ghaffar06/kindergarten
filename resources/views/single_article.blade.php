@@ -15,7 +15,9 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Article: {{$article->title}}</h2>
                             <nav class="bradcaump-inner">
-                                <a href="{{route('article.index')}}" class="breadcrumb-item">All Article </a>
+                                @if (App\Http\Controllers\RoleController::check_can('view article list'))
+                                    <a href="{{route('article.index')}}" class="breadcrumb-item">All Article </a>
+                                @endif
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">{{$article->title}}</span>

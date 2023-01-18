@@ -42,6 +42,15 @@ class RoleController extends Controller
             return \Auth::user()->id;
     }
 
+    public static function student()
+    {
+        $user = \Auth::user();
+        if ($user === null)
+            return false;
+        $role = $user->role()->first();
+        return $role->title === 'student';
+    }
+
     public function activate_user(User $user)
     {
         $authorization = RoleController::can('activate user');
@@ -55,6 +64,10 @@ class RoleController extends Controller
 
     public static function can(string $permission)
     {
+        if (self::check_can($permission))
+            return null;
+        else
+            return back()->with('failed', 'unauthorized, you dont have access to this page');
         $user = \Auth::user();
         if ($user !== null) {
             $role = $user->role()->first();
@@ -69,6 +82,24 @@ class RoleController extends Controller
             return back()->with('failed', 'unauthorized, you dont have access to this page');
         } else
             return null;
+    }
+
+    public static function check_can(string $permission)
+    {
+        $user = \Auth::user();
+        if ($user !== null) {
+            $role = $user->role()->first();
+            if ($user->active == 'N')
+                return false;
+        } else
+            $role = Role::where('title', '=', 'guest')->first();
+
+        $permission_id = Permission::where('title', '=', $permission)->first()['id'];
+        $t = $role->rolePermissions->where('permission_id', '=', $permission_id)->count();
+        if ($t === 0) {
+            return false;
+        } else
+            return true;
     }
 
     public function deactivate_user(User $user)

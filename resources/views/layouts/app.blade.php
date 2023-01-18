@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}">
+    {{--    <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}">--}}
     <link rel="apple-touch-icon" href="{{asset('images/icon.png')}}">
     <!-- Google font (font-family: 'Lobster', Open+Sans;) -->
     <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,400i,700,700i" rel="stylesheet">
@@ -58,8 +58,10 @@
                     <div class="col-md-7 col-lg-6 col-sm-12">
                         <div class="jun__header__top__left">
                             <ul class="top__address d-flex justify-content-start align-items-center flex-wrap flex-lg-nowrap flex-md-nowrap">
-                                <li><i class="fa fa-envelope"></i><a href = "mailto: Eng.ghaith@gmail.com" >Eng.ghaith@gmail.com</a></li>
-                                <li><i class="fa fa-phone"></i><span>Contact Now :</span><a href="tel:+963-936455211">+963936455211</a></li>
+                                <li><i class="fa fa-envelope"></i><a href="mailto: Eng.ghaith@gmail.com">Eng.ghaith@gmail.com</a>
+                                </li>
+                                <li><i class="fa fa-phone"></i><span>Contact Now :</span><a href="tel:+963-936455211">+963936455211</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -107,26 +109,43 @@
                             <nav class="mainmenu__nav ">
                                 <ul class="mainmenu ">
                                     <li class="drop"><a href="{{route("index")}}">Home</a></li>
-                                    <li class="drop"><a href="{{route('letter.list')}}">Alphabet</a></li>
-                                    <li class="drop"><a href="{{route('category.index')}}">Words</a></li>
+                                    @if (App\Http\Controllers\RoleController::check_can('view letter list') )
+                                        <li class="drop"><a href="{{route('letter.list')}}">Alphabet</a></li>
+                                    @endif
+                                    @if (App\Http\Controllers\RoleController::check_can('view category list') )
+                                        <li class="drop"><a href="{{route('category.index')}}">Words</a></li>
+                                    @endif
                                     <li class="drop"><a>Pages</a>
                                         <ul class="dropdown__menu">
-                                            <li><a href="{{route('letter.list')}}">Learn Alphabet</a></li>
-                                            <li><a href="{{route('category.index')}}">Spell and Learn new Words</a></li>
-                                            <li><a href="{{route('article.index')}}">Read Amazing articles</a></li>
+                                            @if (App\Http\Controllers\RoleController::check_can('view letter list'))
+                                                <li><a href="{{route('letter.list')}}">Learn Alphabet</a></li>
+                                            @endif
+                                            @if (App\Http\Controllers\RoleController::check_can('view category list'))
+                                                <li><a href="{{route('category.index')}}">Spell and Learn new Words</a>
+                                                </li>
+                                            @endif
+                                            @if (App\Http\Controllers\RoleController::check_can('view article list'))
+                                                <li><a href="{{route('article.index')}}">Read Amazing articles</a></li>
+                                            @endif
+                                            {{--                                            @if (App\Http\Controllers\RoleController::check_can('view category list') != null)--}}
                                             <li><a href="{{route('game.index')}}">Game Time</a></li>
+                                            {{--                                            @endif--}}
                                             <!--<li><a href="cart.html">cart Page</a></li>-->
-                                            <li><a href="{{route('report')}}">Wishlist Page</a></li>
+                                            @if (App\Http\Controllers\RoleController::check_can('create report') )
+                                                <li><a href="{{route('report')}}">Report</a></li>
+                                            @endif
                                         </ul>
                                     </li>
-                                    
-                                    <div id='report-section' class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
-                                        <div class="shopbox d-flex justify-content-end align-items-center">
-                                            <a href="{{route('report')}}">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
+                                    @if (App\Http\Controllers\RoleController::check_can('create report') )
+                                        <div id='report-section' class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
+                                            <div class="shopbox d-flex justify-content-end align-items-center">
+                                                <a href="{{route('report')}}">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
+
                                 </ul>
                             </nav>
                         </div>
@@ -165,7 +184,7 @@
                                 </a>
                             </div>
                             <div class="ftr__details">
-                                
+
                             </div>
                             <div class="ftr__address__inner">
                                 <div class="footer__social__icon">
@@ -182,7 +201,8 @@
                                 </div>
                                 <div class="ft__btm__title">
                                     <h4>About Us</h4>
-                                    <p class="wow flipInX">We provide the best e-learn platform to make our children smarter. 
+                                    <p class="wow flipInX">We provide the best e-learn platform to make our children
+                                        smarter.
                                         By improving their skills and make them more interactive with technologies.
                                     </p>
                                 </div>
@@ -253,7 +273,7 @@
                                             <i class="fa fa-twitter"></i>
                                         </div>
                                         <div class="dcare__twit__details">
-                                           
+
                                             <span><i class="fa fa-clock-o"></i>30th Dec, 2017</span>
                                             <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
                                         </div>
@@ -265,7 +285,7 @@
                                             <i class="fa fa-twitter"></i>
                                         </div>
                                         <div class="dcare__twit__details">
-                                            
+
                                             <span><i class="fa fa-clock-o"></i>30th Dec, 2017</span>
                                             <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
                                         </div>
@@ -371,7 +391,7 @@
                                        name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert" style="display: block">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -388,7 +408,7 @@
                                        name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert" style="display: block">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -405,7 +425,7 @@
                                        required autocomplete="new-password">
 
                                 @error('password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert" style="display: block">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -451,7 +471,7 @@
                                        value="{{ old('birthdate') }}" autocomplete="birthdate" autofocus>
 
                                 @error('birthdate')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert" style="display: block">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -490,7 +510,7 @@
                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert" style="display: block">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -507,7 +527,7 @@
                                        required autocomplete="current-password">
 
                                 @error('password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert" style="display: block">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -548,7 +568,7 @@
 </body>
 
 <script>
-    $(window).on('load',()=>{
+    $(window).on('load', () => {
         $('#main_menu_header').removeClass('header_top_line');
     })
 </script>

@@ -12,8 +12,11 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Word: {{$word->text}}</h2>
                             <nav class="bradcaump-inner">
-                                <a href="{{route('word.index', ['category'=> $category->id])}}" class="breadcrumb-item">back
-                                    to: {{$category->title}}'s CATEGORY</a>
+                                @if (App\Http\Controllers\RoleController::check_can('view word list'))
+                                    <a href="{{route('word.index', ['category'=> $category->id])}}"
+                                       class="breadcrumb-item">back
+                                        to: {{$category->title}}'s CATEGORY</a>
+                                @endif
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">{{$word->text}}</span>

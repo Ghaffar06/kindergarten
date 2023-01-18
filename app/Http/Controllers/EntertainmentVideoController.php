@@ -16,6 +16,7 @@ class EntertainmentVideoController extends Controller
 
     private $model = EntertainmentVideo::class;
     private $mainColumn = 'title';
+    private $delete_permission = 'delete entertainment video';
 
     public function index(Request $request)
     {

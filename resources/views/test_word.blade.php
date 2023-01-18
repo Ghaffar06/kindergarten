@@ -26,19 +26,19 @@
     <p3>add new word:</p3>
     @error('image')
     <br>
-    <span class="invalid-feedback" role="alert">
+    <span class="invalid-feedback" role="alert" style="display: block">
             <strong>{{ $message }}</strong>
         </span>
     @enderror
     @error('description')
     <br>
-    <span class="invalid-feedback" role="alert">
+    <span class="invalid-feedback" role="alert" style="display: block">
             <strong>{{ $message }}</strong>
         </span>
     @enderror
     @error('title')
     <br>
-    <span class="invalid-feedback" role="alert">
+    <span class="invalid-feedback" role="alert" style="display: block">
 {{--            <strong>{{ $message }}</strong>--}}
         </span>
     @enderror

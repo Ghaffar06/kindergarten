@@ -14,13 +14,15 @@
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">{{$category->title}}'s Category</h2>
-                            <nav class="bradcaump-inner">
-                                <a href="{{route('category.index')}}" class="breadcrumb-item">back to: All
-                                    Categories</a>
-                                <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
-                                                                 alt="separator images"></span>
-                                <span class="breadcrumb-item active">{{$category->title}}</span>
-                            </nav>
+                            @if (App\Http\Controllers\RoleController::check_can('view category list'))
+                                <nav class="bradcaump-inner">
+                                    <a href="{{route('category.index')}}" class="breadcrumb-item">back to: All
+                                        Categories</a>
+                                    <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
+                                                                     alt="separator images"></span>
+                                    <span class="breadcrumb-item active">{{$category->title}}</span>
+                                </nav>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -36,38 +38,42 @@
             <!-- Shop Grid -->
             <div class="col-lg-12">
                 <div class="row">
-                    <div class="position-absolute" style="right: 5%; top: -100px">
-                        <li style="list-style: none">
-                            <a href="{{route('word.test',['category'=>$category->id])}}">
-                                <div class="dcare__btn align-items-center d-flex">
-                                    <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
-                                    Take A Test
-                                </div>
-                            </a>
-                        </li>
-                    </div>
+                    @if (App\Http\Controllers\RoleController::check_can('take words test'))
+                        <div class="position-absolute" style="right: 5%; top: -100px">
+                            <li style="list-style: none">
+                                <a href="{{route('word.test',['category'=>$category->id])}}">
+                                    <div class="dcare__btn align-items-center d-flex">
+                                        <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
+                                        Take A Test
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                    @endif
                     <div class="row shop-grid-page">
                         <!-- Start Single Product -->
                         @foreach($words as $word)
                             <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                 <div class="product--2 product__grid">
-                                    <div class="product__imges">
-                                        <a href="{{route('word.learn',['category'=>$category->id,'id'=>$word->id])}}">
-                                            <img src="{{asset($word->wordPhotos[0]->url)}}">
-                                        </a>
-                                        @if($word->learned)
-                                            <div class="pro__label">
-                                                <span>Learned</span>
-                                            </div>
-                                        @endif
-                                        {{--                                         <div class="product__cart__wrapper">--}}
-                                        {{--                                            <ul class="cart__list">--}}
-                                        {{--                                                <li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>--}}
-                                        {{--                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-search"></span></a></li>--}}
-                                        {{--                                                <li><a href="wishlist.html"><span class="ti-heart"></span></a></li>--}}
-                                        {{--                                            </ul>--}}
-                                        {{--                                        </div> --}}
-                                    </div>
+                                    @if (App\Http\Controllers\RoleController::check_can('view word details'))
+                                        <div class="product__imges">
+                                            <a href="{{route('word.learn',['category'=>$category->id,'id'=>$word->id])}}">
+                                                <img src="{{asset($word->wordPhotos[0]->url)}}">
+                                            </a>
+                                            @if($word->learned)
+                                                <div class="pro__label">
+                                                    <span>Learned</span>
+                                                </div>
+                                            @endif
+                                            {{--                                         <div class="product__cart__wrapper">--}}
+                                            {{--                                            <ul class="cart__list">--}}
+                                            {{--                                                <li><a href="cart.html"><span class="ti-shopping-cart"></span></a></li>--}}
+                                            {{--                                                <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-search"></span></a></li>--}}
+                                            {{--                                                <li><a href="wishlist.html"><span class="ti-heart"></span></a></li>--}}
+                                            {{--                                            </ul>--}}
+                                            {{--                                        </div> --}}
+                                        </div>
+                                    @endif
                                     <div class="product__inner">
                                         <div class="pro__title">
                                             <h4><a>{{$word -> text}}</a></h4>

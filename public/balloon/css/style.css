@@ -1,9 +1,9 @@
 /*-- Global Variable Declarations--*/
 :root {
-/*-- Fonts--*/
+    /*-- Fonts--*/
     --titlefont: "Whale I Tried", sans-serif;
     --bodyfont: 'Nunito', sans-serif;
-/*-- Colour Palette--*/
+    /*-- Colour Palette--*/
     --purplelight: #908CD9;
     --purplemed: #9C70BD;
     --purpledark: #A2529A;
@@ -11,7 +11,7 @@
     --bluevlight: #EEFBFF;
     --redlight: #DC7774;
     --medgrey: #a9a9a9;
-/*-- Canvas Size--*/
+    /*-- Canvas Size--*/
     --canvassize: calc((100vh - 22.6rem) / 4);
     --balloontextsize: calc((100vh - 22.6rem) / 14);
     --balloontextlineheight: calc((100vh - 22.6rem) / 4.4);
@@ -22,10 +22,10 @@
     font-family: 'Whale I Tried';
     src: url('../fonts/whale-i-tried.eot');
     src: url('../fonts/whale-i-tried.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/whale-i-tried.woff2') format('woff2'),
-         url('../fonts/whale-i-tried.woff') format('woff'),
-         url('../fonts/whale-i-tried.ttf')  format('truetype'),
-         url('../fonts/whale-i-tried.svg#Whale I Tried') format('svg');
+    url('../fonts/whale-i-tried.woff2') format('woff2'),
+    url('../fonts/whale-i-tried.woff') format('woff'),
+    url('../fonts/whale-i-tried.ttf') format('truetype'),
+    url('../fonts/whale-i-tried.svg#Whale I Tried') format('svg');
 }
 
 /*-- HTML--*/
@@ -183,82 +183,82 @@ body {
 /*-- Game Loader --*/
 /*-- Many thanks to loading.io https://loading.io/css/ --*/
 .lds-grid {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
 }
 
 .lds-grid div {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #fff;
-  animation: lds-grid 1.2s linear infinite;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    animation: lds-grid 1.2s linear infinite;
 }
 
 .lds-grid div:nth-child(1) {
-  top: 8px;
-  left: 8px;
-  animation-delay: 0s;
+    top: 8px;
+    left: 8px;
+    animation-delay: 0s;
 }
 
 .lds-grid div:nth-child(2) {
-  top: 8px;
-  left: 32px;
-  animation-delay: -0.4s;
+    top: 8px;
+    left: 32px;
+    animation-delay: -0.4s;
 }
 
 .lds-grid div:nth-child(3) {
-  top: 8px;
-  left: 56px;
-  animation-delay: -0.8s;
+    top: 8px;
+    left: 56px;
+    animation-delay: -0.8s;
 }
 
 .lds-grid div:nth-child(4) {
-  top: 32px;
-  left: 8px;
-  animation-delay: -0.4s;
+    top: 32px;
+    left: 8px;
+    animation-delay: -0.4s;
 }
 
 .lds-grid div:nth-child(5) {
-  top: 32px;
-  left: 32px;
-  animation-delay: -0.8s;
+    top: 32px;
+    left: 32px;
+    animation-delay: -0.8s;
 }
 
 .lds-grid div:nth-child(6) {
-  top: 32px;
-  left: 56px;
-  animation-delay: -1.2s;
+    top: 32px;
+    left: 56px;
+    animation-delay: -1.2s;
 }
 
 .lds-grid div:nth-child(7) {
-  top: 56px;
-  left: 8px;
-  animation-delay: -0.8s;
+    top: 56px;
+    left: 8px;
+    animation-delay: -0.8s;
 }
 
 .lds-grid div:nth-child(8) {
-  top: 56px;
-  left: 32px;
-  animation-delay: -1.2s;
+    top: 56px;
+    left: 32px;
+    animation-delay: -1.2s;
 }
 
 .lds-grid div:nth-child(9) {
-  top: 56px;
-  left: 56px;
-  animation-delay: -1.6s;
+    top: 56px;
+    left: 56px;
+    animation-delay: -1.6s;
 }
 
 @keyframes lds-grid {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 /*-- Set row height for balloon canvas elements --*/
@@ -293,7 +293,7 @@ body {
 
 /*-- Game Answer Balloon Text Hover Styling --*/
 .balloon-answer-text:hover {
-  cursor: url('../images/pin.svg'), crosshair; 
+    cursor: url('../images/pin.svg'), crosshair;
 }
 
 /*-- Game Question --*/
@@ -439,7 +439,7 @@ body {
 }
 
 .btn-info:hover {
-    background-color: var(--purplemed); 
+    background-color: var(--purplemed);
 }
 
 /*-- Bootstrap Modal Class Overrides --*/
@@ -467,11 +467,13 @@ body {
 /*-- Media query to re-size heading, reposition heading image and re-size Play button for screen sizes under 680px high --*/
 @media (max-height: 680px) {
     .heading-main {
-        font-size: 5rem;    
+        font-size: 5rem;
     }
+
     .container-heading-main img, .container-heading-main-large img {
         margin-top: -0.6rem;
     }
+
     .btn-xxl {
         padding: 0.5rem 0.5rem;
         font-size: 4.0rem;
@@ -479,21 +481,23 @@ body {
 }
 
 /*-- Media query to fix balloon text height to a maximum of 5rem for devices over 926px high --*/
- @media (min-height: 926px) {
+@media (min-height: 926px) {
     .balloon-answer-text {
         font-size: 5rem;
     }
- }
+}
 
 /*-- Media query to re-size balloon canvas and text elements for large devices over 992px wide --*/
- @media (min-width: 992px) {
+@media (min-width: 992px) {
     .canvas-balloon {
         min-height: 22rem;
     }
+
     .canvas-balloon canvas {
         width: 22rem;
         height: 22rem;
     }
+
     .balloon-answer-text {
         font-size: 5rem;
         line-height: 20rem;

@@ -14,7 +14,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">All Letters Small and Capital</h2>
                             <nav class="bradcaump-inner">
-                                <a href="{{route('home')}}" class="breadcrumb-item">back to: Home</a>
+                                <a href="{{route('index')}}" class="breadcrumb-item">back to: Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">Letters</span>

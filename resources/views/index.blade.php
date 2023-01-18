@@ -17,9 +17,12 @@
                                     <div class="slider__text">
                                         <h2>Amazing Stories</h2>
                                     </div>
-                                    <div class="slider__btn">
-                                        <a class="dcare__btn" href="{{route('article.index')}}">Read More Stories</a>
-                                    </div>
+                                    @if (App\Http\Controllers\RoleController::check_can('view article list'))
+                                        <div class="slider__btn">
+                                            <a class="dcare__btn" href="{{route('article.index')}}">Read More
+                                                Stories</a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                             <!-- End Single Slide -->
@@ -39,9 +42,12 @@
                                     <div class="slider__text">
                                         <h2>The Alphabet</h2>
                                     </div>
-                                    <div class="slider__btn">
-                                        <a class="dcare__btn" href="{{route('letter.list')}}">Learn More about Alphabet</a>
-                                    </div>
+                                    @if (App\Http\Controllers\RoleController::check_can('view letter list'))
+                                        <div class="slider__btn">
+                                            <a class="dcare__btn" href="{{route('letter.list')}}">Learn More about
+                                                Alphabet</a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -59,10 +65,10 @@
                 <div class="col-lg-12">
                     <div class="section__title text-center">
                         <h2 class="title__line">Welcome To Junior Home</h2>
-                        <p>It is very important to take care of the patient, 
+                        <p>It is very important to take care of the patient,
                             and it will be followed by an increase in income,
-                             but in such a time, some great things will happen, 
-                             and the consequences will happen</p>
+                            but in such a time, some great things will happen,
+                            and the consequences will happen</p>
                     </div>
                 </div>
             </div>
@@ -70,13 +76,15 @@
                 <div class="col-md-12 col-lg-6 col-sm-12">
                     <div class="welcome__juniro__inner">
                         <h3>Welcome to <span class="theme-color">O</span><span>u</span>r e-learn</h3>
-                        <p class="wow flipInX">The pain itself is a lot, it will be followed by adipisic 
+                        <p class="wow flipInX">The pain itself is a lot, it will be followed by adipisic
                             ming elit, but let it be excepted that they are blinded by covetousness,
-                             there are those who are in the wrong who run the mol anim that is the lai aborum.
-                              But in order that you may see whence all this born error arises, 
-                              and the pain of those who praise it, the whole thing.</p>
+                            there are those who are in the wrong who run the mol anim that is the lai aborum.
+                            But in order that you may see whence all this born error arises,
+                            and the pain of those who praise it, the whole thing.</p>
                         <div class="wel__btn">
-                            <a class="dcare__btn" href="{{route('article.index')}}">Read More</a>
+                            @if (App\Http\Controllers\RoleController::check_can('view article list'))
+                                <a class="dcare__btn" href="{{route('article.index')}}">Read More</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -103,14 +111,20 @@
                             <img src="{{asset('images/shape/sm-icon/1.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="{{route('letter.list')}}">Alphabet Photo List</a></h6>
+                            @if (App\Http\Controllers\RoleController::check_can('view letter list'))
+                                <h6><a href="{{route('letter.list')}}">Alphabet Photo List</a></h6>
+                            @else
+                                <h6>Alphabet Photo List</h6>
+                            @endif
                             <p>Learning the Alphabet with some amazing photo</p>
-                            <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn"
-                                   href="{{route('letter.list')}}">
-                                    Learn More
-                                </a>
-                            </div>
+                            @if (App\Http\Controllers\RoleController::check_can('view letter list'))
+                                <div class="service__btn">
+                                    <a class="dcare__btn btn__gray hover--theme min__height-btn"
+                                       href="{{route('letter.list')}}">
+                                        Learn More
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -122,12 +136,18 @@
                             <img src="{{asset('images/shape/sm-icon/2.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="{{route('category.index')}}">Words</a></h6>
+                            @if (App\Http\Controllers\RoleController::check_can('view category list'))
+                                <h6><a href="{{route('category.index')}}">Words</a></h6>
+                            @else
+                                <h6>Words</h6>
+                            @endif
                             <p>Learning more and more english words with the ability to chose certain
                                 word-Categories</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn"
-                                   href="{{route('category.index')}}">Discover Categories</a>
+                                @if (App\Http\Controllers\RoleController::check_can('view category list'))
+                                    <a class="dcare__btn btn__gray hover--theme min__height-btn"
+                                       href="{{route('category.index')}}">Discover Categories</a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -140,14 +160,20 @@
                             <img src="{{asset('images/shape/sm-icon/3.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                            <h6><a href="{{route('article.index')}}">Articles</a></h6>
+                            @if (App\Http\Controllers\RoleController::check_can('view article list'))
+                                <h6><a href="{{route('article.index')}}">Articles</a></h6>
+                            @else
+                                <h6>Articles</h6>
+                            @endif
                             <p>Learning wide english texts with some challenging questions to test your
                                 acknowledgment</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn"
-                                   href="{{route('article.index')}}">
-                                    Start Reading
-                                </a>
+                                @if (App\Http\Controllers\RoleController::check_can('view article list'))
+                                    <a class="dcare__btn btn__gray hover--theme min__height-btn"
+                                       href="{{route('article.index')}}">
+                                        Start Reading
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -160,10 +186,11 @@
                             <img src="{{asset('images/shape/sm-icon/4.png')}}" alt="icon images">
                         </div>
                         <div class="service__details">
-                        <h6><a href="{{route('game.index')}}">Game Time</a></h6>
+                            <h6><a href="{{route('game.index')}}">Game Time</a></h6>
                             <p>learn while playing some amazing mini-games related to education</p>
                             <div class="service__btn">
-                                <a class="dcare__btn btn__gray hover--theme min__height-btn" href="{{route('game.index')}}">Start Playing</a>
+                                <a class="dcare__btn btn__gray hover--theme min__height-btn"
+                                   href="{{route('game.index')}}">Start Playing</a>
                             </div>
                         </div>
                     </div>

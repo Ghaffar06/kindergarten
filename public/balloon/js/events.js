@@ -1,8 +1,8 @@
 /**
-* @fileOverview JavaScript Event Handler Library.
-* @author <a href="https://github.com/richardhenyash">Richard Ash</a>
-* @version 1.1.1
-*/
+ * @fileOverview JavaScript Event Handler Library.
+ * @author <a href="https://github.com/richardhenyash">Richard Ash</a>
+ * @version 1.1.1
+ */
 /*jshint esversion: 6 */
 /* globals $, modeMultiply, initialiseBalloons, modeAddSubtract, modeDivide, playGame, returnBtnIdArray, makeNotActive */
 /* globals checkOtherStickyButtons, checkSelectedAnswer, returnToMenu, muteAudio, unMuteAudio, muteAudioToggle */
@@ -20,11 +20,11 @@ $("#game-canvas-controls").hide();
 // Show game loader until 1000ms after window has completed loading.
 // Display balloon animation frame 1 in each canvas element
 // Fade-in game score, game canvas and controls 1000ms after window has completed loading //
-$(window).on("load", function() {
+$(window).on("load", function () {
     // Display balloon animation frame 1 in each canvas element
     initialiseBalloons();
     // Set timeout
-    setTimeout(function(){
+    setTimeout(function () {
         // Hide game loader
         $("#game-loader").hide();
         // Fade-in score
@@ -33,7 +33,7 @@ $(window).on("load", function() {
         // Fade-in game canvas and controls
         $("#game-canvas-controls").removeClass("d-none");
         $("#game-canvas-controls").fadeIn(1000);
-    }, 1000);     
+    }, 1000);
 });
 
 // Options Event Handlers //
@@ -55,7 +55,7 @@ $("#play").on("click", playGame);
 
 // On click event handler added to multiplication and division options buttons with the .btn-mul-div-toggle class in multiplication and division modes //
 // Removes active class on all other multiplication and division buttons to give toggle behaviour to options buttons with the .btn-mul-div-toggle class //
-$(".btn-mul-div-toggle").click(function(){
+$(".btn-mul-div-toggle").click(function () {
     // Get button ID
     let btnId = "#" + ($(this)[0].id);
     // Initialise button ID array
@@ -77,7 +77,7 @@ $(".btn-mul-div-toggle").click(function(){
 // Makes the first two multiply and divide option buttons not active //
 // Allows selection of multiple buttons with the .btn-mul-div-sticky class. Checks to see if other sticky buttons //
 // are selected before releasing button selection, to ensure that one option is always selected //
-$(".btn-mul-div-sticky").click(function(){
+$(".btn-mul-div-sticky").click(function () {
     // Initialise button ID array
     let btnIdArray = ["#btn-mul-div-1", "#btn-mul-div-2"];
     // Make all buttons in button ID array not active
@@ -92,7 +92,7 @@ $(".btn-mul-div-sticky").click(function(){
 
 // On click event handler added to addition and subtraction options buttons with the .btn-add-sub-toggle class in addition and subtraction modes //
 // Removes active class on all other buttons to give toggle behaviour to addition and subtraction options buttons with the .btn-add-sub-toggle class //
-$(".btn-add-sub-toggle").click(function(){
+$(".btn-add-sub-toggle").click(function () {
     // Get button ID
     let btnId = "#" + ($(this)[0].id);
     // Initialise button ID array

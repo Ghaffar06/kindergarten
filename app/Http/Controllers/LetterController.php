@@ -17,6 +17,7 @@ class LetterController extends Controller
 
     private $model = LetterPhoto::class;
     private $mainColumn = 'letter';
+    private $delete_permission = 'delete letter';
 
     public function index($letter)
     {

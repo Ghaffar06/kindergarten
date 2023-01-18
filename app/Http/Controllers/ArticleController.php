@@ -10,6 +10,8 @@ use App\Http\Controllers\Traits\HasList;
 use App\Models\Article;
 use App\Models\ArticleQuestion;
 use App\Models\ChildArticle;
+use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Session;
@@ -22,6 +24,7 @@ class ArticleController extends Controller
 
     private $model = Article::class;
     private $mainColumn = 'title';
+    private $delete_permission = 'delete article';
 
     public function index(Request $request)
     {
@@ -61,6 +64,8 @@ class ArticleController extends Controller
                     $article->score = 0;
             }
             $article->short = substr($article->text, 0, 30);
+            $article->teacher = (new User)->where('id', '=', (new Teacher)->where('id', '=', $article->teacher_id)->first('user_id'))->first('name');
+            $article->temp = (new Teacher)->where('id', '=', $article->teacher_id)->first('user_id');
         }
 //        return view('test_articles', $all);
         return view('articles', $all);

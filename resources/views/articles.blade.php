@@ -17,7 +17,7 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">All Articles</h2>
                             <nav class="bradcaump-inner">
-                                <a href="{{route('home')}}" class="breadcrumb-item">back to: Home</a>
+                                <a href="{{route('index')}}" class="breadcrumb-item">back to: Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
                                 <span class="breadcrumb-item active">Articles</span>
@@ -33,46 +33,50 @@
         <div class="container">
             <div class="row">
                 <div class="position-absolute" style="right: 5%; top: 25px">
-                    <li>
-                        <a href="{{route('article.add-form')}}">
-                            <div class="dcare__btn align-items-center d-flex">
-                                <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
-                                Add New Article
-                            </div>
-                        </a>
-                    </li>
+                    @if (App\Http\Controllers\RoleController::check_can('create article') )
+                        <li>
+                            <a href="{{route('article.add-form')}}">
+                                <div class="dcare__btn align-items-center d-flex">
+                                    <span style="font-size: 24pt">+&nbsp;&nbsp;</span>
+                                    Add New Article
+                                </div>
+                            </a>
+                        </li>
+                    @endif
                 </div>
-                <div class="col-lg-12 col-sm-12 col-lg-12">
-                    <div class="subscribe__inner">
-                        <h2>Search for a specific Article</h2>
-                        <div class="newsletter__form">
-                            <div class="input__box">
-                                <div id="mc_embed_signup">
-                                    <form action="" method="get">
-                                        <div class="htc__news__inner">
-                                            <div class="news__input">
-                                                <div class="form-group">
-                                                    <input type="text" id="art_search" name="search"
-                                                           placeholder="Search" class="form-control"/>
+                @if (App\Http\Controllers\RoleController::check_can('view article list'))
+                    <div class="col-lg-12 col-sm-12 col-lg-12">
+                        <div class="subscribe__inner">
+                            <h2>Search for a specific Article</h2>
+                            <div class="newsletter__form">
+                                <div class="input__box">
+                                    <div id="mc_embed_signup">
+                                        <form action="" method="get">
+                                            <div class="htc__news__inner">
+                                                <div class="news__input">
+                                                    <div class="form-group">
+                                                        <input type="text" id="art_search" name="search"
+                                                               placeholder="Search" class="form-control"/>
+                                                    </div>
+                                                </div>
+                                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                                    <input type="text" name="noname" tabindex="-1" value="">
+                                                </div>
+                                                <div class="clearfix subscribe__btn">
+                                                    <div onclick="search()" class="dcare__btn">
+                                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                                        Search
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                                                <input type="text" name="noname" tabindex="-1" value="">
-                                            </div>
-                                            <div class="clearfix subscribe__btn">
-                                                <div onclick="search()" class="dcare__btn">
-                                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                                    Search
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>
@@ -88,21 +92,30 @@
                             <div class="courses__inner">
                                 <ul class="courses__meta d-flex">
                                     <li class="like" style="font-size: 12pt">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                        max score: {{$article->score == 0?0:$article->score}}
+                                        @if (App\Http\Controllers\RoleController::student())
+                                            <i class="fa fa-pencil-square-o"></i>
+                                            max score: {{$article->score == 0?0:$article->score}}
+                                        @endif
                                     </li>
                                 </ul>
                                 <div class="courses__wrap" style="margin-top: -70px">
                                     <div class="courses__date">
                                         <i class="fa fa-pencil"></i>
                                         written by: {{$article->teacher_id}}
+                                        <script>
+                                            console.log("{{$article->teacher}}");
+                                            console.log("{{$article->temp}}");
+                                            console.log("{{$article->teacher_id}}");
+                                        </script>
                                     </div>
                                     <div class="courses__content">
-                                        <h4 style="font-size: 25pt !important">
-                                            <a href="{{route('article.single_article', ['article'=>$article->id])}}">
-                                                {{$article->title}}
-                                            </a>
-                                        </h4>
+                                        @if (App\Http\Controllers\RoleController::check_can('view article details') )
+                                            <h4 style="font-size: 25pt !important">
+                                                <a href="{{route('article.single_article', ['article'=>$article->id])}}">
+                                                    {{$article->title}}
+                                                </a>
+                                            </h4>
+                                        @endif
                                         <p>{{$article->short}} ...</p>
                                         <div class="position-absolute dcare__btn delete-trigger"
                                              style="bottom: 2.5%; right: 5%"
@@ -150,10 +163,12 @@
                             Are you sure you want to delete this Article?
                         </h5>
                     </div>
+                    {{--                    @if (App\Http\Controllers\RoleController::check_can('delete article'))--}}
                     <div class="single-input text-center">
                         <div onclick="deleteArticle(deleted_id)" class="sign__btn dcare__btn">Confirm</div>
                         <a id="delete_href" class="sign__btn"></a>
                     </div>
+                    {{--                    @endif--}}
                 </div>
                 <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
             </div>

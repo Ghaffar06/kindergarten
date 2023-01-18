@@ -27,6 +27,7 @@ class WordController extends Controller
 
     private $model = Word::class;
     private $mainColumn = 'text';
+    private $delete_permission = 'delete word';
 
     public function index(Category $category, Request $request)
     {
@@ -93,6 +94,13 @@ class WordController extends Controller
             'image1' => 'required',
             'voice1' => 'required',
             'category1' => 'required',
+        ], [
+            'required' => 'The :attribute field is required.',
+            'confirmed' => 'The :attribute and Confirm Password must match.',
+            'string' => 'The :attribute must be of type string',
+            'email' => 'The :attribute must be an email',
+            'min' => 'At least 8 characters is required for :attribute ',
+            'max' => 'At most 255 characters is allowed for :attribute ',
         ]);
 
         $word = new Word(request()->all());
@@ -113,7 +121,7 @@ class WordController extends Controller
 
         for ($i = 1; isset($request->{'category' . $i}); $i++) {
             $category_id = $request->{'category' . $i};
-            CategoryController::addWord($word, $category_id);
+            CategoryController::addWord($word, (new Category)->find($category_id));
         }
         $word->save();
     }

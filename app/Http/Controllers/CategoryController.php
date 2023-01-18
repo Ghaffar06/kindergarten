@@ -21,8 +21,10 @@ class CategoryController extends Controller
     use HasList;
     use SaveFile;
 
+
     private $model = Category::class;
     private $mainColumn = 'title';
+    private $delete_permission = 'delete category';
 
     public static function addWord(Word $word, Category $category)
     {

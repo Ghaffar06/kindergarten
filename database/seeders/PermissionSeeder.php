@@ -62,6 +62,11 @@ class PermissionSeeder extends Seeder
                 'deactivate user' => ['admin'],
                 'update word details' => ['teacher'],
                 'take words test' => ['student'],
+                'delete letter' => $admin_teacher,
+                'delete word' => $admin_teacher,
+                'delete entertainment video' => $admin_teacher,
+                'delete article' => $admin_teacher,
+                'delete category' => $admin_teacher,
             ];
             foreach ($all_permission as $permission_title => $roles) {
                 $permission = (new Permission(['title' => $permission_title]));

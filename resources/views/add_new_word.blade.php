@@ -219,10 +219,13 @@
                         <div class="bradcaump__inner text-center">
                             <h2 class="bradcaump-title">Add New Word</h2>
                             <nav class="bradcaump-inner">
-                                <a href="{{route('home')}}" class="breadcrumb-item">back to: All Categories</a>
+                                @if (App\Http\Controllers\RoleController::check_can('view category list'))
+                                    <a href="{{route('category.index')}}" class="breadcrumb-item">back to: All
+                                        Categories</a>
+                                @endif
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
-                                <span class="breadcrumb-item active">Letters</span>
+                                <span class="breadcrumb-item active">Add New Word</span>
                             </nav>
                         </div>
                     </div>
@@ -270,7 +273,8 @@
                                                         </label>
                                                         @error('text')
                                                         <br>
-                                                        <span class="invalid-feedback" role="alert">
+                                                        <span class="invalid-feedback" role="alert"
+                                                              style="display: block">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                         @enderror
@@ -284,7 +288,8 @@
                                                         </label>
                                                         @error('score')
                                                         <br>
-                                                        <span class="invalid-feedback" role="alert">
+                                                        <span class="invalid-feedback" role="alert"
+                                                              style="display: block">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                         @enderror
@@ -338,7 +343,8 @@
                                                             </select>
                                                             @error('image1')
                                                             <br>
-                                                            <span class="invalid-feedback" role="alert">
+                                                            <span class="invalid-feedback" role="alert"
+                                                                  style="display: block">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
                                                             @enderror
@@ -372,7 +378,7 @@
                                                      style="margin-bottom: 30px">
                                                     @error('voice1')
                                                     <br>
-                                                    <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert" style="display: block">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
@@ -404,7 +410,7 @@
                                                      style="margin-bottom: 30px">
                                                     @error('category1')
                                                     <br>
-                                                    <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback" role="alert" style="display: block">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
