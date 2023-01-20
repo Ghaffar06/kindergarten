@@ -30,6 +30,20 @@ class GameController extends Controller
 
     }
 
+    public function numberGame()
+    {
+        //    / return view('games.index') ;
+        $authorization = RoleController::can('take words test');
+        if ($authorization !== null) {
+            return $authorization;
+        }
+        $child = (new Child)->findOrFail(Auth::user()->id);
+        $child->score += 5;
+        $child->save();
+        return view('games.number');
+
+    }
+
     public function tictactoeGame()
     {
         $authorization = RoleController::can('take words test');
@@ -37,11 +51,11 @@ class GameController extends Controller
             return $authorization;
         }
         $child = (new Child)->findOrFail(Auth::user()->id);
-        if ($child->score > 20) {
-            $child->score -= 20;
+        if ($child->score > -1) {
+            $child->score -= 0;
             $child->save();
             return view('games.tictactoe');
         }
-        return back()->with('error', 'you dont have enouph points!');
+        return back()->with('error', 'you have to study more!');
     }
 }

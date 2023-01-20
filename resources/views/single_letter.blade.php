@@ -20,7 +20,7 @@
                                 <a href="{{route('letter.list')}}" class="breadcrumb-item">back to: All letters</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
-                                <span class="breadcrumb-item active">manage ({{$letter}})'s photo</span>
+                                <span class="breadcrumb-item active"> ({{$letter}})'s photos</span>
                             </nav>
                         </div>
                     </div>
@@ -51,10 +51,12 @@
                                             <h3>
                                                 The letter must have at least one photo
                                             </h3>
+                                            @if(Auth::user()->role != 'student')
                                             <div class="dcare__btn d-flex align-items-center new_photo-trigger">
                                                 <h3><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add Photo
                                                 </h3>
                                             </div>
+                                            @endif
                                         </div>
 
                                         <!-- Start Our Gallery Area -->
@@ -83,12 +85,14 @@
                                                                                    data-title="My caption"><i
                                                                                         class="fa fa-search"></i></a>
                                                                             </li>
+                                                                            @if(Auth::user()->role != 'student')
                                                                             <li onclick="deleted_id = '{{$photo->id}}'"
                                                                                 class="delete-trigger"
                                                                                 style="cursor: pointer;"><a
                                                                                     style="pointer-events: none;"><i
                                                                                         class="fa fa-trash"></i></a>
                                                                             </li>
+                                                                            @endif
                                                                         </ul>
                                                                     </div>
                                                                 </div>

@@ -15,12 +15,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bradcaump__inner text-center">
-                            <h2 class="bradcaump-title">All Articles</h2>
+                            <h2 class="bradcaump-title">All Games</h2>
                             <nav class="bradcaump-inner">
                                 <a href="{{route('index')}}" class="breadcrumb-item">back to: Home</a>
                                 <span class="brd-separetor"><img src="{{asset('images/icons/brad.png')}}"
                                                                  alt="separator images"></span>
-                                <span class="breadcrumb-item active">Articles</span>
+                                <span class="breadcrumb-item active">Games</span>
                             </nav>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                             <ul class="courses__meta d-flex">
                                 <li class="like" style="font-size: 12pt">
                                     <i class="fa fa-pencil-square-o"></i>
-                                    score: 30
+                                    score: +5
                                 </li>
                             </ul>
                             <div class="courses__wrap" style="margin-top: -70px">
@@ -78,7 +78,7 @@
                                 <div class="courses__content">
                                     <h4 style="font-size: 25pt !important">
                                         <a href="{{route('game.balloon')}}">
-                                            Balloon Letters
+                                            Balloon Alphabet
                                         </a>
                                     </h4>
 
@@ -95,7 +95,7 @@
                             <ul class="courses__meta d-flex">
                                 <li class="like" style="font-size: 12pt">
                                     <i class="fa fa-pencil-square-o"></i>
-                                    score: 20
+                                    score: +5
                                 </li>
                             </ul>
                             <div class="courses__wrap" style="margin-top: -70px">
@@ -116,61 +116,49 @@
                     </div>
                 </div>
                 <!-- End Single Courses -->
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="dcare__pagination mt--80">
-                        <ul class="dcare__page__list d-flex justify-content-center">
-                            <li><a href="#"><span class="ti-angle-double-left"></span></a></li>
-                            <li><a class="page" href="#">Prev</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#"><i class="fa fa-ellipsis-h"></i></a></li>
-                            <li><a href="#">28</a></li>
-                            <li><a class="page" href="#">Next</a></li>
-                            <li><a href="#"><span class="ti-angle-double-right"></span></a></li>
-                        </ul>
+                <!-- Start Single Courses -->
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="courses">
+                        <div class="courses__inner">
+                            <ul class="courses__meta d-flex">
+                                <li class="like" style="font-size: 12pt">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                    score: +10
+                                </li>
+                            </ul>
+                            <div class="courses__wrap" style="margin-top: -70px">
+                                <div class="courses__date">
+                                    <i class="fa fa-pencil"></i>
+                                    written by: Ghaith
+                                </div>
+                                <div class="courses__content">
+                                    <h4 style="font-size: 25pt !important">
+                                        <a href="{{route('game.numbers')}}">
+                                            Balloon Numbers
+                                        </a>
+                                    </h4>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- End Single Courses -->
+                @if (session('error'))
+                <div class="col-lg-12 col-sm-12 col-lg-12">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <h2>{{ session('error') }}</h2>
+                </div>
+                </div>
+                @endif
+               
             </div>
+            
         </div>
     </section>
 
 
 
-    <div class="login-wrapper" id="delete-wrapper">
-        <div class="accountbox">
-            <div class="accountbox__inner">
-                <h4 style="font-size: 15pt">Article Deletion Confirmation</h4>
-                <div class="accountbox__login">
-                    <div class="single-input">
-                        <h5 style="font-size: 16pt !important;">
-                            Are you sure you want to delete this Article?
-                        </h5>
-                    </div>
-                    <div class="single-input text-center">
-                        <div onclick="deleteArticle(deleted_id)" class="sign__btn dcare__btn">Confirm</div>
-                        <a id="delete_href" class="sign__btn"></a>
-                    </div>
-                </div>
-                <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
-            </div>
-        </div>
-    </div><!-- //Login Form -->
-
-    <script>
-        function deleteArticle(id) {
-            let url = "{{route('article.delete' , ['id'=>':id'])}}";
-            url = url.replace(':id', id);
-            window.location.replace(url);
-        }
-
-        function search() {
-            let text = document.getElementById('art_search').value;
-            let url = "{{route('article.index')}}";
-            window.location.replace(url + "?search=" + text);
-        }
-    </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">

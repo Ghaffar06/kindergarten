@@ -470,9 +470,9 @@
 <script src="{{asset('balloon/js/audio.js')}}"></script>
 <script src="{{asset('balloon/js/animation.js')}}"></script>
 <script src="{{asset('balloon/js/display.js')}}"></script>
+<script src="{{asset('balloon/js/game-logic.js')}}"></script>
 <script src="{{asset('balloon/js/maths.js')}}"></script>
 <script src="{{asset('balloon/js/mail.js')}}"></script>
-<script src="{{asset('balloon/js/game-logic.js')}}"></script>
 
 <script src="{{asset('balloon/js/events.js')}}"></script>
 <script>

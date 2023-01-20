@@ -196,4 +196,7 @@ function gameRoutes()
     Route::get($prefix . '/play/tictactoe', 'tictactoeGame')
         ->name('game.tictactoe');
 
+    Route::get($prefix . '/play/number', 'numberGame')
+        ->name('game.numbers');
+
 }

@@ -20,12 +20,15 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/plugins.css')}}">
     <link rel="stylesheet" href="{{asset('style.css')}}">
+    <link rel="stylesheet" href="{{asset('xo/style.css')}}">
 
     <!-- Cusom css -->
 
     <!-- Modernizer js -->
     <script src="{{asset('js/vendor/modernizr-3.5.0.min.js')}}"></script>
+    <script src="{{asset('xo/script.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 
 </head>
 
@@ -226,7 +229,7 @@
                                         <div class="ftr__post__details">
                                             <h6><a>Sports Day is near! so lets get ready
                                                     soon</a></h6>
-                                            <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
+                                            <span><i class="fa fa-calendar"></i>30th Dec, 2023</span>
                                         </div>
                                     </div>
                                     <!-- End Single -->
@@ -239,7 +242,7 @@
                                         </div>
                                         <div class="ftr__post__details">
                                             <h6><a>Sports Day Celebration</a></h6>
-                                            <span><i class="fa fa-calendar"></i>21th Dec, 2017</span>
+                                            <span><i class="fa fa-calendar"></i>21th Dec, 2023</span>
                                         </div>
                                     </div>
                                     <!-- End Single -->
@@ -252,7 +255,7 @@
                                         </div>
                                         <div class="ftr__post__details">
                                             <h6><a>Sports Day Celebration</a></h6>
-                                            <span><i class="fa fa-calendar"></i>10th Dec, 2017</span>
+                                            <span><i class="fa fa-calendar"></i>10th Dec, 2023</span>
                                         </div>
                                     </div>
                                     <!-- End Single -->
@@ -274,8 +277,8 @@
                                         </div>
                                         <div class="dcare__twit__details">
 
-                                            <span><i class="fa fa-clock-o"></i>30th Dec, 2017</span>
-                                            <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
+                                            <span><i class="fa fa-clock-o"></i>30th Dec, 2023</span>
+                                            <span><i class="fa fa-calendar"></i>30th Dec, 2023</span>
                                         </div>
                                     </div>
                                     <!-- End Single -->
@@ -286,8 +289,8 @@
                                         </div>
                                         <div class="dcare__twit__details">
 
-                                            <span><i class="fa fa-clock-o"></i>30th Dec, 2017</span>
-                                            <span><i class="fa fa-calendar"></i>30th Dec, 2017</span>
+                                            <span><i class="fa fa-clock-o"></i>30th Dec, 2023</span>
+                                            <span><i class="fa fa-calendar"></i>30th Dec, 2023</span>
                                         </div>
                                     </div>
                                     <!-- End Single -->
