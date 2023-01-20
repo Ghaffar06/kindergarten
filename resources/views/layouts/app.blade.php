@@ -112,6 +112,11 @@
                             <nav class="mainmenu__nav ">
                                 <ul class="mainmenu ">
                                     <li class="drop"><a href="{{route("index")}}">Home</a></li>
+                                    @auth
+                                    @if(Auth::user()->role == 'admin')
+                                        <li class="drop"><a href="{{route('admin.index')}}">Admin Panel</a></li>
+                                    @endif
+                                    @endauth
                                     @if (App\Http\Controllers\RoleController::check_can('view letter list') )
                                         <li class="drop"><a href="{{route('letter.list')}}">Alphabet</a></li>
                                     @endif

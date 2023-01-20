@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WordController;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::controller(AdminController::class)
+    ->group(function () {
+        adminRoutes();
+    });
 
 Route::controller(LetterController::class)
     ->group(function () {
@@ -198,5 +204,20 @@ function gameRoutes()
 
     Route::get($prefix . '/play/number', 'numberGame')
         ->name('game.numbers');
+
+}
+
+function adminRoutes()
+{
+    $prefix = '/admin';
+
+    Route::get($prefix, 'index')
+        ->name('admin.index');
+
+    Route::get($prefix . '/viewStudents', 'child')
+        ->name('admin.child');
+
+    Route::get($prefix . '/viewReports', 'reports')
+        ->name('admin.reports');
 
 }
